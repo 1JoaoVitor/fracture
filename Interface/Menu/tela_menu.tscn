@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://q26prbnehvdf"]
+
+[ext_resource type="Script" path="res://Interface/Menu/tela_menu.gd" id="1_ft8my"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rucv2"]
+font_size = 80
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tmxqu"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ft8my")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="titulo" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Fracture"
+label_settings = SubResource("LabelSettings_rucv2")
+
+[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="jogar_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
+text = "Jogar"
+flat = true
+
+[node name="regras_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
+text = "Regras"
+flat = true
+
+[node name="creditos_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
+text = "Creditos"
+flat = true
+
+[node name="sair_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
+text = "Sair"
+flat = true

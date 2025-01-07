@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://chcupi57h2k6r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7xtae"]
+font_size = 60
+
+[node name="Creditos" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 360.0
+offset_top = 200.0
+offset_right = 920.0
+offset_bottom = 283.0
+size_flags_horizontal = 4
+text = "Creditos"
+label_settings = SubResource("LabelSettings_7xtae")
+vertical_alignment = 1
