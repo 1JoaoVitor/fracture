@@ -8,10 +8,10 @@ func _ready() -> void:
 func _on_button_pressed(_button : Button) -> void:
 	match _button.name:
 		"jogar_button": 
-			get_tree().change_scene_to_file("res://level.tscn")
+			get_tree().change_scene_to_file("res://Interface/Tabuleiro/level.tscn")
 		"regras_button": 
-			get_tree().change_scene_to_file("res://regras.tscn")
+			get_tree().change_scene_to_file("res://Interface/Regras/regras.tscn")
 		"creditos_button": 
-			get_tree().change_scene_to_file("res://creditos.tscn")
+			get_tree().change_scene_to_file("res://Interface/Créditos/creditos.tscn")
 		"sair_button": 
 			get_tree().quit()

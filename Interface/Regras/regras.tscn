@@ -16,6 +16,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 213.0
+offset_right = -213.667
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -28,18 +30,21 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "[center][b][font size=30]Regras do Jogo FRACTURE[/font][/b][/center]
+text = "
+[center][b][font size=30]Regras do Jogo FRACTURE[/font][/b][/center]
+
+
 
 [b]Descrição:[/b]
-Fracture é um jogo de cartas que envolve estratégia e habilidade. O objetivo é vencer três ou mais batalhas dos slots (colunas) e se tornar o vencedor da guerra. O jogo é composto por um baralho padrão de 54 cartas, incluindo os Jokers.
+Fracture é um jogo de cartas que envolve estratégia e habilidade. O objetivo é vencer três ou mais batalhas dos slots (colunas) e se tornar o vencedor da guerra. 
 
 [b]Divisão das Cartas:[/b]
-• Líderes: Cartas especiais com habilidades únicas.
-◦ Generais: Cartas com habilidades ativadas imediatamente ao serem jogadas.
-◦ Soldados: Cartas numeradas de 2 a 10 que participam das batalhas.
-  ▪ Baixos (2-4)
-  ▪ Médios (5-7)
-  ▪ Altos (8-10)
+	• Líderes: Cartas especiais com habilidades únicas.
+	•  Generais: Cartas com habilidades ativadas imediatamente ao serem jogadas.
+	• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas.
+  		▪ Baixos (2-4)
+  		▪ Médios (5-7)
+ 	 	▪ Altos (8-10)
 
 [b]O Tabuleiro:[/b]
 O tabuleiro possui cinco slots representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há slots específicos para os Generais que ficam atrás dos slots principais.
