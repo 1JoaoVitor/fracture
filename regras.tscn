@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://pci5imks7vx8"]
+
+[sub_resource type="GDScript" id="GDScript_irmui"]
+script/source = "extends Control
+
+func _input(event):
+	if event.is_action_pressed(\"Esc\"): 
+		get_tree().change_scene_to_file(\"res://Interface/Menu/tela_menu.tscn\") 
+"
+
+[node name="Regras" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_irmui")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 213.0
+offset_right = -213.667
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "
+[center][b][font size=30]Regras do Jogo FRACTURE[/font][/b][/center]
+
+
+
+[b]Descrição:[/b]
+Fracture é um jogo de cartas que envolve estratégia e habilidade. O objetivo é vencer três ou mais batalhas dos slots (colunas) e se tornar o vencedor da guerra. 
+
+[b]O Tabuleiro:[/b]
+O tabuleiro possui cinco slots representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há slots específicos para os Generais que ficam atrás dos slots principais.
+
+[center][img]res://Imagens/Tabuleiro_fracture.png[/img][/center]
+
+[b]Divisão das Cartas:[/b]
+	• Líderes: Representantes de cada raça, cartas especiais com habilidades únicas.
+	•  Generais: Cartas com habilidades ativadas imediatamente ao serem jogadas.
+	• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas.
+  		▪ Baixos (2-4)
+  		▪ Médios (5-7)
+ 	 	▪ Altos (8-10)
+	• Cartas Âncoras: Soldado principal da coluna.
+	• Cartas de Reforço: Soldados adicionais.
+
+[b]Dinâmica do Jogo:[/b]
+• Os jogadores alternam seus turnos. Cada turno tem um tempo limite de dois minutos.
+• Ações disponíveis durante o turno:
+  ◦ Comprar (ação obrigatória): Comprar uma carta do baralho.
+  ◦ Ativar habilidades de Líderes (ação adicional): Ativar a habilidade de um Líder em jogo (uma vez por partida).
+  ◦ Usar Generais (ação adicional): Usar um General da sua mão.
+  ◦ Posicionamento (ação principal): Colocar uma carta virada para baixo em um slot.
+  ◦ Reforço (ação principal/adicional): Aprimorar o poder de um slot com uma Carta Âncora. Combinações: Alta+Baixa, Média+Média, Média+Baixa+Baixa, Baixa+Baixa+Baixa.
+    ▪ Reforço Alto: Carta Alta em cima de Baixa ou vice-versa.
+    ▪ Reforço Médio: Carta Média em cima de Média ou Baixa.
+    ▪ Reforço Baixo: Carta Baixa em cima de Média ou Baixa.
+  ◦ Substituição (ação principal/adicional): Trocar uma carta no slot por outra da mão.
+  ◦ Compra Adicional (duas ações adicionais): Descartar uma carta para comprar outra.
+  ◦ Mudança de ação (Mecânica): Trocar uma ação principal por três adicionais.
+  ◦ Sintonizar Tropas (Mecânica): Combinar duas cartas de valor 2 de cores diferentes para formar uma carta com a soma dos valores.
+  ◦ Passar a vez: Passar o turno para o oponente.
+• O jogo termina quando o Baralho de Compras acaba. A rodada final ocorre e as batalhas são resolvidas.
+• Vence quem tiver o maior valor numérico total em um slot. Em caso de empate geral, vence quem tiver a maior soma dos valores de todos os slots.
+
+
+[b]Habilidades das Cartas:[/b]
+Algumas cartas possuem habilidades que aumentam a diversidade de jogadas e estratégia.
+
+[b]Habilidades dos Líderes:[/b]
+• Ophidianos: Você olha a pilha de descartes e escolhe cartas para jogar automaticamente.
+  ◦ Opções: Duas baixas, uma média ou uma alta.
+  ◦ Pode usar \"Sintonizar Tropas\" com cartas de valor 2.
+• Viridanos: Durante este turno, todos os seus slots são coringa e todos os seus reforços são adicionais.
+
+[b]Habilidades dos Generais:[/b]
+• General Dourado: Vale um ponto no Slot Dourado. Olhe as 3 primeiras cartas do deck e escolha uma.
+• General Jade: Vale um ponto no Slot Jade. Move uma carta baixa sua para outro slot (pode trocar cartas).
+• General Safira: Vale um ponto no Slot Safira. Troca uma carta de reforço sua com a do adversário.
+• General Carmim: Vale um ponto no Slot Carmim. Olhe o baralho de descarte e compre uma carta.
+
+[b]Exemplo de Turno:[/b]
+• Comprar uma Carta: Compre uma carta do baralho.
+• Ação Principal: Posicionar uma Carta no Slot: Escolha um Soldado (ex: \"6 Dourado\") e posicione-o virado para baixo.
+• Ação Adicional: Usar descarte e compra: Descarte uma carta e compre outra.
+
+[b]Batalhas e Final do Jogo:[/b]
+Quando o Baralho de Compras acabar, ocorre a rodada final. As batalhas são vencidas pelo maior valor numérico em um slot. Empate geral: maior soma dos valores de todos os slots."
