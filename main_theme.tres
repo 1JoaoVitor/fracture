@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dvsdr0n5vxde2"]
+
+[ext_resource type="FontFile" uid="uid://grx6g0k00qpn" path="res://Fonte/Ethnocentric Rg.otf" id="1_p726x"]
+
+[resource]
+default_font = ExtResource("1_p726x")
+default_font_size = 6

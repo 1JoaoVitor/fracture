@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg5wkrbh7023v"]
+
+[ext_resource type="Theme" path="res://main_theme.tres" id="1_jpnfb"]
+[ext_resource type="Script" path="res://Interface/Cards/card_ui.gd" id="2_dro14"]
+[ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_state_machine.gd" id="3_0400w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imhsx"]
+size = Vector2(25, 30)
+
+[node name="CardUI" type="Control"]
+custom_minimum_size = Vector2(25, 30)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1255.0
+offset_bottom = -690.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jpnfb")
+script = ExtResource("2_dro14")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(9.68631e-07, 0.263339, 0.054644, 1)
+
+[node name="State" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropPointDetector" type="Area2D" parent="."]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
+position = Vector2(12.5, 15)
+shape = SubResource("RectangleShape2D_imhsx")
+
+[node name="CardStateMachine" type="Node" parent="."]
+script = ExtResource("3_0400w")
+
+[node name="CardBaseState" type="Node" parent="CardStateMachine"]
+
+[node name="CardDraggingState" type="Node" parent="CardStateMachine"]
+
+[node name="CardReleasedState" type="Node" parent="CardStateMachine"]
