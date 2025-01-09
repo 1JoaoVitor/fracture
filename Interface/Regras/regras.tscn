@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2krmhcdinrk0"]
 
-[ext_resource type="Script" path="res://regras.gd" id="1_1i1n5"]
+[ext_resource type="Script" path="res://Interface/Regras/regras.gd" id="1_im3d7"]
 
 [node name="Regras" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1i1n5")
+script = ExtResource("1_im3d7")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -38,16 +38,20 @@ text = "
 [b]Descrição:[/b]
 Fracture é um jogo de cartas que envolve estratégia e habilidade. O objetivo é vencer três ou mais batalhas dos slots (colunas) e se tornar o vencedor da guerra. 
 
+[b]O Tabuleiro:[/b]
+O tabuleiro possui cinco slots representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há slots específicos para os Generais que ficam atrás dos slots principais.
+
+[center][img]res://Imagens/Tabuleiro_fracture.png[/img][/center]
+
 [b]Divisão das Cartas:[/b]
-	• Líderes: Cartas especiais com habilidades únicas.
+	• Líderes: Representantes de cada raça, cartas especiais com habilidades únicas.
 	•  Generais: Cartas com habilidades ativadas imediatamente ao serem jogadas.
 	• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas.
   		▪ Baixos (2-4)
   		▪ Médios (5-7)
  	 	▪ Altos (8-10)
-
-[b]O Tabuleiro:[/b]
-O tabuleiro possui cinco slots representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há slots específicos para os Generais que ficam atrás dos slots principais.
+	• Cartas Âncoras: Soldado principal da coluna.
+	• Cartas de Reforço: Soldados adicionais.
 
 [b]Dinâmica do Jogo:[/b]
 • Os jogadores alternam seus turnos. Cada turno tem um tempo limite de dois minutos.
@@ -68,15 +72,6 @@ O tabuleiro possui cinco slots representando diferentes cores: Dourado, Jade, Ci
 • O jogo termina quando o Baralho de Compras acaba. A rodada final ocorre e as batalhas são resolvidas.
 • Vence quem tiver o maior valor numérico total em um slot. Em caso de empate geral, vence quem tiver a maior soma dos valores de todos os slots.
 
-[b]Categorias de Cartas:[/b]
-• Líderes: Representantes de cada raça.
-◦ Generais: Cartas únicas com habilidades especiais.
-◦ Soldados: Cartas numeradas de 2 a 10.
-  ▪ Altas (10-9-8)
-  ▪ Médias (7-6-5)
-  ▪ Baixas (4-3-2)
-• Cartas Âncoras: Soldado principal do slot.
-• Cartas de Reforço: Soldados adicionais.
 
 [b]Habilidades das Cartas:[/b]
 Algumas cartas possuem habilidades que aumentam a diversidade de jogadas e estratégia.
