@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg5wkrbh7023v"]
+[gd_scene load_steps=9 format=3 uid="uid://dg5wkrbh7023v"]
 
 [ext_resource type="Theme" path="res://main_theme.tres" id="1_jpnfb"]
 [ext_resource type="Script" path="res://Interface/Cards/card_ui.gd" id="2_dro14"]
-[ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_state_machine.gd" id="3_0400w"]
+[ext_resource type="Script" path="res://Interface/Cards/card_state_machine.gd" id="3_0400w"]
+[ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_base_state.gd" id="4_x77q8"]
+[ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_dragging_state.gd" id="5_ueltr"]
+[ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_released_state.gd" id="6_4gmcj"]
+[ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_clicked_state.gd" id="7_nsw4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imhsx"]
 size = Vector2(25, 30)
@@ -48,11 +52,21 @@ monitorable = false
 position = Vector2(12.5, 15)
 shape = SubResource("RectangleShape2D_imhsx")
 
-[node name="CardStateMachine" type="Node" parent="."]
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_0400w")
+initial_state = NodePath("CardBaseState")
 
 [node name="CardBaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("4_x77q8")
 
 [node name="CardDraggingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("5_ueltr")
+estado = 2
 
 [node name="CardReleasedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("6_4gmcj")
+estado = 3
+
+[node name="CardClickedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("7_nsw4r")
+estado = 1
