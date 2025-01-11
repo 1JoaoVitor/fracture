@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dg5wkrbh7023v"]
 
-[ext_resource type="Theme" path="res://main_theme.tres" id="1_jpnfb"]
+[ext_resource type="Theme" uid="uid://dvsdr0n5vxde2" path="res://main_theme.tres" id="1_jpnfb"]
 [ext_resource type="Script" path="res://Interface/Cards/card_ui.gd" id="2_dro14"]
 [ext_resource type="Script" path="res://Interface/Cards/card_state_machine.gd" id="3_0400w"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_base_state.gd" id="4_x77q8"]

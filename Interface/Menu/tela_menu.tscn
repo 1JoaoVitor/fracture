@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://q26prbnehvdf"]
+[gd_scene load_steps=7 format=3 uid="uid://q26prbnehvdf"]
 
 [ext_resource type="Script" path="res://Interface/Menu/tela_menu.gd" id="1_ft8my"]
+[ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="2_w605n"]
+[ext_resource type="FontFile" uid="uid://3bpd2kpm1dyv" path="res://Fonte/VehicleBreaksDown-Regular.ttf" id="3_h2iml"]
+[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="4_7d7cd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rucv2"]
+font = ExtResource("3_h2iml")
 font_size = 80
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
@@ -27,6 +31,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.533037, 0.533037, 0.533037, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(656, 311)
+scale = Vector2(0.933896, 0.837)
+texture = ExtResource("2_w605n")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -60,32 +69,36 @@ layout_mode = 2
 
 [node name="jogar_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme = ExtResource("4_7d7cd")
+theme_override_colors/font_hover_color = Color(0.439095, 0.913623, 0.932161, 1)
+theme_override_colors/font_pressed_color = Color(0.286691, 0.501014, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Jogar"
 flat = true
 
 [node name="regras_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme = ExtResource("4_7d7cd")
+theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
+theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Regras"
 flat = true
 
 [node name="creditos_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme = ExtResource("4_7d7cd")
+theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
+theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
-text = "Créditos"
+text = "Creditos"
 flat = true
 
 [node name="sair_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
 layout_mode = 2
-theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0.984314, 1)
+theme = ExtResource("4_7d7cd")
+theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
+theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Sair"
 flat = true
