@@ -9,16 +9,16 @@
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_clicked_state.gd" id="7_nsw4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imhsx"]
-size = Vector2(60, 75)
+size = Vector2(120, 150)
 
 [node name="CardUI" type="Control"]
-custom_minimum_size = Vector2(60, 75)
+custom_minimum_size = Vector2(120, 150)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1860.0
-offset_bottom = -1005.0
+offset_right = -1800.0
+offset_bottom = -930.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jpnfb")
@@ -41,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 20
 text = "State"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -50,7 +51,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
-position = Vector2(30, 37.5)
+position = Vector2(60, 75)
 shape = SubResource("RectangleShape2D_imhsx")
 
 [node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

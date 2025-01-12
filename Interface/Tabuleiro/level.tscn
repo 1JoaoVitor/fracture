@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=11 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://djdnecw6v3n7u" path="res://Imagens/Tabuleiro/Viridianos/parte_grama.png" id="4_0mnjs"]
 [ext_resource type="Texture2D" uid="uid://cm3gx7jnplhbx" path="res://Imagens/Tabuleiro/Ophidianos/Parte_robo.png" id="4_lec2h"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -16,7 +17,7 @@ gradient = SubResource("Gradient_vco24")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nj2sr")
-cena_inicial = "res://Interface/Menu/tela_menu.gd"
+cena_inicial = "res://Interface/Menu/tela_menu.tscn"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -95,7 +96,7 @@ position = Vector2(967, 539)
 scale = Vector2(1.30533, 1.192)
 texture = ExtResource("6_gkgke")
 
-[node name="BattleUI" type="CanvasLayer" parent="."]
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -109,6 +110,7 @@ offset_right = 168.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+script = ExtResource("7_m8cp8")
 
 [node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
 layout_mode = 2
