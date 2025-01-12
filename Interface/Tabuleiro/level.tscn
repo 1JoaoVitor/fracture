@@ -1,7 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=10 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
+[ext_resource type="Texture2D" uid="uid://fl5f2s3if7yp" path="res://Imagens/Tabuleiro/Viridianos/Grama-removebg-preview.png" id="2_mocfn"]
+[ext_resource type="Texture2D" uid="uid://bmxho0qhbtkib" path="res://Imagens/Tabuleiro/Ophidianos/Robo-removebg-preview.png" id="2_np0ql"]
+[ext_resource type="Texture2D" uid="uid://djdnecw6v3n7u" path="res://Imagens/Tabuleiro/Viridianos/parte_grama.png" id="4_0mnjs"]
+[ext_resource type="Texture2D" uid="uid://cm3gx7jnplhbx" path="res://Imagens/Tabuleiro/Ophidianos/Parte_robo.png" id="4_lec2h"]
+[ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -12,7 +17,6 @@ gradient = SubResource("Gradient_vco24")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nj2sr")
 cena_inicial = "res://Interface/Menu/tela_menu.gd"
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -25,6 +29,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture1D_fuskx")
 
 [node name="Player1" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(960, 0)
 offset_left = 260.0
 offset_top = 240.0
 offset_right = 1560.0
@@ -32,8 +37,12 @@ offset_bottom = 380.0
 alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Player1"]
+custom_minimum_size = Vector2(960, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Player1"]
+layout_mode = 2
 
 [node name="Player2" type="HBoxContainer" parent="."]
 anchors_preset = 8
@@ -55,6 +64,37 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Telas" type="CanvasLayer" parent="."]
+
+[node name="Viridianos" type="CanvasLayer" parent="Telas"]
+
+[node name="Viridianos_side" type="Sprite2D" parent="Telas/Viridianos"]
+position = Vector2(960.034, 917.19)
+scale = Vector2(1.69617, 1.38562)
+texture = ExtResource("4_0mnjs")
+
+[node name="Viridianos_mao" type="Sprite2D" parent="Telas/Viridianos"]
+position = Vector2(960, 1006.5)
+scale = Vector2(1.5, 1.33636)
+texture = ExtResource("2_mocfn")
+
+[node name="Ophidianos" type="CanvasLayer" parent="Telas"]
+
+[node name="Ophidianos_side" type="Sprite2D" parent="Telas/Ophidianos"]
+position = Vector2(960, 916.953)
+scale = Vector2(1.69611, 1.38683)
+texture = ExtResource("4_lec2h")
+
+[node name="Ophidianos_mao" type="Sprite2D" parent="Telas/Ophidianos"]
+position = Vector2(960, 1006.5)
+scale = Vector2(1.5, 1.33636)
+texture = ExtResource("2_np0ql")
+
+[node name="Fundo_fracture" type="Sprite2D" parent="."]
+position = Vector2(967, 539)
+scale = Vector2(1.30533, 1.192)
+texture = ExtResource("6_gkgke")
+
 [node name="BattleUI" type="CanvasLayer" parent="."]
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
@@ -68,6 +108,7 @@ offset_top = -75.0
 offset_right = 168.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
 layout_mode = 2
@@ -100,4 +141,23 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CardUI4" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="Viridianos_side2" type="Sprite2D" parent="."]
+position = Vector2(960, 685)
+scale = Vector2(1.14841, 0.608511)
+texture = ExtResource("4_0mnjs")
+
+[node name="Viridianos_side3" type="Sprite2D" parent="."]
+position = Vector2(960, 395)
+scale = Vector2(1.14488, 0.608511)
+texture = ExtResource("4_0mnjs")
+
+[node name="Campo" type="HBoxContainer" parent="."]
+offset_left = 312.0
+offset_top = 323.0
+offset_right = 1608.0
+offset_bottom = 467.0
+
+[node name="ColorRect" type="ColorRect" parent="Campo"]
 layout_mode = 2
