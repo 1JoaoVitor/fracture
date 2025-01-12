@@ -66,13 +66,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="jogar_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+[node name="jogar_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
 theme = ExtResource("4_7d7cd")
 theme_override_colors/font_hover_color = Color(0.439095, 0.913623, 0.932161, 1)
@@ -81,7 +81,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Jogar"
 flat = true
 
-[node name="regras_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+[node name="regras_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
 theme = ExtResource("4_7d7cd")
 theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
@@ -90,7 +90,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Regras"
 flat = true
 
-[node name="creditos_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+[node name="creditos_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
 theme = ExtResource("4_7d7cd")
 theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
@@ -99,7 +99,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Creditos"
 flat = true
 
-[node name="sair_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
+[node name="sair_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
 theme = ExtResource("4_7d7cd")
 theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
