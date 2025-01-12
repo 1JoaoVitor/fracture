@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5apejntrk478"]
+
+[ext_resource type="Texture2D" uid="uid://cfqls8kyu7boo" path="res://Imagens/Elementos visuais/preto.jpeg" id="2_nflqd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rtda"]
+size = Vector2(283.582, 178.667)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Cartas" type="Sprite2D" parent="."]
+scale = Vector2(0.536, 0.75)
+texture = ExtResource("2_nflqd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Cartas"]
+position = Vector2(-857.86, 0)
+texture = ExtResource("2_nflqd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Cartas"]
+position = Vector2(-428.931, 0)
+texture = ExtResource("2_nflqd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Cartas"]
+position = Vector2(857.86, 0)
+texture = ExtResource("2_nflqd")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Cartas"]
+position = Vector2(428.931, 0)
+texture = ExtResource("2_nflqd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Cartas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/StaticBody2D"]
+position = Vector2(0, -2.54313e-06)
+shape = SubResource("RectangleShape2D_4rtda")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Cartas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/StaticBody2D2"]
+position = Vector2(429.104, 0)
+shape = SubResource("RectangleShape2D_4rtda")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Cartas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/StaticBody2D3"]
+position = Vector2(858.209, 0)
+shape = SubResource("RectangleShape2D_4rtda")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Cartas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/StaticBody2D4"]
+position = Vector2(-429.104, 0)
+shape = SubResource("RectangleShape2D_4rtda")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Cartas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/StaticBody2D5"]
+position = Vector2(-858.209, 0)
+shape = SubResource("RectangleShape2D_4rtda")
