@@ -7,6 +7,7 @@ font_size = 60
 
 [node name="Creditos" type="Node2D"]
 script = ExtResource("1_exh52")
+cena_inicial = "res://Interface/Menu/tela_menu.tscn"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 360.0

@@ -23,32 +23,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ft8my")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -132.0
+offset_right = 210.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.533037, 0.533037, 0.533037, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(656, 311)
-scale = Vector2(0.933896, 0.837)
 texture = ExtResource("2_w605n")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 220
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+theme_override_constants/separation = 20
 
 [node name="titulo" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -66,6 +68,9 @@ size_flags_vertical = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 15
 
 [node name="jogar_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["buttons"]]
 layout_mode = 2

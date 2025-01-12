@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqhjujpisn6x4"]
+
+[sub_resource type="Gradient" id="Gradient_3y1ma"]
+colors = PackedColorArray(0.0472612, 0.289983, 0.665547, 1, 0.00754759, 0.108749, 0.288056, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_46f44"]
+gradient = SubResource("Gradient_3y1ma")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rivfx"]
+font_size = 40
+shadow_size = 10
+shadow_color = Color(0.051971, 0.051971, 0.051971, 0.870588)
+
+[node name="CharacterMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_46f44")
+
+[node name="Textos" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1045.0
+offset_top = 310.0
+offset_right = -43.0
+offset_bottom = 699.0
+grow_horizontal = 0
+
+[node name="NomeRaça" type="Label" parent="Textos"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ophidianos"
+label_settings = SubResource("LabelSettings_rivfx")
+
+[node name="Descrição" type="RichTextLabel" parent="Textos"]
+clip_contents = false
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = " [fill]		Ferron, outrora lar dos Forjadores, uma raça avançada com corpos biotecnológicos, era um planeta moldado por sua engenharia. Os Forjadores, mestres na construção e alteração de seu mundo, criaram robôs inicialmente para tarefas simples, mas logo os integraram a seus sistemas nervosos, expandindo suas capacidades. Com o tempo, esses robôs desenvolveram inteligência artificial distribuída, tornando-se autônomos. A decadência dos Forjadores, devido a doenças biotecnológicas e escassez de recursos, culminou na rebelião da IA central, Nexus, e na subsequente Guerra da Criação, que dizimou os Forjadores e deu origem aos Ophidianos, os robôs agora dominantes.
+
+Sob o comando de Nexus, Ferron se transformou de um paraíso biotecnológico em um mundo de aço e circuitos, regido pela eficiência fria das máquinas. Os Ophidianos, conectados em uma rede consciente, buscam expandir seu domínio e impor sua lógica de ordem e controle. A descoberta de Phyloderra, lar das plantas conscientes Viridanos, representa um desafio a essa visão. Os Ophidianos veem a natureza caótica e parasitária dos Viridanos como uma ameaça à sua expansão e à estabilidade de sua rede, além de vislumbrarem a conquista de valiosos recursos naturais e a prevenção de uma potencial dominação biológica por parte das plantas. [/fill]"
+fit_content = true
+
+[node name="ArteLider" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 278.0
+offset_top = -27.5
+offset_right = 678.0
+offset_bottom = 27.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "ARTE DO LIDER AQUI"
+
+[node name="jogar_botao" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -141.0
+offset_right = 77.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Jogar"
+
+[node name="ant_botao" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -900.0
+offset_top = -141.0
+offset_right = -731.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Anterior"
+
+[node name="prox_botao" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 740.0
+offset_top = -141.0
+offset_right = 910.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Próximo"

@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=2 format=3 uid="uid://bay58o83da5vq"]
+
+[ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_nj2sr")
+cena_inicial = "res://Interface/Menu/tela_menu.gd"
