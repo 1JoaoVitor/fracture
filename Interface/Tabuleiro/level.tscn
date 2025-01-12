@@ -1,7 +1,103 @@
-[gd_scene load_steps=2 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=5 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
+[ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
+
+[sub_resource type="Gradient" id="Gradient_vco24"]
+colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fuskx"]
+gradient = SubResource("Gradient_vco24")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nj2sr")
 cena_inicial = "res://Interface/Menu/tela_menu.gd"
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_fuskx")
+
+[node name="Player1" type="HBoxContainer" parent="."]
+offset_left = 260.0
+offset_top = 240.0
+offset_right = 1560.0
+offset_bottom = 380.0
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Player1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Player2" type="HBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 260.0
+offset_top = 700.0
+offset_right = 1560.0
+offset_bottom = 840.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="Player2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BattleUI" type="CanvasLayer" parent="."]
+
+[node name="Hand" type="HBoxContainer" parent="BattleUI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -75.0
+offset_right = 168.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="CardUI4" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="Hand2" type="HBoxContainer" parent="BattleUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_right = 126.0
+offset_bottom = 75.0
+grow_horizontal = 2
+
+[node name="CardUI" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="CardUI2" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="CardUI3" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
+layout_mode = 2
+
+[node name="CardUI4" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
+layout_mode = 2

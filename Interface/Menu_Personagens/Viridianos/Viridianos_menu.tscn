@@ -1,4 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b761mg57n6fnr"]
+[gd_scene load_steps=6 format=3 uid="uid://b761mg57n6fnr"]
+
+[ext_resource type="Script" path="res://Interface/Menu_Personagens/Viridianos/viridianos_menu.gd" id="1_nvtun"]
+[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="2_o00ha"]
 
 [sub_resource type="Gradient" id="Gradient_3y1ma"]
 offsets = PackedFloat32Array(0, 0.993506)
@@ -12,13 +15,15 @@ font_size = 40
 shadow_size = 10
 shadow_color = Color(0.051971, 0.051971, 0.051971, 0.870588)
 
-[node name="CharacterMenu" type="Control"]
+[node name="ViridianosMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nvtun")
+cena_inicial = "res://Interface/Menu/tela_menu.tscn"
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -71,50 +76,31 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "ARTE DO LIDER AQUI"
 
-[node name="jogar_botao" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -141.0
-offset_right = 77.0
-offset_bottom = -78.0
-grow_horizontal = 2
+offset_top = -100.0
+offset_right = 1920.0
+offset_bottom = -37.0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "Jogar"
+theme = ExtResource("2_o00ha")
+theme_override_constants/separation = 650
+alignment = 1
 
-[node name="ant_botao" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -900.0
-offset_top = -141.0
-offset_right = -731.0
-offset_bottom = -78.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="ant_button" type="Button" parent="HBoxContainer" groups=["buttons_viridianos"]]
+layout_mode = 2
+size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "Anterior"
 
-[node name="prox_botao" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 740.0
-offset_top = -141.0
-offset_right = 910.0
-offset_bottom = -78.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="jogar_button" type="Button" parent="HBoxContainer" groups=["buttons_viridianos"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Jogar"
+
+[node name="prox_button" type="Button" parent="HBoxContainer" groups=["buttons_viridianos"]]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Próximo"
