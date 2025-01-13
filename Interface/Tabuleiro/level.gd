@@ -7,6 +7,7 @@ class_name LevelMenu
 @onready var spritevirid_side = $Telas/Viridianos/Viridianos_side  # Substitua "Sprite" pelo nome do nó da sua sprite.
 @onready var spriteophi_side = $Telas/Ophidianos/Ophidianos_side  # Substitua "Sprite" pelo nome do nó da sua sprite.
 
+
 func _ready():
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
 	
@@ -16,7 +17,6 @@ func _ready():
 		"ophidiano":
 			move_sprite_to_bottom()
 			
-
 func _input(event):
 	if event.is_action_pressed("Esc"): 
 		var _chance_scene: bool = get_tree().change_scene_to_file(cena_inicial)

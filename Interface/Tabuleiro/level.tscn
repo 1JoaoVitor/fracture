@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://djdnecw6v3n7u" path="res://Imagens/Tabuleiro/Viridianos/parte_grama.png" id="4_0mnjs"]
 [ext_resource type="Texture2D" uid="uid://cm3gx7jnplhbx" path="res://Imagens/Tabuleiro/Ophidianos/Parte_robo.png" id="4_lec2h"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
+
+[ext_resource type="PackedScene" uid="uid://b5apejntrk478" path="res://Interface/Tabuleiro/Cartas/Molde_Cartas.tscn" id="9_a54r5"]
 [ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
 [ext_resource type="Resource" uid="uid://d2uq7oqtfrcj2" path="res://Personagens/Ophidianos/cards/general_ophidiano.tres" id="9_0s437"]
 [ext_resource type="Resource" uid="uid://dptfyws7k8xxi" path="res://Personagens/Ophidianos/cards/lider_ophidiano.tres" id="10_cdwk2"]
@@ -34,6 +36,32 @@ offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_fuskx")
+
+[node name="Telas" type="CanvasLayer" parent="."]
+
+[node name="Viridianos" type="CanvasLayer" parent="Telas"]
+
+[node name="Viridianos_side" type="Sprite2D" parent="Telas/Viridianos"]
+position = Vector2(960.034, 948)
+scale = Vector2(1.69617, 1.12341)
+texture = ExtResource("4_0mnjs")
+
+[node name="Viridianos_mao" type="Sprite2D" parent="Telas/Viridianos"]
+position = Vector2(960, 1006.5)
+scale = Vector2(1.5, 1.33636)
+texture = ExtResource("2_mocfn")
+
+[node name="Ophidianos" type="CanvasLayer" parent="Telas"]
+
+[node name="Ophidianos_side" type="Sprite2D" parent="Telas/Ophidianos"]
+position = Vector2(960, 948.453)
+scale = Vector2(1.69611, 1.11875)
+texture = ExtResource("4_lec2h")
+
+[node name="Ophidianos_mao" type="Sprite2D" parent="Telas/Ophidianos"]
+position = Vector2(960, 1006.5)
+scale = Vector2(1.5, 1.33636)
+texture = ExtResource("2_np0ql")
 
 [node name="Player1" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(960, 0)
@@ -70,32 +98,6 @@ alignment = 1
 [node name="ColorRect2" type="ColorRect" parent="Player2"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Telas" type="CanvasLayer" parent="."]
-
-[node name="Viridianos" type="CanvasLayer" parent="Telas"]
-
-[node name="Viridianos_side" type="Sprite2D" parent="Telas/Viridianos"]
-position = Vector2(960.034, 917.19)
-scale = Vector2(1.69617, 1.38562)
-texture = ExtResource("4_0mnjs")
-
-[node name="Viridianos_mao" type="Sprite2D" parent="Telas/Viridianos"]
-position = Vector2(960, 1006.5)
-scale = Vector2(1.5, 1.33636)
-texture = ExtResource("2_mocfn")
-
-[node name="Ophidianos" type="CanvasLayer" parent="Telas"]
-
-[node name="Ophidianos_side" type="Sprite2D" parent="Telas/Ophidianos"]
-position = Vector2(960, 916.953)
-scale = Vector2(1.69611, 1.38683)
-texture = ExtResource("4_lec2h")
-
-[node name="Ophidianos_mao" type="Sprite2D" parent="Telas/Ophidianos"]
-position = Vector2(960, 1006.5)
-scale = Vector2(1.5, 1.33636)
-texture = ExtResource("2_np0ql")
 
 [node name="Fundo_fracture" type="Sprite2D" parent="."]
 position = Vector2(967, 539)
@@ -159,21 +161,8 @@ card = ExtResource("13_lbbmt")
 layout_mode = 2
 card = ExtResource("14_8bkh8")
 
-[node name="Viridianos_side2" type="Sprite2D" parent="."]
-position = Vector2(960, 685)
-scale = Vector2(1.14841, 0.608511)
-texture = ExtResource("4_0mnjs")
+[node name="cartas1" parent="." instance=ExtResource("9_a54r5")]
+position = Vector2(960, 385)
 
-[node name="Viridianos_side3" type="Sprite2D" parent="."]
-position = Vector2(960, 395)
-scale = Vector2(1.14488, 0.608511)
-texture = ExtResource("4_0mnjs")
-
-[node name="Campo" type="HBoxContainer" parent="."]
-offset_left = 312.0
-offset_top = 323.0
-offset_right = 1608.0
-offset_bottom = 467.0
-
-[node name="ColorRect" type="ColorRect" parent="Campo"]
-layout_mode = 2
+[node name="cartas2" parent="." instance=ExtResource("9_a54r5")]
+position = Vector2(960, 690)
