@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
 [ext_resource type="Resource" uid="uid://d0vl1j7jk2t46" path="res://Personagens/Viridianos/cards/general_viridiano.tres" id="13_lbbmt"]
 [ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
-[ext_resource type="PackedScene" uid="uid://etwxrik66uln" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
+[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
