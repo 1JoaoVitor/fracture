@@ -5,6 +5,8 @@ class_name CardUI
 
 signal reparent_requested(which_card_ui: CardUI)
 
+@export var card: Card
+
 @onready var color: ColorRect = $Color
 @onready var state: Label = $State
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine

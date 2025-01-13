@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://c5tapafa7lxm5"]
+
+[ext_resource type="Script" path="res://Resources/card.gd" id="1_afsc2"]
+
+[resource]
+script = ExtResource("1_afsc2")
+id = "soldado_viridiano"
+type = 0
+target = 0
