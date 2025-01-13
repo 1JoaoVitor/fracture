@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt4ym627qqphc"]
+
+[ext_resource type="Texture2D" uid="uid://cm3ffin8bkbug" path="res://Imagens/Elementos visuais/circulo_vermelho.png" id="1_0r53x"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/somadores.gd" id="1_rq5xk"]
+[ext_resource type="Texture2D" uid="uid://biwct28l5iyr4" path="res://Imagens/Elementos visuais/Circulo_verde.png" id="2_nng4w"]
+
+[node name="Somador" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rq5xk")
+textura_verde = ExtResource("2_nng4w")
+textura_vermelha = ExtResource("1_0r53x")
+
+[node name="Cor" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("2_nng4w")
+expand_mode = 1
+
+[node name="Pontos" type="Label" parent="Cor"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+theme_override_font_sizes/font_size = 40
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

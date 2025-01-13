@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://etwxrik66uln"]
+
+[ext_resource type="PackedScene" uid="uid://bt4ym627qqphc" path="res://Interface/Tabuleiro/somadores.tscn" id="1_8tqds"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 80.0
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Somador" parent="HBoxContainer" instance=ExtResource("1_8tqds")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Somador2" parent="HBoxContainer" instance=ExtResource("1_8tqds")]
+layout_mode = 2
+
+[node name="Somador3" parent="HBoxContainer" instance=ExtResource("1_8tqds")]
+layout_mode = 2
+
+[node name="Somador4" parent="HBoxContainer" instance=ExtResource("1_8tqds")]
+layout_mode = 2
+
+[node name="Somador5" parent="HBoxContainer" instance=ExtResource("1_8tqds")]
+layout_mode = 2

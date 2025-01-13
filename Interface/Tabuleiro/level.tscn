@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=19 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
 [ext_resource type="Resource" uid="uid://d0vl1j7jk2t46" path="res://Personagens/Viridianos/cards/general_viridiano.tres" id="13_lbbmt"]
 [ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
+[ext_resource type="PackedScene" uid="uid://etwxrik66uln" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -165,3 +166,9 @@ position = Vector2(960, 385)
 
 [node name="cartas2" parent="." instance=ExtResource("9_a54r5")]
 position = Vector2(960, 690)
+
+[node name="Control" parent="." instance=ExtResource("16_ev3a0")]
+offset_left = 456.0
+offset_top = 502.0
+offset_right = 456.0
+offset_bottom = 502.0
