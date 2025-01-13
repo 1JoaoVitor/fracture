@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=18 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
@@ -7,10 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://djdnecw6v3n7u" path="res://Imagens/Tabuleiro/Viridianos/parte_grama.png" id="4_0mnjs"]
 [ext_resource type="Texture2D" uid="uid://cm3gx7jnplhbx" path="res://Imagens/Tabuleiro/Ophidianos/Parte_robo.png" id="4_lec2h"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
-
-[ext_resource type="PackedScene" uid="uid://b5apejntrk478" path="res://Interface/Tabuleiro/Cartas/Molde_Cartas.tscn" id="9_a54r5"]
 [ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
 [ext_resource type="Resource" uid="uid://d2uq7oqtfrcj2" path="res://Personagens/Ophidianos/cards/general_ophidiano.tres" id="9_0s437"]
+[ext_resource type="PackedScene" uid="uid://b5apejntrk478" path="res://Interface/Tabuleiro/Cartas/Molde_Cartas.tscn" id="9_a54r5"]
 [ext_resource type="Resource" uid="uid://dptfyws7k8xxi" path="res://Personagens/Ophidianos/cards/lider_ophidiano.tres" id="10_cdwk2"]
 [ext_resource type="Resource" uid="uid://cgxis8dhu6lb6" path="res://Personagens/Ophidianos/cards/soldado_ophidiano.tres" id="11_ybjyr"]
 [ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
