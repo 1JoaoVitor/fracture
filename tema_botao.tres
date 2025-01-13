@@ -2,6 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b6v0eftq600q0" path="res://Fonte/WOODCUTTER STORM.ttf" id="1_hsevu"]
 
+
 [resource]
 default_font = ExtResource("1_hsevu")
 default_font_size = 40

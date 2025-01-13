@@ -27,32 +27,32 @@ texture = ExtResource("2_nflqd")
 position = Vector2(428.931, 0)
 texture = ExtResource("2_nflqd")
 
-[node name="Area2D" type="Area2D" parent="Cartas"]
+[node name="Slot1" type="Area2D" parent="Cartas" groups=["Slots"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot1"]
 position = Vector2(0, -2.54313e-06)
 shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Area2D2" type="Area2D" parent="Cartas"]
+[node name="Slot2" type="Area2D" parent="Cartas" groups=["Slots"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot2"]
 position = Vector2(429.104, 0)
 shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Area2D3" type="Area2D" parent="Cartas"]
+[node name="Slot3" type="Area2D" parent="Cartas" groups=["Slots"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Area2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot3"]
 position = Vector2(858.209, 0)
 shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Area2D4" type="Area2D" parent="Cartas"]
+[node name="Slot4" type="Area2D" parent="Cartas" groups=["Slots"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Area2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot4"]
 position = Vector2(-429.104, 0)
 shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Area2D5" type="Area2D" parent="Cartas"]
+[node name="Slot5" type="Area2D" parent="Cartas" groups=["Slots"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Area2D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot5"]
 position = Vector2(-858.209, 0)
 shape = SubResource("RectangleShape2D_4rtda")

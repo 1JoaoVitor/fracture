@@ -11,6 +11,7 @@ func enter() -> void:
 		
 	card_ui.color.color = Color.NAVY_BLUE
 	card_ui.state.text = "DRAGGING"
+	card_ui.scale = Vector2(1, 1)
 	
 	minimum_drag_time_elapsed = false 
 	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)
@@ -24,7 +25,9 @@ func on_input(event: InputEvent) -> void:
 	if mouse_motion:
 		card_ui.global_position = card_ui.get_global_mouse_position() - card_ui.pivot_offset
 	if cancel: 
+		card_ui.scale = Vector2(1.05, 1.05)
 		transition_requested.emit(self, CardState.State.BASE)
 	elif minimum_drag_time_elapsed and confirm:
+		card_ui.scale = Vector2(1.05, 1.05)
 		get_viewport().set_input_as_handled() #input tratado/manipulada, evitar pegar outra carta
 		transition_requested.emit(self, CardState.State.RELEASED)
