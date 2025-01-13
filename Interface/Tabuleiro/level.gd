@@ -6,7 +6,7 @@ class_name LevelMenu
 @onready var spriteophi = $Telas/Ophidianos/Ophidianos_mao  # Substitua "Sprite" pelo nome do nó da sua sprite.
 @onready var spritevirid_side = $Telas/Viridianos/Viridianos_side  # Substitua "Sprite" pelo nome do nó da sua sprite.
 @onready var spriteophi_side = $Telas/Ophidianos/Ophidianos_side  # Substitua "Sprite" pelo nome do nó da sua sprite.
-@onready var raca = "ophid"
+@onready var raca = "ophi"
 
 func _input(event):
 	if event.is_action_pressed("Esc"): 
