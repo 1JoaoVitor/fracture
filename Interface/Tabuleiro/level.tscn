@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://djdnecw6v3n7u" path="res://Imagens/Tabuleiro/Viridianos/parte_grama.png" id="4_0mnjs"]
 [ext_resource type="Texture2D" uid="uid://cm3gx7jnplhbx" path="res://Imagens/Tabuleiro/Ophidianos/Parte_robo.png" id="4_lec2h"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
+
 [ext_resource type="PackedScene" uid="uid://b5apejntrk478" path="res://Interface/Tabuleiro/Cartas/Molde_Cartas.tscn" id="9_a54r5"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -96,7 +98,7 @@ position = Vector2(967, 539)
 scale = Vector2(1.30533, 1.192)
 texture = ExtResource("6_gkgke")
 
-[node name="BattleUI" type="CanvasLayer" parent="."]
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -110,6 +112,7 @@ offset_right = 168.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
+script = ExtResource("7_m8cp8")
 
 [node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
 layout_mode = 2
