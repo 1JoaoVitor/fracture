@@ -6,8 +6,17 @@ class_name LevelMenu
 @onready var spriteophi = $Telas/Ophidianos/Ophidianos_mao  # Substitua "Sprite" pelo nome do nó da sua sprite.
 @onready var spritevirid_side = $Telas/Viridianos/Viridianos_side  # Substitua "Sprite" pelo nome do nó da sua sprite.
 @onready var spriteophi_side = $Telas/Ophidianos/Ophidianos_side  # Substitua "Sprite" pelo nome do nó da sua sprite.
-@onready var raca = "ophi"
 
+
+func _ready():
+	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
+	
+	match personagem_escolhido:
+		"viridiano":
+			move_sprite_to_top()
+		"ophidiano":
+			move_sprite_to_bottom()
+			
 func _input(event):
 	if event.is_action_pressed("Esc"): 
 		var _chance_scene: bool = get_tree().change_scene_to_file(cena_inicial)
@@ -20,11 +29,6 @@ func _input(event):
 		print("Erro: O nó 'Ophidianos_mao' não foi encontrado!")
 		return
 		
-	if raca == "ophid":  # Substitua por sua ação
-		move_sprite_to_bottom()
-		
-	else:  # Substitua por sua ação
-		move_sprite_to_top()
 
 func move_sprite_to_bottom():
 	# Define a posição para a parte inferior e rotação padrão

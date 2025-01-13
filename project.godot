@@ -15,6 +15,10 @@ run/main_scene="res://Interface/Menu/tela_menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GerenciadorPersonagem="*res://gerenciador_personagem.gd"
+
 [display]
 
 window/size/viewport_width=1920
