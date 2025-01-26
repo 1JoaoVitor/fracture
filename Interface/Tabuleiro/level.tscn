@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=20 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
@@ -15,7 +15,8 @@
 [ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
 [ext_resource type="Resource" uid="uid://d0vl1j7jk2t46" path="res://Personagens/Viridianos/cards/general_viridiano.tres" id="13_lbbmt"]
 [ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
-[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Player/Estado.gd" id="16_85hm0"]
+[ext_resource type="PackedScene" uid="uid://etwxrik66uln" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -37,9 +38,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_fuskx")
 
+[node name="Fundo_fracture" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(967, 539)
+scale = Vector2(1.30533, 1.192)
+texture = ExtResource("6_gkgke")
+
 [node name="Telas" type="CanvasLayer" parent="."]
 
 [node name="Viridianos" type="CanvasLayer" parent="Telas"]
+visible = false
 
 [node name="Viridianos_side" type="Sprite2D" parent="Telas/Viridianos"]
 position = Vector2(960.034, 948)
@@ -52,6 +60,7 @@ scale = Vector2(1.5, 1.33636)
 texture = ExtResource("2_mocfn")
 
 [node name="Ophidianos" type="CanvasLayer" parent="Telas"]
+visible = false
 
 [node name="Ophidianos_side" type="Sprite2D" parent="Telas/Ophidianos"]
 position = Vector2(960, 948.453)
@@ -62,6 +71,8 @@ texture = ExtResource("4_lec2h")
 position = Vector2(960, 1006.5)
 scale = Vector2(1.5, 1.33636)
 texture = ExtResource("2_np0ql")
+
+[node name="PlayerHUD" type="CanvasLayer" parent="Telas"]
 
 [node name="Player1" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(960, 0)
@@ -98,11 +109,6 @@ alignment = 1
 [node name="ColorRect2" type="ColorRect" parent="Player2"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Fundo_fracture" type="Sprite2D" parent="."]
-position = Vector2(967, 539)
-scale = Vector2(1.30533, 1.192)
-texture = ExtResource("6_gkgke")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
@@ -162,10 +168,11 @@ layout_mode = 2
 card = ExtResource("14_8bkh8")
 
 [node name="cartas1" parent="." instance=ExtResource("9_a54r5")]
-position = Vector2(960, 385)
+position = Vector2(960, 395)
+script = ExtResource("16_85hm0")
 
 [node name="cartas2" parent="." instance=ExtResource("9_a54r5")]
-position = Vector2(960, 690)
+position = Vector2(960, 680)
 
 [node name="Control" parent="." instance=ExtResource("16_ev3a0")]
 offset_left = 456.0

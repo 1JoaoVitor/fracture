@@ -6,6 +6,7 @@
 size = Vector2(283.582, 178.667)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(0, -67)
 
 [node name="Cartas" type="Sprite2D" parent="."]
 scale = Vector2(0.536, 0.75)
