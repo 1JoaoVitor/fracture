@@ -5,6 +5,7 @@ class_name LevelMenu
 @onready var mana_scene: PackedScene = preload("res://Interface/Tabuleiro/Player/Mana.tscn")# Carrega a cena Mana
 @onready var viridianos_mao: Sprite2D = $Telas/Viridianos/Viridianos_mao
 @onready var ophidianos_mao: Sprite2D = $Telas/Ophidianos/Ophidianos_mao
+@onready var player_hud: CanvasLayer = $Telas/PlayerHUD
 
 
 func _ready():
@@ -22,8 +23,8 @@ func _ready():
 			Estado.set_state_possition(1,6-i)
 		else:
 			Estado.set_state_possition(2,6-i)
-		var mana_instance = mana_scene.instantiate()  # Cria uma instância da cena Mana
-		add_child(mana_instance)  # Adiciona a instância à cena principal
+		var mana_instance = mana_scene.instantiate()
+		player_hud.add_child(mana_instance)
 		if i < 3:
 			mana_instance.position = Vector2(520 - (i * 100), 1000)
 		else:
