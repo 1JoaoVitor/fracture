@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnxxe66ltq05p"]
+
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Temporizador/timer.gd" id="1_g6xhx"]
+[ext_resource type="Texture2D" uid="uid://cxh7lgnw8541d" path="res://Imagens/Tabuleiro/Timer/progress-bar-circle.png" id="1_njaae"]
+[ext_resource type="AudioStream" uid="uid://dhoh4vxl78nbi" path="res://Sfx/Tabuleiro/Erro.mp3" id="2_d31yr"]
+[ext_resource type="Texture2D" uid="uid://7y5723gnvn46" path="res://Imagens/Tabuleiro/Timer/progress-bar-frame.png" id="2_hdxfy"]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g6xhx")
+
+[node name="Erro_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_d31yr")
+volume_db = 5.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+max_value = 10000.0
+value = 10000.0
+fill_mode = 4
+texture_under = ExtResource("1_njaae")
+texture_over = ExtResource("2_hdxfy")
+texture_progress = ExtResource("1_njaae")
+tint_under = Color(0, 0, 0, 0.458824)
+tint_over = Color(0, 0, 0, 1)
+tint_progress = Color(0, 1, 0, 1)

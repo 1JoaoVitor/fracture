@@ -15,14 +15,12 @@ func _ready():
 	if state_mana == 2:
 		scale.x = 0.5 * scale.x
 		scale.y = 0.5 * scale.y
-	print("recebi essa porra:",state_mana)
 
 
 #X gasta uma mana e Z gasta 2
 func _input(event: InputEvent):
 	
 	if Input.is_action_just_pressed("X"):
-		print("vatafa")
 		if qtd_sup > 0 && possition_mana <4:
 			qtd_sup -=1
 			if state_mana == 1:
@@ -79,7 +77,6 @@ func _input(event: InputEvent):
 			print("pouca mana neh parceiro")
 			
 	if Input.is_action_just_pressed("A"):
-		print("recebi essa porra:",state_mana," ",possition_mana," ",qtd_sup,qtd_inf)
 		if qtd_inf > 1 && possition_mana > 3:
 			qtd_inf -=2
 			mana_sfx.play()

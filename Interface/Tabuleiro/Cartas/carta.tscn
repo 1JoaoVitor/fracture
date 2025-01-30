@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ng1hugbeh1fb"]
+
+[ext_resource type="Texture2D" uid="uid://byvf8fwt0shgw" path="res://Imagens/Elementos visuais/cart.png" id="1_hfrer"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8g7dp"]
+size = Vector2(57.767, 89.982)
+
+[node name="Pilha" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 75)
+scale = Vector2(2.06, 1.667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.242717, 0)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8g7dp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 75)
+scale = Vector2(2.06, 1.667)
+texture = ExtResource("1_hfrer")
