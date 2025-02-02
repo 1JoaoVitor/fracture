@@ -1,13 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=23 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
-[ext_resource type="Texture2D" uid="uid://fl5f2s3if7yp" path="res://Imagens/Tabuleiro/Viridianos/Grama-removebg-preview.png" id="2_mocfn"]
-[ext_resource type="Texture2D" uid="uid://bmxho0qhbtkib" path="res://Imagens/Tabuleiro/Ophidianos/Robo-removebg-preview.png" id="2_np0ql"]
-[ext_resource type="Texture2D" uid="uid://djdnecw6v3n7u" path="res://Imagens/Tabuleiro/Viridianos/parte_grama.png" id="4_0mnjs"]
-[ext_resource type="Texture2D" uid="uid://cm3gx7jnplhbx" path="res://Imagens/Tabuleiro/Ophidianos/Parte_robo.png" id="4_lec2h"]
+[ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="3_q20lv"]
+[ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="5_bmi56"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
 [ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
+[ext_resource type="PackedScene" uid="uid://bnxxe66ltq05p" path="res://Interface/Tabuleiro/Temporizador/timer.tscn" id="7_uu8fu"]
 [ext_resource type="Resource" uid="uid://d2uq7oqtfrcj2" path="res://Personagens/Ophidianos/cards/general_ophidiano.tres" id="9_0s437"]
 [ext_resource type="PackedScene" uid="uid://b5apejntrk478" path="res://Interface/Tabuleiro/Cartas/Molde_Cartas.tscn" id="9_a54r5"]
 [ext_resource type="Resource" uid="uid://dptfyws7k8xxi" path="res://Personagens/Ophidianos/cards/lider_ophidiano.tres" id="10_cdwk2"]
@@ -15,13 +14,20 @@
 [ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
 [ext_resource type="Resource" uid="uid://d0vl1j7jk2t46" path="res://Personagens/Viridianos/cards/general_viridiano.tres" id="13_lbbmt"]
 [ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
-[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Player/Estado.gd" id="16_85hm0"]
+[ext_resource type="PackedScene" uid="uid://etwxrik66uln" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
+[ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
+[ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/carta.tscn" id="19_hlenu"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_fuskx"]
 gradient = SubResource("Gradient_vco24")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgu3g"]
+
+[sub_resource type="Theme" id="Theme_vtgtm"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nj2sr")
@@ -37,31 +43,34 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_fuskx")
 
+[node name="Fundo_fracture" type="Sprite2D" parent="."]
+position = Vector2(967, 539)
+scale = Vector2(1.30533, 1.192)
+texture = ExtResource("6_gkgke")
+
 [node name="Telas" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enabled = true
 
 [node name="Viridianos" type="CanvasLayer" parent="Telas"]
 
-[node name="Viridianos_side" type="Sprite2D" parent="Telas/Viridianos"]
-position = Vector2(960.034, 948)
-scale = Vector2(1.69617, 1.12341)
-texture = ExtResource("4_0mnjs")
-
 [node name="Viridianos_mao" type="Sprite2D" parent="Telas/Viridianos"]
-position = Vector2(960, 1006.5)
-scale = Vector2(1.5, 1.33636)
-texture = ExtResource("2_mocfn")
+position = Vector2(960, 918.5)
+scale = Vector2(3, 2.375)
+texture = ExtResource("3_q20lv")
+region_enabled = true
+region_rect = Rect2(0, 168, 640, 136)
 
 [node name="Ophidianos" type="CanvasLayer" parent="Telas"]
 
-[node name="Ophidianos_side" type="Sprite2D" parent="Telas/Ophidianos"]
-position = Vector2(960, 948.453)
-scale = Vector2(1.69611, 1.11875)
-texture = ExtResource("4_lec2h")
-
 [node name="Ophidianos_mao" type="Sprite2D" parent="Telas/Ophidianos"]
-position = Vector2(960, 1006.5)
-scale = Vector2(1.5, 1.33636)
-texture = ExtResource("2_np0ql")
+position = Vector2(960, 918.729)
+scale = Vector2(3, 1.59339)
+texture = ExtResource("5_bmi56")
+region_enabled = true
+region_rect = Rect2(0, 56, 640, 203)
+
+[node name="PlayerHUD" type="CanvasLayer" parent="Telas"]
 
 [node name="Player1" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(960, 0)
@@ -98,11 +107,6 @@ alignment = 1
 [node name="ColorRect2" type="ColorRect" parent="Player2"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Fundo_fracture" type="Sprite2D" parent="."]
-position = Vector2(967, 539)
-scale = Vector2(1.30533, 1.192)
-texture = ExtResource("6_gkgke")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
@@ -161,14 +165,95 @@ card = ExtResource("13_lbbmt")
 layout_mode = 2
 card = ExtResource("14_8bkh8")
 
-[node name="cartas1" parent="." instance=ExtResource("9_a54r5")]
-position = Vector2(960, 385)
+[node name="cartas1" parent="BattleUI" instance=ExtResource("9_a54r5")]
+z_index = 1
+position = Vector2(960, 405)
+script = ExtResource("16_85hm0")
 
-[node name="cartas2" parent="." instance=ExtResource("9_a54r5")]
-position = Vector2(960, 690)
+[node name="cartas2" parent="BattleUI" instance=ExtResource("9_a54r5")]
+z_index = 1
+position = Vector2(960, 675)
+
+[node name="cartas3" parent="BattleUI" instance=ExtResource("9_a54r5")]
+z_index = 1
+position = Vector2(960, 840)
+
+[node name="cartas4" parent="BattleUI" instance=ExtResource("9_a54r5")]
+z_index = 1
+position = Vector2(960, 240)
+
+[node name="Compra" parent="BattleUI" instance=ExtResource("19_hlenu")]
+position = Vector2(93, 340)
+
+[node name="Descarte" parent="BattleUI" instance=ExtResource("19_hlenu")]
+position = Vector2(93, 590)
 
 [node name="Control" parent="." instance=ExtResource("16_ev3a0")]
 offset_left = 456.0
 offset_top = 502.0
 offset_right = 456.0
 offset_bottom = 502.0
+
+[node name="botoes" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="botoes"]
+offset_left = 30.0
+offset_top = 522.0
+offset_right = 150.0
+offset_bottom = 558.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="botoes/MarginContainer"]
+layout_mode = 2
+
+[node name="compra" type="Button" parent="botoes/MarginContainer/VBoxContainer" groups=["Botoes"]]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tgu3g")
+text = "Compra"
+
+[node name="MarginContainer2" type="MarginContainer" parent="botoes"]
+offset_left = 1710.0
+offset_top = 572.0
+offset_right = 1890.0
+offset_bottom = 603.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="botoes/MarginContainer2"]
+layout_mode = 2
+
+[node name="turno_fim" type="Button" parent="botoes/MarginContainer2/VBoxContainer" groups=["Botoes"]]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tgu3g")
+text = "Finalizar o turno"
+
+[node name="MarginContainer3" type="MarginContainer" parent="botoes"]
+offset_left = 1836.0
+offset_top = 20.0
+offset_right = 2094.0
+offset_bottom = 284.0
+scale = Vector2(0.25, 0.25)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="botoes/MarginContainer3"]
+layout_mode = 2
+
+[node name="Menu" type="Button" parent="botoes/MarginContainer3/VBoxContainer" groups=["Botoes"]]
+layout_mode = 2
+theme = SubResource("Theme_vtgtm")
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_focus_color = Color(0.176419, 0.176419, 0.176419, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tgu3g")
+icon = ExtResource("18_vok56")
+flat = true
+
+[node name="Visual_elements" type="CanvasLayer" parent="."]
+
+[node name="Timer" parent="Visual_elements" instance=ExtResource("7_uu8fu")]
+offset_left = 1800.0
+offset_top = 490.0
+offset_right = -120.0
+offset_bottom = -590.0
+
+[connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

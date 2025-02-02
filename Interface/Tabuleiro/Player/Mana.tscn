@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckl6r1dyb5jxk"]
+
+[ext_resource type="AudioStream" uid="uid://2h4lvx5ur6v4" path="res://Sfx/Tabuleiro/Mana.mp3" id="1_4jvtw"]
+[ext_resource type="Texture2D" uid="uid://bqd4s6i4u14ix" path="res://Imagens/Player/Mana.png" id="1_qo3uf"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Player/mana.gd" id="2_nsb68"]
+[ext_resource type="AudioStream" uid="uid://dhoh4vxl78nbi" path="res://Sfx/Tabuleiro/Erro.mp3" id="4_pr2hc"]
+
+[node name="Mana" type="Node2D"]
+
+[node name="Mana_sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.264722, 0.271704)
+texture = ExtResource("1_qo3uf")
+script = ExtResource("2_nsb68")
+
+[node name="Mana_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_4jvtw")
+volume_db = 10.0
+
+[node name="Erro_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pr2hc")
+volume_db = 5.0
