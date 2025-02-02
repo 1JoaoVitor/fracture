@@ -1,0 +1,108 @@
+[gd_scene load_steps=2 format=3 uid="uid://dayjvwyon8hqb"]
+
+[ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_wmwvc"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.389287, 0.389287, 0.389287, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wmwvc")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 250
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Dinâmica de Jogo"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Introducao" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Introdução"
+
+[node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Tabuleiro"
+
+[node name="Tipos_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Tipos de carta"
+
+[node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Habilidades"
+
+[node name="Final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Final"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1200, 800)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[fill]        O jogo começa com cada jogador recebendo cinco cartas do baralho e a cada turno comprando uma carta adicional. Ambos os jogadores dividirão o mesmo baralho e portanto as cartas são limitadas e conhecidas pelos dois. Após a compra inicial a partida se dará por troca de turnos com cada turno tendo um tempo limite de dois minutos que será simbolizado na direita do tabuleiro. Durante o seu turno você poderá usar Mana, a qual é dividida em dois tipos de cristais, o primeiro um cristal maior representando a ação principal, e o segundo tipo dois cristais menores que representam as ações adicionais. Com isso a cada turno você terá uma ação principal e duas adicionais, podendo realizar entre elas:  [/fill]
+
+  ◦ Ativar habilidades de Líderes (ação adicional): Ativar a habilidade de um Líder em jogo (uma vez por partida).
+  ◦ Usar Generais (ação adicional): Usar um General da sua mão.
+  ◦ Posicionamento (ação principal): Colocar uma carta virada para baixo em um slot.
+  ◦ Substituição (ação principal/adicional): Trocar uma carta na coluna por outra da mão.  Essa ação depende de qual carta será usada para determinar qual será seu custo (entre principal ou adicional).
+  ◦ Compra Adicional (duas ações adicionais): Descartar uma carta para comprar outra.
+  ◦ Mudança de ação (Mecânica): Trocar uma ação principal por uma adicional (ficando com 3 adicionais). Essa ação não custa Mana.
+  ◦ Sintonizar Tropas (Mecânica): Combinar duas cartas de valor 2 de cores diferentes para formar uma carta com a soma dos valores. Essa ação não custa Mana.
+  ◦ Passar a vez: Passar o turno para o oponente.
+
+[fill]Ação de Reforço: Você pode aprimorar o poder de uma coluna com uma Carta Âncora podendo fazer diversas e fortes combinações como: Alta+Baixa, Média+Média, Média+Baixa+Baixa, Baixa+Baixa+Baixa. Essa ação depende de qual carta será usada para determinar qual será seu custo (entre principal ou adicional).[/fill]
+    ▪ Reforço Alto: Carta Alta em cima de Baixa ou vice-versa. (ação principal)
+    ▪ Reforço Médio: Carta Média em cima de Média ou Baixa. (ação principal)
+    ▪ Reforço Baixo: Carta Baixa em cima de Média ou Baixa. (ação adicional)"
+tab_size = 24
