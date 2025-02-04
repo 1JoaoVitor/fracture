@@ -1,0 +1,105 @@
+[gd_scene load_steps=3 format=3 uid="uid://dftkjw5mnby8e"]
+
+[ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_g0fo8"]
+[ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_tabuleiro_regras.gd" id="1_ri81c"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ri81c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.389287, 0.389287, 0.389287, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_g0fo8")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 250
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Tabuleiro"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="Introducao" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Introdução"
+
+[node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Tipos de carta"
+
+[node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Dinâmica"
+
+[node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Habilidades"
+
+[node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Batalha Final"
+
+[node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Sair"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1200, 700)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "
+[fill]O tabuleiro possui cinco colunas representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há lugares específicos para os Generais (cartas especiais) que ficam atrás das colunas principais. Dentro do tabuleiro ainda existe a pilha de descarte, a pilha de compras e os cristais que simbolizam as ações disponíveis para o jogador. Aqui temos um exemplo: 
+
+[center][img]res://Imagens/Tabuleiro_fracture.png[/img][/center][/fill]"
+scroll_active = false
+tab_size = 24
