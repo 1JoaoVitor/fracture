@@ -11,7 +11,7 @@ func _on_button_pressed(_button : Button) -> void:
 			get_tree().change_scene_to_file("res://Interface/Menu_Personagens/Viridianos/Viridianos_menu.tscn")
 			 #por enquanto deixando levando para cena dos viridianos
 		"regras_button": 
-			get_tree().change_scene_to_file("res://Interface/Regras/regras.tscn")
+			get_tree().change_scene_to_file("res://Interface/Regras/Menu_regras/menu_principal_regras.tscn")
 		"creditos_button": 
 			get_tree().change_scene_to_file("res://Interface/Créditos/creditos.tscn")
 		"sair_button": 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://banaafwsyugha"]
+[gd_scene load_steps=3 format=3 uid="uid://banaafwsyugha"]
 
+[ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_principal_regras.gd" id="1_5o6xg"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_qsdo8"]
 
 [node name="Control" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5o6xg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.389287, 0.389287, 0.389287, 1)
@@ -36,7 +38,7 @@ theme_override_constants/margin_right = 250
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_constants/separation = 160
+theme_override_constants/separation = 100
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
@@ -56,39 +58,45 @@ theme_override_constants/separation = 200
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 20
+theme_override_constants/separation = 25
 
-[node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Tabuleiro"
 
-[node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Tipos de carta"
 
-[node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Dinâmica"
 
-[node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Habilidades"
 
-[node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Batalha final"
+text = "Batalha Final"
+
+[node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Sair"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(1200, 400)
+custom_minimum_size = Vector2(1200, 700)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[fill]	FRACTURE é um jogo de cartas 1vs1 estratégico e competitivo ambientado em um universo onde diversos mundos se interligaram a partir de fraturas que transcendem o espaço-tempo, onde você escolherá uma das raças dominantes de cada mundo para batalhar numa guerra por recursos e pela supremacia. A guerra é dividida em cinco batalhas no tabuleiro, seu objetivo é vencer três ou mais, ou seja, ter o maior valor numérico nelas de que seu oponente, e assim tornar o vencedor da guerra e manter as vidas de seus aliados e nação. [/fill]"
+text = "
+[fill]FRACTURE é um jogo de cartas 1vs1 estratégico e competitivo ambientado em um universo onde diversos mundos se interligaram a partir de fraturas que transcendem o espaço-tempo, onde você escolherá uma das raças dominantes de cada mundo para batalhar numa guerra por recursos e pela supremacia. A guerra é dividida em cinco batalhas no tabuleiro, seu objetivo é vencer três ou mais, ou seja, ter o maior valor numérico nelas de que seu oponente, e assim tornar o vencedor da guerra e manter as vidas de seus aliados e nação. [/fill]"
 tab_size = 24
