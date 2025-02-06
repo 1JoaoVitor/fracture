@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c35ykm6ihps5u"]
+[gd_scene load_steps=4 format=3 uid="uid://c35ykm6ihps5u"]
 
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Cartas/slot.gd" id="1_3xhdd"]
 [ext_resource type="Texture2D" uid="uid://cfqls8kyu7boo" path="res://Imagens/Elementos visuais/preto.jpeg" id="1_7pjf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctf0a"]
 size = Vector2(154, 136)
 
 [node name="Slot" type="Node2D"]
+script = ExtResource("1_3xhdd")
 
 [node name="Cartas" type="Sprite2D" parent="."]
 position = Vector2(0, -2.54313e-06)

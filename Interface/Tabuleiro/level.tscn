@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
 [ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
-[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/Cartas/carta.tscn" id="19_hlenu"]
+[ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/carta.tscn" id="19_hlenu"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)

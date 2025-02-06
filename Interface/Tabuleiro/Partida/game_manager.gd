@@ -3,8 +3,8 @@ class_name GameManager
 
 var players : Array[Player]
 var turn : Player
-var monte_compra : Node
-var monte_descarte : Node
+var buy_deck : Node
+var discard_deck : Node
 
 
 # Called when the node enters the scene tree for the first time.

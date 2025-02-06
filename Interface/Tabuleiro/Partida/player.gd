@@ -1,19 +1,19 @@
 extends Node
 class_name Player
 
-var nome : String
+var nickname : String
 var mana : int
-var mao : Node
+var hand : Node
 
-func _init(nome: String, mao: Node) -> void:
-	self.nome = nome
-	self.mao = mao
+func _init(nickname: String, hand: Node) -> void:
+	self.nickname = nickname
+	self.hand = hand
 	self.mana = 3  # substituir pelo valor padrão da mana
 
-func gastar_mana(quantidade):
-	if self.mana - quantidade:
+func use_mana(quantity):
+	if self.mana - quantity:
 		return
-	self.mana -= quantidade
+	self.mana -= quantity
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

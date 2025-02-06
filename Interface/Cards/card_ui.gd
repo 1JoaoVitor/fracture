@@ -12,6 +12,7 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var targets: Array[Node] = []
+@onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
 
 
 func _ready() -> void:
@@ -35,3 +36,15 @@ func _on_drop_point_detector_area_entered(area: Area2D) -> void:
 	
 func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 	targets.erase(area)
+
+func move_to_position(pos: Vector2):
+	var size = collision_shape.shape.get_rect().size
+	pos.x -= size.x / 2
+	pos.y -= size.y / 2
+	var tween = get_tree().create_tween()
+	tween.tween_property(
+		self,  # O nó da carta
+		"position",  # A propriedade a ser animada
+		pos,  # A posição de destino (local dentro do conjunto de slots)
+		0.5  # Duração da animação
+	)

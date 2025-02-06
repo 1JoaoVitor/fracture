@@ -35,25 +35,25 @@ position = Vector2(0, -2.54313e-06)
 shape = SubResource("RectangleShape2D_4rtda")
 
 [node name="Slot2" type="Area2D" parent="Cartas" groups=["Slots"]]
+position = Vector2(429.104, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot2"]
-position = Vector2(429.104, 0)
 shape = SubResource("RectangleShape2D_4rtda")
 
 [node name="Slot3" type="Area2D" parent="Cartas" groups=["Slots"]]
+position = Vector2(858.209, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot3"]
-position = Vector2(858.209, 0)
 shape = SubResource("RectangleShape2D_4rtda")
 
 [node name="Slot4" type="Area2D" parent="Cartas" groups=["Slots"]]
+position = Vector2(-429.104, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot4"]
-position = Vector2(-429.104, 0)
 shape = SubResource("RectangleShape2D_4rtda")
 
 [node name="Slot5" type="Area2D" parent="Cartas" groups=["Slots"]]
+position = Vector2(-858.209, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot5"]
-position = Vector2(-858.209, 0)
 shape = SubResource("RectangleShape2D_4rtda")
