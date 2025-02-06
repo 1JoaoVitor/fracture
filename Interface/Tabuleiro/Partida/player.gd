@@ -11,9 +11,10 @@ func _init(nickname: String, hand: Node) -> void:
 	self.mana = 3  # substituir pelo valor padrão da mana
 
 func use_mana(quantity):
-	if self.mana - quantity:
-		return
+	if self.mana - quantity < 0:
+		return false
 	self.mana -= quantity
+	return true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

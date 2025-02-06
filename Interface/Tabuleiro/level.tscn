@@ -163,26 +163,26 @@ card = ExtResource("13_lbbmt")
 layout_mode = 2
 card = ExtResource("14_8bkh8")
 
-[node name="Coluna1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Column1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(363, 543)
 
-[node name="Coluna2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Column2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(636, 543)
 
-[node name="Coluna3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Column3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(905, 543)
 
-[node name="Coluna4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Column4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(1184, 543)
 
-[node name="Coluna5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Column5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(1457, 543)
 
-[node name="Compra" parent="BattleUI" instance=ExtResource("19_hlenu")]
-position = Vector2(93, 340)
+[node name="BuyDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
+position = Vector2(93, 415)
 
-[node name="Descarte" parent="BattleUI" instance=ExtResource("19_hlenu")]
-position = Vector2(93, 590)
+[node name="DiscardDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
+position = Vector2(93, 665)
 
 [node name="botoes" type="CanvasLayer" parent="."]
 
