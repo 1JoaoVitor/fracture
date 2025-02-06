@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=21 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
@@ -8,16 +8,14 @@
 [ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
 [ext_resource type="PackedScene" uid="uid://bnxxe66ltq05p" path="res://Interface/Tabuleiro/Temporizador/timer.tscn" id="7_uu8fu"]
 [ext_resource type="Resource" uid="uid://d2uq7oqtfrcj2" path="res://Personagens/Ophidianos/cards/general_ophidiano.tres" id="9_0s437"]
-[ext_resource type="PackedScene" uid="uid://b5apejntrk478" path="res://Interface/Tabuleiro/Cartas/Molde_Cartas.tscn" id="9_a54r5"]
 [ext_resource type="Resource" uid="uid://dptfyws7k8xxi" path="res://Personagens/Ophidianos/cards/lider_ophidiano.tres" id="10_cdwk2"]
 [ext_resource type="Resource" uid="uid://cgxis8dhu6lb6" path="res://Personagens/Ophidianos/cards/soldado_ophidiano.tres" id="11_ybjyr"]
 [ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
 [ext_resource type="Resource" uid="uid://d0vl1j7jk2t46" path="res://Personagens/Viridianos/cards/general_viridiano.tres" id="13_lbbmt"]
 [ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
-[ext_resource type="Script" path="res://Interface/Tabuleiro/Player/Estado.gd" id="16_85hm0"]
-[ext_resource type="PackedScene" uid="uid://etwxrik66uln" path="res://Interface/Tabuleiro/conjunto_somadores.tscn" id="16_ev3a0"]
+[ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
-[ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/carta.tscn" id="19_hlenu"]
+[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/Cartas/carta.tscn" id="19_hlenu"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -165,34 +163,26 @@ card = ExtResource("13_lbbmt")
 layout_mode = 2
 card = ExtResource("14_8bkh8")
 
-[node name="cartas1" parent="BattleUI" instance=ExtResource("9_a54r5")]
-z_index = 1
-position = Vector2(960, 405)
-script = ExtResource("16_85hm0")
+[node name="Coluna1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+position = Vector2(363, 543)
 
-[node name="cartas2" parent="BattleUI" instance=ExtResource("9_a54r5")]
-z_index = 1
-position = Vector2(960, 675)
+[node name="Coluna2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+position = Vector2(636, 543)
 
-[node name="cartas3" parent="BattleUI" instance=ExtResource("9_a54r5")]
-z_index = 1
-position = Vector2(960, 840)
+[node name="Coluna3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+position = Vector2(905, 543)
 
-[node name="cartas4" parent="BattleUI" instance=ExtResource("9_a54r5")]
-z_index = 1
-position = Vector2(960, 240)
+[node name="Coluna4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+position = Vector2(1184, 543)
+
+[node name="Coluna5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+position = Vector2(1457, 543)
 
 [node name="Compra" parent="BattleUI" instance=ExtResource("19_hlenu")]
 position = Vector2(93, 340)
 
 [node name="Descarte" parent="BattleUI" instance=ExtResource("19_hlenu")]
 position = Vector2(93, 590)
-
-[node name="Control" parent="." instance=ExtResource("16_ev3a0")]
-offset_left = 456.0
-offset_top = 502.0
-offset_right = 456.0
-offset_bottom = 502.0
 
 [node name="botoes" type="CanvasLayer" parent="."]
 
@@ -255,5 +245,5 @@ offset_bottom = -590.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
-[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]

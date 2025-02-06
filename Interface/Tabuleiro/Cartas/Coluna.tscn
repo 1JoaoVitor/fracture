@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://clrdg5l4wqtst"]
+
+[ext_resource type="PackedScene" uid="uid://c35ykm6ihps5u" path="res://Interface/Tabuleiro/Cartas/Slot.tscn" id="1_vhj62"]
+[ext_resource type="PackedScene" uid="uid://bt4ym627qqphc" path="res://Interface/Tabuleiro/somadores.tscn" id="2_li8h3"]
+
+[node name="Coluna" type="Node2D"]
+
+[node name="Slot" parent="." instance=ExtResource("1_vhj62")]
+position = Vector2(0, 150)
+
+[node name="Slot3" parent="." instance=ExtResource("1_vhj62")]
+position = Vector2(0, 308)
+
+[node name="Slot2" parent="." instance=ExtResource("1_vhj62")]
+position = Vector2(0, -150)
+
+[node name="Slot4" parent="." instance=ExtResource("1_vhj62")]
+position = Vector2(0, -310)
+
+[node name="Somador" parent="." instance=ExtResource("2_li8h3")]
+offset_left = -37.0
+offset_top = -42.0
+offset_right = 43.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
