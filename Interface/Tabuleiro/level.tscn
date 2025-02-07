@@ -245,5 +245,5 @@ offset_bottom = -590.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
-[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
