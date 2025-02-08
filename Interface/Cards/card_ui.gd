@@ -13,7 +13,7 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var targets: Array[Node] = []
 @onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
-
+var card_type
 
 func _ready() -> void:
 	card_state_machine.init(self)
