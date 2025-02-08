@@ -31,6 +31,7 @@ func _ready() -> void:
 # Alterna turnos
 func alterar_turno():
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
+	self.turn.buy_card() #buy card automatic
 	self.turn.reset_mana()
 
 

@@ -9,13 +9,13 @@
 position = Vector2(0, 150)
 
 [node name="Slot3" parent="." instance=ExtResource("1_vhj62")]
-position = Vector2(0, 308)
+position = Vector2(0, 325)
 
 [node name="Slot2" parent="." instance=ExtResource("1_vhj62")]
 position = Vector2(0, -150)
 
 [node name="Slot4" parent="." instance=ExtResource("1_vhj62")]
-position = Vector2(0, -310)
+position = Vector2(0, -325)
 
 [node name="Somador" parent="." instance=ExtResource("2_li8h3")]
 offset_left = -37.0

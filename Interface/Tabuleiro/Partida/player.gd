@@ -7,7 +7,7 @@ signal on_mana_reset()
 var nickname : String
 var big_mana : int
 var small_mana : int
-var hand : Node
+var hand : Hand
 
 func _init(nickname: String, hand: Node) -> void:
 	self.nickname = nickname
@@ -37,7 +37,14 @@ func change_mana():
 		return false
 		
 func buy_card():
-	pass
+	var new_card = self.gm.buy_deck.draw_card()
+	if new_card:
+		self.hand.append(new_card)
+		print(self.nickname + " comprou a carta " + new_card.name)
+		return true
+	else:
+		print("Erro: sem cartas no baralho!")
+		return false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
