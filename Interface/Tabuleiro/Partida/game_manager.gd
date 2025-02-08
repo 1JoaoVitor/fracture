@@ -1,11 +1,13 @@
 extends Node
 class_name GameManager
 
+
 var players : Array[Player]
 var turn : Player
 var buy_deck : Node
 var discard_deck : Node
 var _game_actions: GameActions
+var _mana_system: ManaSystem
 
 func _init(buy_deck: Node, discard_deck: Node) -> void:
 	# Inicializar players conforme as informações recebidas no servidor
@@ -16,6 +18,9 @@ func _init(buy_deck: Node, discard_deck: Node) -> void:
 	self.discard_deck = discard_deck
 	self.turn = players.pick_random()
 	self._game_actions = GameActions.new(self)
+	self._mana_system = ManaSystem.new(self)
+
+		
 		
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,8 +29,10 @@ func _ready() -> void:
 
 
 # Alterna turnos
-func _alterar_turno():
+func alterar_turno():
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
+	self.turn.buy_card() #buy card automatic
+	self.turn.reset_mana()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

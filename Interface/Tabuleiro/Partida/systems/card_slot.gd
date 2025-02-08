@@ -22,12 +22,27 @@ func get_card_count():
 
 func add_card(card: CardUI):
 	if self.slot_node.has_method("can_place_card"):
-		if not slot_node.can_place_card():
-			return
+		if not slot_node.can_place_card(card):
+			print("Error: This card cannot be played in this slot")
+			return false
+
 	self.cards.append(card)
-	card.move_to_position(self.get_card_target_position())
+	
+	# Atualiza a posição de todas as cartas no slot para distribuir corretamente
+	for i in range(self.cards.size()):
+		var new_pos = self.slot_node.get_card_target_position(i, self.cards.size())
+		self.cards[i].move_to_position(new_pos)
+		
 	self.on_card_in.emit()
 
 func remove_card(card: CardUI):
-	# !TODO: Implement
-	self.on_card_out.emit()
+	if card in self.cards:
+		self.cards.erase(card)
+		self.on_card_out.emit()
+		#reposition if necessary
+		#for remaining_card in self.cards: 
+			#remaining_card.move_to_position(self.get_card_target_position())
+		return true  
+	else:
+		return false
+	

@@ -1,20 +1,73 @@
 [gd_scene load_steps=3 format=3 uid="uid://chcupi57h2k6r"]
 
 [ext_resource type="Script" path="res://Interface/Créditos/creditos.gd" id="1_exh52"]
+[ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="2_s6me8"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_7xtae"]
-font_size = 60
-
-[node name="Creditos" type="Node2D"]
+[node name="Créditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_exh52")
 cena_inicial = "res://Interface/Menu/tela_menu.tscn"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 360.0
-offset_top = 200.0
-offset_right = 920.0
-offset_bottom = 283.0
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.374139, 0.374139, 0.374139, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s6me8")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Título" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
-text = "Creditos"
-label_settings = SubResource("LabelSettings_7xtae")
-vertical_alignment = 1
+theme_override_font_sizes/font_size = 40
+text = "CRÉDITOS"
+
+[node name="Texto" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 950)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[b]TELAS[/b] 
+
+Arthur 
+Guilherme
+João Vitor
+
+[b]BACKEND[/b] 
+
+Arthur 
+Guilherme
+João Vitor
+
+[b]MANA[/b] 
+
+Arthur 
+Guilherme
+João Vitor
+
+[b]TABULEIRO[/b] 
+
+Arthur 
+Guilherme
+João Vitor"

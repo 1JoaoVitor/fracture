@@ -5,7 +5,7 @@ class_name ViridianosMenu
 
 func _input(event):
 	if event.is_action_pressed("Esc"): 
-		var _chance_scene: bool = get_tree().change_scene_to_file(cena_inicial)
+		var _chance_scene: bool = get_tree().change_scene_to_file("res://Interface/Menu_Personagens/CharacterSelect/character_select_scene.tscn")
 
 func _ready() -> void: 
 	for _button in get_tree().get_nodes_in_group("buttons_viridianos"):

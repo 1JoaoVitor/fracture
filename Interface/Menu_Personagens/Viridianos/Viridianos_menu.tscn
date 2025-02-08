@@ -1,14 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b761mg57n6fnr"]
+[gd_scene load_steps=5 format=3 uid="uid://b761mg57n6fnr"]
 
 [ext_resource type="Script" path="res://Interface/Menu_Personagens/Viridianos/viridianos_menu.gd" id="1_nvtun"]
 [ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="2_o00ha"]
-
-[sub_resource type="Gradient" id="Gradient_3y1ma"]
-offsets = PackedFloat32Array(0, 0.993506)
-colors = PackedColorArray(0.121569, 0.654902, 0.227451, 1, 0.013638, 0.286656, 0.102555, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_46f44"]
-gradient = SubResource("Gradient_3y1ma")
+[ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="2_xxfgb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rivfx"]
 font_size = 40
@@ -32,36 +26,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_46f44")
+texture = ExtResource("2_xxfgb")
 
 [node name="Textos" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1045.0
-offset_top = 310.0
-offset_right = -43.0
-offset_bottom = 699.0
-grow_horizontal = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -518.0
+offset_right = 959.0
+offset_bottom = 536.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
 
 [node name="NomeRaça" type="Label" parent="Textos"]
+modulate = Color(0.482312, 0.995166, 0.461921, 1)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Viridanos "
+text = "Viridianos "
 label_settings = SubResource("LabelSettings_rivfx")
 
-[node name="Descrição" type="RichTextLabel" parent="Textos"]
-clip_contents = false
-custom_minimum_size = Vector2(50, 200)
+[node name="HBoxContainer" type="HBoxContainer" parent="Textos"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 18
+alignment = 1
+
+[node name="Descrição" type="RichTextLabel" parent="Textos/HBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(1080, 800)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = " [fill]		Os Viridanos são uma raça vegetal consciente originária de Phyloderra, um planeta semelhante à Terra, mas sem presença humana. Essa ausência permitiu que as plantas evoluíssem de forma extraordinária, desenvolvendo consciência coletiva e a capacidade de parasitar e controlar outras formas de vida. Utilizando mecanismos parasitários, eles transformam outros seres em \"avatares\", extensões de sua própria consciência, expandindo seu domínio por todo o planeta. Atualmente, os Viridanos operam como uma vasta rede neural biológica, com uma hierarquia de líderes regionais chamados \"Filhos das Folhas\", coordenando as ações dos avatares.
+text = "[fill]		Os Viridranos são uma raça vegetal consciente originária de Phyloderra, um planeta semelhante à Terra, mas sem presença humana. Essa ausência permitiu que as plantas evoluíssem de forma extraordinária, desenvolvendo consciência coletiva e a capacidade de parasitar e controlar outras formas de vida. Utilizando mecanismos parasitários, eles transformam outros seres em \"avatares\", extensões de sua própria consciência, expandindo seu domínio por todo o planeta. Atualmente, os Viridanos operam como uma vasta rede neural biológica, com uma hierarquia de líderes regionais chamados \"Filhos das Folhas\", coordenando as ações dos avatares.
 
 	Sua principal motivação é a busca incessante por novos recursos para sustentar e expandir sua Rede Consciente. Além disso, uma invasão robótica anterior os levou a contra-atacar e a enxergar os robôs como potenciais novos avatares, ainda mais resistentes e poderosos que os biológicos. Assim, os Viridanos são uma consciência vegetal parasitária que busca expandir seu alcance através do controle de outras formas de vida, sejam elas orgânicas ou mecânicas, impulsionados pela necessidade de recursos e pela ambição de garantir sua hegemonia. [/fill]"
-fit_content = true
 
 [node name="ArteLider" type="Label" parent="."]
 layout_mode = 1

@@ -13,7 +13,7 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var targets: Array[Node] = []
 @onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
-
+var card_type
 
 func _ready() -> void:
 	card_state_machine.init(self)
@@ -40,7 +40,8 @@ func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 func move_to_position(pos: Vector2):
 	var size = collision_shape.shape.get_rect().size
 	pos.x -= size.x / 2
-	pos.y -= size.y / 2
+	pos.y -= round(size.y / 2)
+	pos.y = round(pos.y)
 	var tween = get_tree().create_tween()
 	tween.tween_property(
 		self,  # O nó da carta

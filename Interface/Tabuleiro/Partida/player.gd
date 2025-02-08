@@ -1,20 +1,50 @@
 extends Node
 class_name Player
 
+signal on_mana_spend(big_mana, small_mana)
+signal on_mana_reset()
+
 var nickname : String
-var mana : int
-var hand : Node
+var big_mana : int
+var small_mana : int
+var hand : Hand
 
 func _init(nickname: String, hand: Node) -> void:
 	self.nickname = nickname
 	self.hand = hand
-	self.mana = 3  # substituir pelo valor padrão da mana
+	self.big_mana = 1
+	self.small_mana = 2
 
-func use_mana(quantity):
-	if self.mana - quantity < 0:
+func try_use_mana(big_mana: int, small_mana: int):
+	if self.big_mana >= big_mana and self.small_mana >= small_mana:
+		self.big_mana -= big_mana
+		self.small_mana -= small_mana
+		on_mana_spend.emit(self.big_mana, self.small_mana)
+		return true
+	else: #aprimorar essa parte
 		return false
-	self.mana -= quantity
-	return true
+
+func reset_mana():
+	self.big_mana = 1
+	self.small_mana = 2
+	on_mana_reset.emit()
+	
+func change_mana():
+	if self.try_use_mana(1, 0):
+		self.small_mana += 1
+		return true
+	else:
+		return false
+		
+func buy_card():
+	var new_card = self.gm.buy_deck.draw_card()
+	if new_card:
+		self.hand.append(new_card)
+		print(self.nickname + " comprou a carta " + new_card.name)
+		return true
+	else:
+		print("Erro: sem cartas no baralho!")
+		return false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
