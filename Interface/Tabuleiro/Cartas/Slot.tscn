@@ -6,11 +6,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctf0a"]
 size = Vector2(200, 150)
 
-[node name="Slot" type="Node2D"]
+[node name="Slot" type="Control"]
+layout_mode = 3
+anchor_left = -0.052
+anchor_top = -0.069
+anchor_right = 0.052
+anchor_bottom = 0.069
+offset_left = 99.84
+offset_top = 74.52
+offset_right = -99.84
+offset_bottom = -74.52
 script = ExtResource("1_3xhdd")
 
 [node name="SlotImage" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(180, 150)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -27,8 +37,8 @@ size_flags_vertical = 4
 texture = ExtResource("1_7pjf4")
 expand_mode = 1
 
-[node name="Slot1" type="Area2D" parent="." groups=["Slots"]]
+[node name="Area2D" type="Area2D" parent="." groups=["Slots"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -2.6226e-06)
 shape = SubResource("RectangleShape2D_ctf0a")

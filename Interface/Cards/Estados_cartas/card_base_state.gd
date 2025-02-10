@@ -6,6 +6,8 @@ func enter() -> void:
 	if not card_ui.is_node_ready():
 		await card_ui.ready
 	
+	self.is_hovering_card = false
+	highlight_card(self.is_hovering_card)
 	card_ui.reparent_requested.emit(card_ui)
 	card_ui.state.text = "BASE"
 	card_ui.color.color = Color.DARK_GREEN
@@ -30,7 +32,11 @@ func on_mouse_exited():
 func highlight_card(hovered) -> void:
 	if hovered:
 		card_ui.scale = Vector2(1.05, 1.05) # aumentar de leve a carta
-		card_ui.z_index = 2 #layer da carta
+		card_ui.z_index = 100 #layer da carta
 	else:
 		card_ui.scale = Vector2(1, 1)
-		card_ui.z_index = 1
+		if card_ui.parent_slot:
+			var cards = card_ui.parent_slot.card_slot.cards
+			card_ui.z_index = cards.size() - cards.find(card_ui)  # workaround pois o metodo inteiro sera refatorado
+		else:
+			card_ui.z_index = 1

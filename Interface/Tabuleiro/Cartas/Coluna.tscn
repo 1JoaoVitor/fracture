@@ -6,16 +6,28 @@
 [node name="Coluna" type="Node2D"]
 
 [node name="Slot" parent="." instance=ExtResource("1_vhj62")]
-position = Vector2(0, 130)
+offset_left = 0.0
+offset_top = 130.0
+offset_right = 0.0
+offset_bottom = 130.0
 
 [node name="Slot3" parent="." instance=ExtResource("1_vhj62")]
-position = Vector2(0, 305)
+offset_left = 0.0
+offset_top = 305.0
+offset_right = 0.0
+offset_bottom = 305.0
 
 [node name="Slot2" parent="." instance=ExtResource("1_vhj62")]
-position = Vector2(0, -130)
+offset_left = 0.0
+offset_top = -130.0
+offset_right = 0.0
+offset_bottom = -130.0
 
 [node name="Slot4" parent="." instance=ExtResource("1_vhj62")]
-position = Vector2(0, -305)
+offset_left = 0.0
+offset_top = -305.0
+offset_right = 0.0
+offset_bottom = -305.0
 
 [node name="Somador" parent="." instance=ExtResource("2_li8h3")]
 offset_left = -37.0

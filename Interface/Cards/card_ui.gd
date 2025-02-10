@@ -7,6 +7,7 @@ signal reparent_requested(which_card_ui: CardUI)
 
 @export var card: Card
 
+static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 @onready var color: ColorRect = $Color
 @onready var state: Label = $State
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
@@ -14,6 +15,11 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var targets: Array[Node] = []
 @onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
 var card_type
+var parent_slot: Node = null
+
+static func new_card() -> CardUI:
+	var card = scene.instantiate() as CardUI
+	return card
 
 func _ready() -> void:
 	card_state_machine.init(self)
@@ -38,7 +44,7 @@ func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 	targets.erase(area)
 
 func move_to_position(pos: Vector2):
-	var size = collision_shape.shape.get_rect().size
+	var size = self.get_size()
 	pos.x -= size.x / 2
 	pos.y -= round(size.y / 2)
 	pos.y = round(pos.y)

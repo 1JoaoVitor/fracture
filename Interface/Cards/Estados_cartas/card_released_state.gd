@@ -15,12 +15,17 @@ func enter() -> void:
 			t = t.get_parent()
 			if "card_slot" in t:
 				var slot = t.card_slot as CardSlotSystem
+				if slot.slot_node == card_ui.parent_slot:
+					slot.position_cards()
+					return
 				slot.add_card(card_ui)
-				
+				return
+	card_ui.parent_slot.card_slot.position_cards()
 			
 
 func on_input(_event: InputEvent) -> void:
 	if played:
+		transition_requested.emit(self, CardState.State.BASE)
 		return
 		
 	transition_requested.emit(self, CardState.State.BASE)

@@ -7,8 +7,8 @@ class_name LevelMenu
 @onready var ophidianos_mao: Sprite2D = $Telas/Ophidianos/Ophidianos_mao
 @onready var player_hud: CanvasLayer = $Telas/PlayerHUD
 
-@onready var buy_deck = $BattleUI/Compra
-@onready var discard_deck = $BattleUI/Descarte
+@onready var buy_deck = $BattleUI/BuyDeck
+@onready var discard_deck = $BattleUI/DiscardDeck
 @onready var game_manager: GameManager = GameManager.new(self.buy_deck, self.discard_deck)
 
 

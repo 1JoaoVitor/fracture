@@ -19,13 +19,14 @@ func _init(buy_deck: Node, discard_deck: Node) -> void:
 	self.turn = players.pick_random()
 	self._game_actions = GameActions.new(self)
 	self._mana_system = ManaSystem.new(self)
+	_create_cards.call_deferred()
 
-		
-		
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	# all the game initial state should be initialized here
-	pass
+
+func _create_cards():
+	for i in 48:
+		var card = CardUI.new_card()
+		self.buy_deck.get_parent().add_child(card)
+		self.buy_deck.card_slot.add_card(card)
 
 
 # Alterna turnos

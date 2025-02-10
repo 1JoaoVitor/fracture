@@ -1,21 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=14 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
-[ext_resource type="PackedScene" uid="uid://dg5wkrbh7023v" path="res://Interface/Cards/card_ui.tscn" id="2_kicwl"]
 [ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="3_q20lv"]
 [ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="5_bmi56"]
+[ext_resource type="PackedScene" uid="uid://c0ywulidwlwus" path="res://Interface/Tabuleiro/Cartas/hand.tscn" id="5_uytgn"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
-[ext_resource type="Script" path="res://Interface/Tabuleiro/hand.gd" id="7_m8cp8"]
 [ext_resource type="PackedScene" uid="uid://bnxxe66ltq05p" path="res://Interface/Tabuleiro/Temporizador/timer.tscn" id="7_uu8fu"]
-[ext_resource type="Resource" uid="uid://d2uq7oqtfrcj2" path="res://Personagens/Ophidianos/cards/general_ophidiano.tres" id="9_0s437"]
-[ext_resource type="Resource" uid="uid://dptfyws7k8xxi" path="res://Personagens/Ophidianos/cards/lider_ophidiano.tres" id="10_cdwk2"]
-[ext_resource type="Resource" uid="uid://cgxis8dhu6lb6" path="res://Personagens/Ophidianos/cards/soldado_ophidiano.tres" id="11_ybjyr"]
-[ext_resource type="Resource" uid="uid://c5tapafa7lxm5" path="res://Personagens/Viridianos/cards/soldado_viridiano.tres" id="12_vo774"]
-[ext_resource type="Resource" uid="uid://d0vl1j7jk2t46" path="res://Personagens/Viridianos/cards/general_viridiano.tres" id="13_lbbmt"]
-[ext_resource type="Resource" uid="uid://tgxgnkpxqkmw" path="res://Personagens/Viridianos/cards/lider_viridiano.tres" id="14_8bkh8"]
 [ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
-[ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/carta.tscn" id="19_hlenu"]
+[ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/deck.tscn" id="19_hlenu"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -106,62 +99,9 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["Slots"]]
 
-[node name="Hand" type="HBoxContainer" parent="BattleUI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -75.0
-offset_right = 168.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-script = ExtResource("7_m8cp8")
-
-[node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("9_0s437")
-
-[node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("10_cdwk2")
-
-[node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("11_ybjyr")
-
-[node name="CardUI4" parent="BattleUI/Hand" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("11_ybjyr")
-
-[node name="Hand2" type="HBoxContainer" parent="BattleUI"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -126.0
-offset_right = 126.0
-offset_bottom = 75.0
-grow_horizontal = 2
-
-[node name="CardUI" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("12_vo774")
-
-[node name="CardUI2" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("12_vo774")
-
-[node name="CardUI3" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("13_lbbmt")
-
-[node name="CardUI4" parent="BattleUI/Hand2" instance=ExtResource("2_kicwl")]
-layout_mode = 2
-card = ExtResource("14_8bkh8")
+[node name="Hand" parent="BattleUI" instance=ExtResource("5_uytgn")]
 
 [node name="Column1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(363, 543)
@@ -179,10 +119,24 @@ position = Vector2(1184, 543)
 position = Vector2(1457, 543)
 
 [node name="BuyDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
-position = Vector2(93, 415)
+anchor_left = 0.048
+anchor_top = 0.384
+anchor_right = 0.048
+anchor_bottom = 0.384
+offset_left = 0.839996
+offset_top = 0.279999
+offset_right = 0.839996
+offset_bottom = 0.279999
 
 [node name="DiscardDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
-position = Vector2(93, 665)
+anchor_left = 0.048
+anchor_top = 0.616
+anchor_right = 0.048
+anchor_bottom = 0.616
+offset_left = 0.839996
+offset_top = -0.28009
+offset_right = 0.839996
+offset_bottom = -0.28009
 
 [node name="botoes" type="CanvasLayer" parent="."]
 
