@@ -35,6 +35,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture1D_fuskx")
 
 [node name="Fundo_fracture" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(967, 539)
 scale = Vector2(1.30533, 1.192)
 texture = ExtResource("6_gkgke")
@@ -46,20 +47,36 @@ follow_viewport_enabled = true
 [node name="Viridianos" type="CanvasLayer" parent="Telas"]
 
 [node name="Viridianos_mao" type="Sprite2D" parent="Telas/Viridianos"]
-position = Vector2(960, 918.5)
-scale = Vector2(3, 2.375)
+position = Vector2(960, 809)
+scale = Vector2(3, 2.32759)
 texture = ExtResource("3_q20lv")
 region_enabled = true
-region_rect = Rect2(0, 168, 640, 136)
+region_rect = Rect2(0, 72, 640, 232)
+
+[node name="Viridianos_mao_side2" type="Sprite2D" parent="Telas/Viridianos"]
+position = Vector2(960, 269.468)
+rotation = 3.14159
+scale = Vector2(3, 2.32314)
+texture = ExtResource("3_q20lv")
+region_enabled = true
+region_rect = Rect2(0, 72, 640, 232)
 
 [node name="Ophidianos" type="CanvasLayer" parent="Telas"]
 
 [node name="Ophidianos_mao" type="Sprite2D" parent="Telas/Ophidianos"]
-position = Vector2(960, 918.729)
-scale = Vector2(3, 1.59339)
+position = Vector2(960, 809.5)
+scale = Vector2(3, 2.3319)
 texture = ExtResource("5_bmi56")
 region_enabled = true
-region_rect = Rect2(0, 56, 640, 203)
+region_rect = Rect2(0, 48, 640, 232)
+
+[node name="Ophidianos_mao_side2" type="Sprite2D" parent="Telas/Ophidianos"]
+position = Vector2(960, 269.764)
+rotation = 3.14159
+scale = Vector2(3, 2.32531)
+texture = ExtResource("5_bmi56")
+region_enabled = true
+region_rect = Rect2(0, 48, 640, 232)
 
 [node name="PlayerHUD" type="CanvasLayer" parent="Telas"]
 
@@ -199,5 +216,5 @@ offset_bottom = -590.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
-[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
