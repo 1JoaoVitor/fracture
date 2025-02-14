@@ -11,7 +11,7 @@ class_name LevelMenu
 @onready var buy_deck = $BattleUI/BuyDeck
 @onready var discard_deck = $BattleUI/DiscardDeck
 @onready var game_manager: GameManager = GameManager.new(self.buy_deck, self.discard_deck)
-
+#@export nomedavariavel
 
 func _ready():
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
