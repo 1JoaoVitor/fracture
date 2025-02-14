@@ -17,8 +17,6 @@ static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 
 @export var FaceUpArt: CompressedTexture2D 
 @export var FaceDownArt: CompressedTexture2D
-
-@onready var texture_rect: TextureRect = $ArteCarta
  
 
 var is_face_up = false
