@@ -1,10 +1,9 @@
-extends Node
-class_name Player
+extends Player
+class_name MatchPlayer
 
 signal on_mana_spend(big_mana, small_mana)
 signal on_mana_reset()
 
-var nickname : String
 var big_mana : int
 var small_mana : int
 var hand : Hand
@@ -14,6 +13,9 @@ func _init(nickname: String, hand: Node) -> void:
 	self.hand = hand
 	self.big_mana = 1
 	self.small_mana = 2
+
+static func create_from_player(player: Player, hand: Node):
+	return MatchPlayer.new(player.nickname, hand)
 
 func try_use_mana(big_mana: int, small_mana: int):
 	if self.big_mana >= big_mana and self.small_mana >= small_mana:
