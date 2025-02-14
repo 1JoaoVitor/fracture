@@ -32,9 +32,7 @@ static func new_card() -> CardUI:
 
 func set_face_card(value: bool):
 	is_face_up = value
-	if not is_inside_tree():
-		await ready
-	if(is_face_up):
+	if is_face_up:
 		self.get_node("AnimationPlayer").play("card_flip")
 	else:
 		self.get_node("AnimationPlayer").play("card_discard")
