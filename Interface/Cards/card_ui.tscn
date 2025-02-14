@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg5wkrbh7023v"]
+[gd_scene load_steps=15 format=3 uid="uid://dg5wkrbh7023v"]
 
 [ext_resource type="Theme" uid="uid://dvsdr0n5vxde2" path="res://main_theme.tres" id="1_jpnfb"]
 [ext_resource type="Script" path="res://Interface/Cards/card_ui.gd" id="2_dro14"]
 [ext_resource type="Script" path="res://Interface/Cards/card_state_machine.gd" id="3_0400w"]
+[ext_resource type="Texture2D" uid="uid://ch0tn4mq0jlp" path="res://Imagens/Cards/RatoParasitado.png" id="3_khlf4"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_base_state.gd" id="4_x77q8"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_dragging_state.gd" id="5_ueltr"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_released_state.gd" id="6_4gmcj"]
@@ -11,6 +12,166 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imhsx"]
 size = Vector2(104, 150)
+
+[sub_resource type="Animation" id="Animation_lvuqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceBack:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaceFront:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FaceFront:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0649211, 0.0649211)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FaceBack:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0649211, 0.0649211)]
+}
+
+[sub_resource type="Animation" id="Animation_nwjq8"]
+resource_name = "card_discard"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceBack:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaceFront:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, -1, -1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FaceFront:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.0649211, 0.0649211), Vector2(0.007, 0.065), Vector2(0.065, 0.065)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FaceBack:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.0649211, 0.0649211), Vector2(0.007, 0.065), Vector2(0.065, 0.065)]
+}
+
+[sub_resource type="Animation" id="Animation_ij7d5"]
+resource_name = "card_flip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FaceBack:z_index")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, -1, -1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FaceFront:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1, 0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FaceFront:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.0649211, 0.0649211), Vector2(0.007, 0.065), Vector2(0.065, 0.065)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FaceBack:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.0649211, 0.0649211), Vector2(0.007, 0.065), Vector2(0.065, 0.065)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6crf"]
+_data = {
+"RESET": SubResource("Animation_lvuqg"),
+"card_discard": SubResource("Animation_nwjq8"),
+"card_flip": SubResource("Animation_ij7d5")
+}
 
 [node name="CardUI" type="Control"]
 custom_minimum_size = Vector2(100, 150)
@@ -21,6 +182,8 @@ offset_right = 0.32
 offset_bottom = 0.959991
 theme = ExtResource("1_jpnfb")
 script = ExtResource("2_dro14")
+FaceUpArt = ExtResource("3_khlf4")
+FaceDownArt = ExtResource("8_klitl")
 
 [node name="Color" type="ColorRect" parent="."]
 visible = false
@@ -74,7 +237,18 @@ state = 3
 script = ExtResource("7_nsw4r")
 state = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="FaceFront" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.001
+anchor_bottom = 0.99
+offset_right = 1498.9
+offset_bottom = 2139.5
+scale = Vector2(0.0649211, 0.0649211)
+texture = ExtResource("3_khlf4")
+
+[node name="FaceBack" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.001
@@ -83,6 +257,11 @@ offset_right = 1498.9
 offset_bottom = 2139.5
 scale = Vector2(0.0649211, 0.0649211)
 texture = ExtResource("8_klitl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b6crf")
+}
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

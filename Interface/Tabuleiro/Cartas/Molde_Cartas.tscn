@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5apejntrk478"]
+[gd_scene load_steps=7 format=3 uid="uid://b5apejntrk478"]
 
-[ext_resource type="Texture2D" uid="uid://cfqls8kyu7boo" path="res://Imagens/Elementos visuais/preto.jpeg" id="2_nflqd"]
+[ext_resource type="Texture2D" uid="uid://do5kurcks4c14" path="res://Imagens/Cards/Slot/DouradoFundo.png" id="1_cjoal"]
+[ext_resource type="Texture2D" uid="uid://bpj4ys1wg7hfu" path="res://Imagens/Cards/Slot/JadeFundo.png" id="2_32hff"]
+[ext_resource type="Texture2D" uid="uid://ts7q37hsiryr" path="res://Imagens/Cards/Slot/SafiraFundo.png" id="3_ug760"]
+[ext_resource type="Texture2D" uid="uid://du8c8haebfmvu" path="res://Imagens/Cards/Slot/RubiFundo.png" id="4_ogpyb"]
+[ext_resource type="Texture2D" uid="uid://c4yd0upklsxmj" path="res://Imagens/Cards/Slot/QuartzoFundo.png" id="5_ikv2s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rtda"]
 size = Vector2(283.582, 178.667)
@@ -8,52 +12,65 @@ size = Vector2(283.582, 178.667)
 [node name="Node2D" type="Node2D"]
 position = Vector2(0, -67)
 
-[node name="Cartas" type="Sprite2D" parent="."]
+[node name="Slot2" type="Area2D" parent="." groups=["Slots"]]
+visible = false
+position = Vector2(230, 0)
 scale = Vector2(0.536, 0.75)
-texture = ExtResource("2_nflqd")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Cartas"]
-position = Vector2(-857.86, 0)
-texture = ExtResource("2_nflqd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot2"]
+shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Cartas"]
-position = Vector2(-428.931, 0)
-texture = ExtResource("2_nflqd")
+[node name="Slot3" type="Area2D" parent="." groups=["Slots"]]
+visible = false
+position = Vector2(460, 0)
+scale = Vector2(0.536, 0.75)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Cartas"]
-position = Vector2(857.86, 0)
-texture = ExtResource("2_nflqd")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot3"]
+shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Cartas"]
-position = Vector2(428.931, 0)
-texture = ExtResource("2_nflqd")
+[node name="Slot4" type="Area2D" parent="." groups=["Slots"]]
+visible = false
+position = Vector2(-230, 0)
+scale = Vector2(0.536, 0.75)
 
-[node name="Slot1" type="Area2D" parent="Cartas" groups=["Slots"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot4"]
+shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot1"]
+[node name="Slot5" type="Area2D" parent="." groups=["Slots"]]
+visible = false
+position = Vector2(-460, 0)
+scale = Vector2(0.536, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot5"]
+shape = SubResource("RectangleShape2D_4rtda")
+
+[node name="Slot1" type="Area2D" parent="." groups=["Slots"]]
+scale = Vector2(0.536, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Slot1"]
 position = Vector2(0, -2.54313e-06)
 shape = SubResource("RectangleShape2D_4rtda")
 
-[node name="Slot2" type="Area2D" parent="Cartas" groups=["Slots"]]
-position = Vector2(429.104, 0)
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-460, 0)
+scale = Vector2(0.0791667, 0.124074)
+texture = ExtResource("1_cjoal")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot2"]
-shape = SubResource("RectangleShape2D_4rtda")
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-229.907, 0)
+scale = Vector2(0.079328, 0.12375)
+texture = ExtResource("2_32hff")
 
-[node name="Slot3" type="Area2D" parent="Cartas" groups=["Slots"]]
-position = Vector2(858.209, 0)
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(459.813, 0)
+scale = Vector2(0.079328, 0.12375)
+texture = ExtResource("3_ug760")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot3"]
-shape = SubResource("RectangleShape2D_4rtda")
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(229.907, 0)
+scale = Vector2(0.079328, 0.12375)
+texture = ExtResource("4_ogpyb")
 
-[node name="Slot4" type="Area2D" parent="Cartas" groups=["Slots"]]
-position = Vector2(-429.104, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot4"]
-shape = SubResource("RectangleShape2D_4rtda")
-
-[node name="Slot5" type="Area2D" parent="Cartas" groups=["Slots"]]
-position = Vector2(-858.209, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cartas/Slot5"]
-shape = SubResource("RectangleShape2D_4rtda")
+[node name="Cartas" type="Sprite2D" parent="."]
+scale = Vector2(0.079, 0.124)
+texture = ExtResource("5_ikv2s")

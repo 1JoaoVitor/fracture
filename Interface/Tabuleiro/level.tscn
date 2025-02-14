@@ -1,11 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=19 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="3_q20lv"]
 [ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="5_bmi56"]
 [ext_resource type="PackedScene" uid="uid://c0ywulidwlwus" path="res://Interface/Tabuleiro/Cartas/hand.tscn" id="5_uytgn"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Cartas/Column1.gd" id="7_3es62"]
 [ext_resource type="PackedScene" uid="uid://bnxxe66ltq05p" path="res://Interface/Tabuleiro/Temporizador/timer.tscn" id="7_uu8fu"]
+[ext_resource type="Texture2D" uid="uid://do5kurcks4c14" path="res://Imagens/Cards/Slot/DouradoFundo.png" id="8_bmuun"]
+[ext_resource type="Texture2D" uid="uid://du8c8haebfmvu" path="res://Imagens/Cards/Slot/RubiFundo.png" id="10_cbsax"]
+[ext_resource type="Texture2D" uid="uid://ts7q37hsiryr" path="res://Imagens/Cards/Slot/SafiraFundo.png" id="11_e3o6i"]
+[ext_resource type="Texture2D" uid="uid://c4yd0upklsxmj" path="res://Imagens/Cards/Slot/QuartzoFundo.png" id="12_av4i3"]
 [ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
 [ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/deck.tscn" id="19_hlenu"]
@@ -35,6 +40,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture1D_fuskx")
 
 [node name="Fundo_fracture" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(967, 539)
 scale = Vector2(1.30533, 1.192)
 texture = ExtResource("6_gkgke")
@@ -46,20 +52,36 @@ follow_viewport_enabled = true
 [node name="Viridianos" type="CanvasLayer" parent="Telas"]
 
 [node name="Viridianos_mao" type="Sprite2D" parent="Telas/Viridianos"]
-position = Vector2(960, 918.5)
-scale = Vector2(3, 2.375)
+position = Vector2(960, 809)
+scale = Vector2(3, 2.32759)
 texture = ExtResource("3_q20lv")
 region_enabled = true
-region_rect = Rect2(0, 168, 640, 136)
+region_rect = Rect2(0, 72, 640, 232)
+
+[node name="Viridianos_mao_side2" type="Sprite2D" parent="Telas/Viridianos"]
+position = Vector2(960, 269.468)
+rotation = 3.14159
+scale = Vector2(3, 2.32314)
+texture = ExtResource("3_q20lv")
+region_enabled = true
+region_rect = Rect2(0, 72, 640, 232)
 
 [node name="Ophidianos" type="CanvasLayer" parent="Telas"]
 
 [node name="Ophidianos_mao" type="Sprite2D" parent="Telas/Ophidianos"]
-position = Vector2(960, 918.729)
-scale = Vector2(3, 1.59339)
+position = Vector2(960, 809.5)
+scale = Vector2(3, 2.3319)
 texture = ExtResource("5_bmi56")
 region_enabled = true
-region_rect = Rect2(0, 56, 640, 203)
+region_rect = Rect2(0, 48, 640, 232)
+
+[node name="Ophidianos_mao_side2" type="Sprite2D" parent="Telas/Ophidianos"]
+position = Vector2(960, 269.764)
+rotation = 3.14159
+scale = Vector2(3, 2.32531)
+texture = ExtResource("5_bmi56")
+region_enabled = true
+region_rect = Rect2(0, 48, 640, 232)
 
 [node name="PlayerHUD" type="CanvasLayer" parent="Telas"]
 
@@ -113,18 +135,28 @@ offset_bottom = -0.440002
 
 [node name="Column1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(363, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("8_bmuun")
 
 [node name="Column2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(636, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("12_av4i3")
 
 [node name="Column3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(905, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("12_av4i3")
 
 [node name="Column4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(1184, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("10_cbsax")
 
 [node name="Column5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(1457, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("11_e3o6i")
 
 [node name="BuyDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
 anchors_preset = -1

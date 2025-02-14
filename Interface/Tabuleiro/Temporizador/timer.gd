@@ -1,15 +1,23 @@
 extends Control
 
-var time_last: int = 7200  # Tempo inicial para a contagem regressiva
+
+var time_last: int
+var pass_time: int
+var gm : GameManager
 var is_visible: bool = false  # Controla se o objeto está visível
-var pass_time: float = 0.0  # Tempo acumulado para esperar os 5 segundos
+var is_counting: bool = false  # Controla se o objeto está visível
 var countdown_accumulator: float = 0.0  # Acumulador para a contagem regressiva
 @onready var erro_sfx: AudioStreamPlayer = $Erro_sfx
 
 
-func _ready() -> void:
-	hide()
+#func _ready() -> void:
+	#for player in self.gm.players:
+		#player.connect("set_time", set_timer)
 
+func set_timer():
+	
+	if is_counting == false:
+		is_counting = true
 
 func action():
 	
@@ -34,14 +42,14 @@ func _process(delta: float) -> void:
 			if countdown_accumulator >= 0.0125:
 				time_last -= 1
 				countdown_accumulator = 0.0
-				set_time(time_last)
+				time_texture(time_last)
 		else:
 			time_last = 0
 			erro_sfx.play()
 			#vibrar e fazer som
 
 
-func set_time(value: float) -> void:
+func time_texture(value: float) -> void:
 	
 	if $TextureProgressBar:
 		$TextureProgressBar.value = (value / 7200) * 10000

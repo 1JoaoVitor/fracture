@@ -14,12 +14,29 @@ static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var targets: Array[Node] = []
 @onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
+
+@export var FaceUpArt: CompressedTexture2D 
+@export var FaceDownArt: CompressedTexture2D
+
+@onready var texture_rect: TextureRect = $ArteCarta
+ 
+
+var is_face_up = false
 var card_type
 var parent_slot: Node = null
 
 static func new_card() -> CardUI:
 	var card = scene.instantiate() as CardUI
 	return card
+
+
+func set_face_card(value: bool):
+	is_face_up = value
+	if is_face_up:
+		self.get_node("AnimationPlayer").play("card_flip")
+	else:
+		self.get_node("AnimationPlayer").play("card_discard")
+
 
 func _ready() -> void:
 	card_state_machine.init(self)
