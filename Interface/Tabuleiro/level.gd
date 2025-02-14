@@ -10,6 +10,16 @@ class_name LevelMenu
 @onready var player_hud: CanvasLayer = $Telas/PlayerHUD
 @onready var buy_deck = $BattleUI/BuyDeck
 @onready var discard_deck = $BattleUI/DiscardDeck
+@onready var hand = $BattleUI/Hand
+@onready var opposite_hand = $BattleUI/OppositeHand
+
+@onready var game_manager: GameManager = GameManager.new(
+	self.buy_deck,
+	self.discard_deck,
+	self.hand,
+	self.opposite_hand,
+)
+
 @onready var game_manager: GameManager = GameManager.new(self.buy_deck, self.discard_deck)
 #@export nomedavariavel
 
