@@ -19,6 +19,7 @@ stream = ExtResource("2_d31yr")
 volume_db = 5.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
 layout_mode = 0
 offset_left = -64.0
 offset_top = -64.0
@@ -32,4 +33,3 @@ texture_over = ExtResource("2_hdxfy")
 texture_progress = ExtResource("1_njaae")
 tint_under = Color(0, 0, 0, 0.458824)
 tint_over = Color(0, 0, 0, 1)
-tint_progress = Color(0, 1, 0, 1)
