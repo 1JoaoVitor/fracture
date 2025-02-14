@@ -27,6 +27,7 @@ size = Vector2(57.767, 89.982)
 
 [node name="Pilha" type="Control"]
 layout_mode = 3
+anchors_preset = 0
 script = SubResource("GDScript_rh3c3")
 metadata/_edit_use_anchors_ = true
 
