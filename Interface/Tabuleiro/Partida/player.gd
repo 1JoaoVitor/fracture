@@ -39,7 +39,8 @@ func change_mana():
 func buy_card():
 	var new_card = self.gm.buy_deck.draw_card()
 	if new_card:
-		self.hand.append(new_card)
+		self.hand.add_child(new_card)
+		new_card.set_face_card(true)
 		print(self.nickname + " comprou a carta " + new_card.name)
 		return true
 	else:

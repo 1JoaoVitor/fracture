@@ -119,6 +119,7 @@ position = Vector2(1184, 543)
 position = Vector2(1457, 543)
 
 [node name="BuyDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
+anchors_preset = -1
 anchor_left = 0.048
 anchor_top = 0.384
 anchor_right = 0.048
@@ -129,6 +130,7 @@ offset_right = 0.839996
 offset_bottom = 0.279999
 
 [node name="DiscardDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
+anchors_preset = -1
 anchor_left = 0.048
 anchor_top = 0.616
 anchor_right = 0.048
