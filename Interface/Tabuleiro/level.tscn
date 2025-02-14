@@ -1,11 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=19 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="3_q20lv"]
 [ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="5_bmi56"]
 [ext_resource type="PackedScene" uid="uid://c0ywulidwlwus" path="res://Interface/Tabuleiro/Cartas/hand.tscn" id="5_uytgn"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
+[ext_resource type="Script" path="res://Interface/Tabuleiro/Cartas/Column1.gd" id="7_3es62"]
 [ext_resource type="PackedScene" uid="uid://bnxxe66ltq05p" path="res://Interface/Tabuleiro/Temporizador/timer.tscn" id="7_uu8fu"]
+[ext_resource type="Texture2D" uid="uid://do5kurcks4c14" path="res://Imagens/Cards/Slot/DouradoFundo.png" id="8_bmuun"]
+[ext_resource type="Texture2D" uid="uid://du8c8haebfmvu" path="res://Imagens/Cards/Slot/RubiFundo.png" id="10_cbsax"]
+[ext_resource type="Texture2D" uid="uid://ts7q37hsiryr" path="res://Imagens/Cards/Slot/SafiraFundo.png" id="11_e3o6i"]
+[ext_resource type="Texture2D" uid="uid://c4yd0upklsxmj" path="res://Imagens/Cards/Slot/QuartzoFundo.png" id="12_av4i3"]
 [ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
 [ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/deck.tscn" id="19_hlenu"]
@@ -122,18 +127,28 @@ size_flags_horizontal = 3
 
 [node name="Column1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(363, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("8_bmuun")
 
 [node name="Column2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(636, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("12_av4i3")
 
 [node name="Column3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(905, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("12_av4i3")
 
 [node name="Column4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(1184, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("10_cbsax")
 
 [node name="Column5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
 position = Vector2(1457, 543)
+script = ExtResource("7_3es62")
+card_texture = ExtResource("11_e3o6i")
 
 [node name="BuyDeck" parent="BattleUI" instance=ExtResource("19_hlenu")]
 anchor_left = 0.048
@@ -216,5 +231,5 @@ offset_bottom = -590.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
-[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
