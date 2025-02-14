@@ -20,8 +20,6 @@ class_name LevelMenu
 	self.opposite_hand,
 )
 
-@onready var game_manager: GameManager = GameManager.new(self.buy_deck, self.discard_deck)
-#@export nomedavariavel
 
 func _ready():
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
