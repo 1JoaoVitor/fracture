@@ -20,7 +20,7 @@ func place_card(card: CardUI, slot: CardSlotSystem):
 		return false
 
 
-func use_ability(card: Card):
+func use_ability(card: CardUI):
 	if card.ability:
 		self.gm.turn.try_use_mana(card.big_cost, card.small_cost)
 	# verify if the card has an ability and call its function
