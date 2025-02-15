@@ -61,7 +61,7 @@ func change_action():
 	else: 
 		return true
 
-func synthesize_cards(card1: Card, card2: Card): #3 states
+func synthesize_cards(card1: CardUI, card2: CardUI): #3 states
 	var possible_values = [2, 5, 8]
 	if card1.power != 2 and card2.power != 2:
 		print("Error in synthesize cards, no card with power equals 2")

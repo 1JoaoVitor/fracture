@@ -1,6 +1,6 @@
 extends Control
 
-var cards : Array[Card]
+var cards : Array[CardUI]
 var card_slot = CardSlotSystem.new(self)
 @export var allowed_types: Array[String]  #Editable list in the editor for each slot
 @onready var collision_shape = $Area2D/CollisionShape2D
