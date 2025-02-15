@@ -7,4 +7,9 @@ func _ready() -> void:
 	pass
 
 func get_card_target_position(card: CardUI):
-	return self.global_position
+	var position = self.global_position
+	position.x -=  ((self.card_slot.get_card_count() - 1) * card.size.x + 5) / 2
+	var offset = card.size.x + 10
+	var i = self.card_slot.get_card_index(card)
+	position.x += offset * i
+	return position
