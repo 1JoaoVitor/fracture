@@ -1,18 +1,20 @@
 extends Control
 
 
-var time_last: int
-var pass_time: int
-var gm : GameManager
-var is_visible: bool = false  # Controla se o objeto está visível
-var is_counting: bool = false  # Controla se o objeto está visível
-var countdown_accumulator: float = 0.0  # Acumulador para a contagem regressiva
+var time_last: int = 7200
+var pass_time: float = 0.0
+var is_visible: bool = false
+var is_counting: bool = false
+var yellow_color = Color(1, 1, 0, 1)
+var red_color = Color(1, 0, 0, 1)
+var countdown_accumulator: float = 0.0
+var progress: float
 @onready var erro_sfx: AudioStreamPlayer = $Erro_sfx
 
 
-#func _ready() -> void:
-	#for player in self.gm.players:
-		#player.connect("set_time", set_timer)
+func _ready() -> void:
+	hide()
+	set_timer()
 
 func set_timer():
 	
@@ -31,25 +33,37 @@ func action():
 
 func _process(delta: float) -> void:
 	
-	if not is_visible:
-		pass_time += delta
-		if pass_time >= 5.0:
-			show()
-			is_visible = true
-	else:
-		if time_last > 0:
-			countdown_accumulator += delta
-			if countdown_accumulator >= 0.0125:
-				time_last -= 1
-				countdown_accumulator = 0.0
-				time_texture(time_last)
+	if is_counting:
+		if not is_visible:
+			pass_time += delta
+			if pass_time >= 5.0:
+				show()
+				is_visible = true
 		else:
-			time_last = 0
-			erro_sfx.play()
-			#vibrar e fazer som
+			if time_last > 0:
+				countdown_accumulator += delta
+				if countdown_accumulator >= 0.0125:
+					time_last -= 1
+					countdown_accumulator = 0.0
+					time_texture(time_last)
+			else:
+				time_last = 0
+				erro_sfx.play()
+				#vibrar e fazer som
 
 
 func time_texture(value: float) -> void:
-	
 	if $TextureProgressBar:
 		$TextureProgressBar.value = (value / 7200) * 10000
+	if value < 5400 and value > 3600:
+		progress = (float(value) - 3600)/ 1800
+		if progress > 0.01:
+			$TextureProgressBar.modulate = Color(0, 1, 0, 1).lerp(yellow_color, 1.0 - progress)
+		else:
+			$TextureProgressBar.modulate = Color(0, 1, 0, 1).lerp(yellow_color, 1.0)
+	if value < 3600:
+		progress = (float(value) - 1800)/ 1800
+		if progress > 0.01:
+			$TextureProgressBar.modulate = yellow_color.lerp(red_color, 1.0 - progress)
+		else:
+			$TextureProgressBar.modulate = yellow_color.lerp(red_color, 1.0)
