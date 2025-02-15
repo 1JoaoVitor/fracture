@@ -46,4 +46,3 @@ func remove_card(card: CardUI):
 		self.cards.erase(card)
 		position_cards()
 		self.on_card_out.emit()
-	

@@ -16,6 +16,8 @@ func _init(buy_deck: Node, discard_deck: Node, hand: Node, opposite_hand: Node) 
 	self.turn = players.pick_random()
 	self._game_actions = GameActions.new(self)
 	self._mana_system = ManaSystem.new(self)
+
+func _ready() -> void:
 	_create_cards()
 
 func _init_players(hand: Node, opposite_hand: Node):
@@ -39,11 +41,19 @@ func _create_cards():
 		self.buy_deck.get_parent().add_child(card)
 		self.buy_deck.card_slot.add_card(card)
 	
-	var give_cards = func():
-		# Lógica para distribuir cartas
-		pass
+	var deal_cards = func():
+		const CARD_QUANTITY_FOR_EACH_PLAYER = 5
+		var alternate = false
+		for i in CARD_QUANTITY_FOR_EACH_PLAYER * 2:
+			self.players[0 if alternate else 1].hand.card_slot.add_card(self.buy_deck.card_slot.cards[0])
+			alternate = not alternate
+			await get_tree().create_timer(0.2).timeout
 	var timer = Timer.new()
-
+	(timer.timeout as Signal).connect(deal_cards)
+	timer.one_shot = true
+	self.add_child(timer)
+	timer.start(1.5)
+	
 
 # Alterna turnos
 func alterar_turno():
