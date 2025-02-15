@@ -7,6 +7,7 @@ var card_slot = CardSlotSystem.new(self)
 @export_enum("Soldado_Top", "General_Top", "Soldado_Down", "General_Down", "Lider") var type_slot: String
 
 func can_place_card(card: CardUI) -> bool:
+	return true #isso ta quebrando a maquina de estado aparentemente
 	if card.type == "Soldado" and type_slot in ["Soldado_Top", "Soldado_Down"]:
 		return true 
 	elif card.type == "General" and type_slot in ["General_Top", "General_Down"]:

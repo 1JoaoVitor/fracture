@@ -1,14 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg5wkrbh7023v"]
+[gd_scene load_steps=20 format=3 uid="uid://dg5wkrbh7023v"]
 
 [ext_resource type="Theme" uid="uid://dvsdr0n5vxde2" path="res://main_theme.tres" id="1_jpnfb"]
 [ext_resource type="Script" path="res://Interface/Cards/card_ui.gd" id="2_dro14"]
 [ext_resource type="Script" path="res://Interface/Cards/card_state_machine.gd" id="3_0400w"]
 [ext_resource type="Texture2D" uid="uid://ch0tn4mq0jlp" path="res://Imagens/Cards/RatoParasitado.png" id="3_khlf4"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_base_state.gd" id="4_x77q8"]
+[ext_resource type="Texture2D" uid="uid://de726033dedcj" path="res://Imagens/Cards/Slot/Jade.png" id="5_3wfvr"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_dragging_state.gd" id="5_ueltr"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_released_state.gd" id="6_4gmcj"]
+[ext_resource type="Texture2D" uid="uid://bfusljdm5u3e0" path="res://Imagens/Cards/Slot/Rubi.png" id="6_epaki"]
+[ext_resource type="Texture2D" uid="uid://b1or61do4d6cs" path="res://Imagens/Cards/Slot/Dourado.png" id="7_jmk33"]
 [ext_resource type="Script" path="res://Interface/Cards/Estados_cartas/card_clicked_state.gd" id="7_nsw4r"]
+[ext_resource type="Texture2D" uid="uid://co2fmfkvwvm1o" path="res://Imagens/Cards/Slot/Safira.png" id="8_c6go5"]
 [ext_resource type="Texture2D" uid="uid://df83gnnci7q7r" path="res://Imagens/Cards/Sleeve.png" id="8_klitl"]
+[ext_resource type="Texture2D" uid="uid://dpd745s32fmfl" path="res://Imagens/Cards/Slot/Quarzto.png" id="9_sc7a0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imhsx"]
 size = Vector2(104, 150)
@@ -63,6 +68,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0.0649211, 0.0649211)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Border:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nwjq8"]
 resource_name = "card_discard"
@@ -113,6 +130,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.0649211, 0.0649211), Vector2(0.007, 0.065), Vector2(0.065, 0.065)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Border:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.47451), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ij7d5"]
@@ -165,6 +194,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0.0649211, 0.0649211), Vector2(0.007, 0.065), Vector2(0.065, 0.065)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Border:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b6crf"]
 _data = {
@@ -182,8 +223,14 @@ offset_right = 0.32
 offset_bottom = 0.959991
 theme = ExtResource("1_jpnfb")
 script = ExtResource("2_dro14")
+type_color = "Jade"
 FaceUpArt = ExtResource("3_khlf4")
 FaceDownArt = ExtResource("8_klitl")
+jade_border = ExtResource("5_3wfvr")
+rubi_border = ExtResource("6_epaki")
+dourado_border = ExtResource("7_jmk33")
+safira_border = ExtResource("8_c6go5")
+quartzo_border = ExtResource("9_sc7a0")
 
 [node name="Color" type="ColorRect" parent="."]
 visible = false
@@ -257,6 +304,16 @@ offset_right = 1498.9
 offset_bottom = 2139.5
 scale = Vector2(0.0649211, 0.0649211)
 texture = ExtResource("8_klitl")
+
+[node name="Border" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 107.0
+offset_bottom = 152.0
+texture = ExtResource("7_jmk33")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

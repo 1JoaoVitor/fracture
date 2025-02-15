@@ -34,8 +34,19 @@ func _init_players(hand: Node, opposite_hand: Node):
 		push_error("Not enough players")
 
 func _create_cards():
-	for i in 48:
+	var card_types = []
+	
+	for i in range(11):
+		card_types.append("Jade")
+		card_types.append("Safira")
+		card_types.append("Rubi")
+		card_types.append("Dourado")
+	
+	card_types.shuffle()
+		
+	for i in 44:
 		var card = CardUI.new_card()
+		card.type_color = card_types[i]
 		self.buy_deck.get_parent().add_child(card)
 		self.buy_deck.card_slot.add_card(card)
 	

@@ -139,21 +139,21 @@ card_texture = ExtResource("8_bmuun")
 type_column = "Dourado"
 
 [node name="Coluna2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
-position = Vector2(636, 543)
+position = Vector2(650, 543)
 card_texture = ExtResource("11_e3o6i")
 type_column = "Safira"
 
 [node name="Coluna3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
-position = Vector2(909, 543)
+position = Vector2(923, 543)
 card_texture = ExtResource("12_av4i3")
 
 [node name="Coluna4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
-position = Vector2(1182, 543)
+position = Vector2(1196, 543)
 card_texture = ExtResource("10_13hwn")
 type_column = "Jade"
 
 [node name="Coluna5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
-position = Vector2(1455, 543)
+position = Vector2(1469, 543)
 card_texture = ExtResource("10_cbsax")
 type_column = "Rubi"
 
