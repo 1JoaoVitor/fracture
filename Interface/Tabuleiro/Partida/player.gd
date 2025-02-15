@@ -1,12 +1,11 @@
-extends Node
-class_name Player
+extends Player
+class_name MatchPlayer
 
 signal on_mana_spend(big_mana, small_mana)
 signal on_mana_reset()
 signal set_time()
 signal use_time()
 
-var nickname : String
 var big_mana : int
 var small_mana : int
 var hand : Hand
@@ -21,6 +20,9 @@ func _init(nickname: String, hand: Node) -> void:
 	self.small_mana = 2
 	self.time_pass = 7200
 	self.time_left = 0
+
+static func create_from_player(player: Player, hand: Node):
+	return MatchPlayer.new(player.nickname, hand)
 
 func try_use_mana(big_mana: int, small_mana: int):
 	if self.big_mana >= big_mana and self.small_mana >= small_mana:
@@ -52,7 +54,8 @@ func set_timer():
 func buy_card():
 	var new_card = self.gm.buy_deck.draw_card()
 	if new_card:
-		self.hand.append(new_card)
+		self.hand.add_child(new_card)
+		new_card.set_face_card(true)
 		print(self.nickname + " comprou a carta " + new_card.name)
 		return true
 	else:

@@ -5,6 +5,7 @@ var played: bool
 func enter() -> void:
 	card_ui.color.color = Color.DARK_MAGENTA
 	card_ui.state.text = "RELEASED"
+	card_ui.set_face_card(false)
 	
 	played = false
 	

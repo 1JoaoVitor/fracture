@@ -11,6 +11,7 @@ func enter() -> void:
 		
 	card_ui.color.color = Color.NAVY_BLUE
 	card_ui.state.text = "DRAGGING"
+	card_ui.set_face_card(true)
 	card_ui.scale = Vector2(1, 1)
 	
 	minimum_drag_time_elapsed = false 
