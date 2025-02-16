@@ -19,7 +19,7 @@ func enter() -> void:
 				if slot.slot_node == card_ui.parent_slot:
 					slot.position_cards()
 					return
-				slot.add_card(card_ui)
+				slot.try_add_card(card_ui)
 				return
 	card_ui.parent_slot.card_slot.position_cards()
 			

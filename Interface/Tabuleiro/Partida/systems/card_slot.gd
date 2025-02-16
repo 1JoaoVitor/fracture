@@ -26,14 +26,13 @@ func get_card_index(card: CardUI):
 func add_card(card: CardUI):
 	if card.parent_slot != null:
 		card.parent_slot.card_slot.remove_card(card)
-	if self.slot_node.has_method("can_place_card"):
-		if not slot_node.can_place_card(card):
-			print("Error: This card cannot be played in this slot")
-			return false
 	self.cards.append(card)
 	card.parent_slot = self.slot_node
-	self.on_card_in.emit()
+	self.on_card_in.emit()  # talvez não precise mais, n tenho certeza
 	position_cards()
+	
+func try_add_card(card: CardUI):
+	GameEvents.on_card_placing.emit(card, self, func(): add_card(card))
 
 func position_cards():
 	for i in self.cards.size():
