@@ -31,7 +31,7 @@ func get_card_index(card: CardUI):
 func add_card(card: CardUI):
 	if card.parent_slot != null:
 		card.parent_slot.card_slot.remove_card(card)
-  if self.slot_node.has_method("can_place_card"):
+	if self.slot_node.has_method("can_place_card"):
 		if not slot_node.can_place_card(card):
 			print("Error: This card cannot be played in this slot")
 	self.cards.append(card)

@@ -12,8 +12,10 @@ func _init(game_manager: GameManager) -> void:
 
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	if card in self.gm.turn.hand.card_slot.cards:
-		if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
+		if self.gm.turn.try_use_mana(0, 1):
 			callback.call()
+		#if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
+			#callback.call()
 			#var parent = get_parent()
 			#if parent.has_method("get_column_type"):
 				#column_type = parent.get_column_type()
