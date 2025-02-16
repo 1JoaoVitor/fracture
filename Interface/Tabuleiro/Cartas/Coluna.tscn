@@ -10,6 +10,7 @@ script/source = "extends Node2D
 @export var card_texture: Texture  
 @export var dark: Vector3 = Vector3(0.7, 0.7 ,0.7)
 @export_enum(\"Jade\", \"Safira\", \"Dourado\", \"Rubi\", \"Quartzo\") var type_column: String
+@onready var somador: Control = $Somador
 
 func _ready():
 	var slots = get_children()
@@ -22,6 +23,9 @@ func _ready():
 			if child is TextureRect:
 				child.texture = card_texture
 				child.modulate = Color(dark.x, dark.y, dark.z, 1.0)  
+				
+func get_column_type():
+	return type_column
 "
 
 [node name="Coluna" type="Node2D"]

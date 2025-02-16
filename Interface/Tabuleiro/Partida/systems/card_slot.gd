@@ -13,6 +13,8 @@ target_position function behavior should be defined")
 	self.slot_node = slot_node
 	self.cards = []
 
+	
+
 func get_card_target_position(card: CardUI):
 	# param get_position does not receive any params and returns a Vector2D as the card's new position
 	return self.slot_node.get_card_target_position(card)
@@ -34,7 +36,8 @@ func add_card(card: CardUI):
 	card.parent_slot = self.slot_node
 	self.on_card_in.emit()
 	position_cards()
-
+	return true 
+	
 func position_cards():
 	for i in self.cards.size():
 		var card = self.cards[i]

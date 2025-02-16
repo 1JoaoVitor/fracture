@@ -36,19 +36,31 @@ func _init_players(hand: Node, opposite_hand: Node):
 		push_error("Not enough players")
 
 func _create_cards():
-	var card_types = []
+	var card_types_and_powers = []
 	
-	for i in range(11):
-		card_types.append("Jade")
-		card_types.append("Safira")
-		card_types.append("Rubi")
-		card_types.append("Dourado")
+	var types = ["Jade", "Safira", "Rubi", "Dourado"]
+	for type in types:
+		for power in range(2, 11): 
+			card_types_and_powers.append([type, power])
+		card_types_and_powers.append([type, "G"])
+			
+	card_types_and_powers.shuffle()
 	
-	card_types.shuffle()
-		
-	for i in 44:
+	for i in card_types_and_powers.size():
 		var card = CardUI.new_card()
-		card.type_color = card_types[i]
+		card.type_color = card_types_and_powers[i][0]
+		card.get_node("Power").text = str(card_types_and_powers[i][1])
+		if str(card_types_and_powers[i][1]) == "G":
+			card.type = "General"
+		elif card_types_and_powers[i][1] in [2, 3, 4]:
+			card.type = "Soldado"
+			card.rank = "Baixo"
+		elif card_types_and_powers[i][1] in [5, 6, 7]:
+			card.type = "Soldado"
+			card.rank = "Medio"
+		elif card_types_and_powers[i][1] in [8, 9, 10]:
+			card.type = "Soldado"
+			card.rank = "Alto"
 		self.buy_deck.get_parent().add_child(card)
 		self.buy_deck.card_slot.add_card(card)
 	
@@ -72,6 +84,10 @@ func alterar_turno():
 	self.turn.buy_card() #buy card automatic
 	self.turn.reset_mana()
 	self.turn.set_timer()
+
+func return_card_to_player(card: CardUI):
+	self.turn.hand.card_slot.position_cards()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
