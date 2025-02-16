@@ -9,11 +9,14 @@ func _init(game_manager: GameManager) -> void:
 	self.gm = game_manager
 	GameEvents.on_card_placing.connect(place_card)
 
+
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	if card in self.gm.turn.hand.card_slot.cards:
-		if self.gm.turn.try_use_mana(0, 1):
+		if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
 			callback.call()
-			return
+			#var parent = get_parent()
+			#if parent.has_method("get_column_type"):
+				#column_type = parent.get_column_type()
 		else:
 			print("Error: Insufficient mana")
 	else:
@@ -64,18 +67,22 @@ func change_action():
 
 func synthesize_cards(card1: CardUI, card2: CardUI): #3 states
 	var possible_values = [2, 5, 8]
-	if card1.power != 2 and card2.power != 2:
+	if (card1.power.text == "G") or (card2.power.text == "G"):
+		print("Error in systhesize cards, card impossible to synthesize")
+		return false
+		
+	if int(card1.power.text) != 2 and int(card2.power.text) != 2:
 		print("Error in synthesize cards, no card with power equals 2")
 		return false 
 	
-	if card1.power == 2:
-		if !(card2.power in possible_values):
+	if int(card1.power.text) == 2:
+		if !int(card2.power.text) in possible_values:
 			print("Error in systhesize cards, card impossible to synthesize")
 			return false
 		else:
 			return true
-	elif card2.power == 2: 
-		if !(card1.power in possible_values): 
+	elif int(card2.power.text) == 2: 
+		if !int(card1.power.text) in possible_values: 
 			print("Error in systhesize cards, card impossible to synthesize")
 		else:
 			return true

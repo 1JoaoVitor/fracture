@@ -19,6 +19,8 @@ static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 @onready var targets: Array[Node] = []
 @onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
 @onready var border: TextureRect = $Border
+@onready var power: Label = $Power
+var mana_cost
 
 @export var FaceUpArt: CompressedTexture2D 
 @export var FaceDownArt: CompressedTexture2D
@@ -43,13 +45,26 @@ func update_border() -> void:
 		"Jade":
 			set_border(jade_border)
 		"Safira":
-			set_border(rubi_border)
+			set_border(safira_border)
 		"Dourado":
 			set_border(dourado_border)
 		"Rubi":
 			set_border(rubi_border)
 		"Quartzo":
 			set_border(quartzo_border)
+		
+func update_value_color() -> void:
+	match self.type_color:
+		"Jade":
+			self.power.set("theme_override_colors/font_color", Color("#68b968"))
+		"Safira":
+			self.power.set("theme_override_colors/font_color", Color("#82abe7"))
+		"Dourado":
+			self.power.set("theme_override_colors/font_color", Color("#efc16b"))
+		"Rubi":
+			self.power.set("theme_override_colors/font_color", Color("#e64942"))
+		"Quartzo":
+			self.power.set("theme_override_colors/font_color", Color("#dedede"))
 
 func set_border(border_texture: Texture) -> void:
 	border.texture = border_texture
@@ -65,6 +80,7 @@ func set_face_card(value: bool):
 func _ready() -> void:
 	card_state_machine.init(self)
 	update_border()
+	update_value_color()
 	
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)
