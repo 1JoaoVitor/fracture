@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GerenciadorPersonagem="*res://gerenciador_personagem.gd"
 Estado="*res://Interface/Tabuleiro/Player/Estado.gd"
 MultiplayerManager="*res://Multiplayer/multiplayer_manager.gd"
+GameEvents="*res://Interface/Tabuleiro/Partida/game_events.gd"
 
 [display]
 

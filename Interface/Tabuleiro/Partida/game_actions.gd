@@ -7,23 +7,21 @@ var gm: GameManager
 
 func _init(game_manager: GameManager) -> void:
 	self.gm = game_manager
+	GameEvents.on_card_placing.connect(place_card)
 
-func place_card(card: CardUI, slot: CardSlotSystem):
-	if card in self.gm.turn.hand.get_children():
+
+func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
+	if card in self.gm.turn.hand.card_slot.cards:
 		if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
-			var test = slot.add_card(card)
-			print(test)
-			#self.gm.return_card_to_player(card) #ainda precisa arrumar
+			callback.call()
 			#var parent = get_parent()
 			#if parent.has_method("get_column_type"):
 				#column_type = parent.get_column_type()
 		else:
 			print("Error: Insufficient mana")
-			
-			return false
 	else:
 		print("Error: Card not found in hand")
-		return false
+	card.parent_slot.card_slot.position_cards()
 
 
 func use_ability(card: CardUI):
