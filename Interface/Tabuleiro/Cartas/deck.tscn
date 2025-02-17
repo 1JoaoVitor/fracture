@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://byvf8fwt0shgw" path="res://Imagens/Elementos visuais/cart.png" id="1_hfrer"]
 
 [sub_resource type="GDScript" id="GDScript_rh3c3"]
-script/source = "extends Node2D
+script/source = "extends Control
 
 var card_slot: CardSlotSystem = CardSlotSystem.new(self)
 
@@ -11,8 +11,11 @@ var card_slot: CardSlotSystem = CardSlotSystem.new(self)
 func _ready() -> void:
 	pass # Replace with function body.
 
-func get_card_target_position():
-	return self.global_position
+func get_card_target_position(card: CardUI):
+	var i = card_slot.get_card_index(card)
+	var position = self.global_position
+	position.y -= (self.card_slot.cards.size() - i - 1) * 0.5
+	return position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,8 +25,11 @@ func _process(delta: float) -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8g7dp"]
 size = Vector2(57.767, 89.982)
 
-[node name="Pilha" type="Node2D"]
+[node name="Pilha" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = SubResource("GDScript_rh3c3")
+metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 75)

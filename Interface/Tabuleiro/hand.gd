@@ -1,10 +1,15 @@
-extends HBoxContainer
+extends Control
 class_name Hand
 
+var card_slot = CardSlotSystem.new(self)
+
 func _ready() -> void:
-	for child in get_children():
-		var card_ui := child as CardUI
-		card_ui.reparent_requested.connect(_on_card_ui_reparent_requested)
-		
-func _on_card_ui_reparent_requested(child: CardUI) -> void:
-	child.reparent(self)
+	pass
+
+func get_card_target_position(card: CardUI):
+	var position = self.global_position
+	position.x -=  ((self.card_slot.get_card_count() - 1) * card.size.x + 5) / 2
+	var offset = card.size.x + 10
+	var i = self.card_slot.get_card_index(card)
+	position.x += offset * i
+	return position
