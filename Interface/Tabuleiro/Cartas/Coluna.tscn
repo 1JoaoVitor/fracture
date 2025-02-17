@@ -1,33 +1,64 @@
-[gd_scene load_steps=3 format=3 uid="uid://clrdg5l4wqtst"]
+[gd_scene load_steps=4 format=3 uid="uid://clrdg5l4wqtst"]
 
 [ext_resource type="PackedScene" uid="uid://c35ykm6ihps5u" path="res://Interface/Tabuleiro/Cartas/Slot.tscn" id="1_vhj62"]
 [ext_resource type="PackedScene" uid="uid://bt4ym627qqphc" path="res://Interface/Tabuleiro/somadores.tscn" id="2_li8h3"]
 
+[sub_resource type="GDScript" id="GDScript_7oapf"]
+resource_name = "TipoColuna"
+script/source = "extends Node2D
+
+@export var card_texture: Texture  
+@export var dark: Vector3 = Vector3(0.7, 0.7 ,0.7)
+@export_enum(\"Jade\", \"Safira\", \"Dourado\", \"Rubi\", \"Quartzo\") var type_column: String
+@onready var somador: Control = $Somador
+
+func _ready():
+	var slots = get_children()
+	
+	for slot in slots:
+		if slot.name == \"Somador\":
+			continue
+
+		for child in slot.get_children():
+			if child is TextureRect:
+				child.texture = card_texture
+				child.modulate = Color(dark.x, dark.y, dark.z, 1.0)  
+				
+func get_column_type():
+	return type_column
+"
+
 [node name="Coluna" type="Node2D"]
+script = SubResource("GDScript_7oapf")
+type_column = "Quartzo"
 
 [node name="Slot" parent="." instance=ExtResource("1_vhj62")]
 offset_left = 0.0
 offset_top = 130.0
 offset_right = 0.0
 offset_bottom = 130.0
+type_slot = "Soldado_Down"
 
 [node name="Slot3" parent="." instance=ExtResource("1_vhj62")]
 offset_left = 0.0
 offset_top = 305.0
 offset_right = 0.0
 offset_bottom = 305.0
+type_slot = "General_Down"
 
 [node name="Slot2" parent="." instance=ExtResource("1_vhj62")]
 offset_left = 0.0
 offset_top = -130.0
 offset_right = 0.0
 offset_bottom = -130.0
+type_slot = "Soldado_Top"
 
 [node name="Slot4" parent="." instance=ExtResource("1_vhj62")]
 offset_left = 0.0
 offset_top = -305.0
 offset_right = 0.0
 offset_bottom = -305.0
+type_slot = "General_Top"
 
 [node name="Somador" parent="." instance=ExtResource("2_li8h3")]
 offset_left = -37.0

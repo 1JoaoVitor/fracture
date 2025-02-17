@@ -1,13 +1,29 @@
 extends Control
 
-var cards : Array[Card]
+var cards : Array[CardUI]
 var card_slot = CardSlotSystem.new(self)
 @export var allowed_types: Array[String]  #Editable list in the editor for each slot
 @onready var collision_shape = $Area2D/CollisionShape2D
+@export_enum("Soldado_Top", "General_Top", "Soldado_Down", "General_Down", "Lider") var type_slot: String
 
 func can_place_card(card: CardUI) -> bool:
-	return true #adicionar card.type para mudar o return
-	#return card.card_type in allowed_types
+	var parent = get_parent()
+	var column_type
+	if parent.has_method("get_column_type"):
+		column_type = parent.get_column_type()
+		
+	if(card.type_color != column_type):
+		if column_type != "Quartzo":
+			return false
+	if card.type == "Soldado" and type_slot in ["Soldado_Top", "Soldado_Down"]:
+		return true 
+	elif card.type == "General" and type_slot in ["General_Top", "General_Down"]:
+		return true 
+	elif card.type == "Lider" and type_slot == "Lider":
+		return true 
+	else:
+		return false
+
 
 func get_card_target_position(card: CardUI):
 	var card_index = self.card_slot.get_card_index(card)

@@ -5,7 +5,11 @@ class_name CardUI
 
 signal reparent_requested(which_card_ui: CardUI)
 
-@export var card: Card
+@export_group ("Card Atributtes")
+@export var id: String
+@export_enum("Soldado", "General", "Lider") var type: String
+@export_enum("Alto", "Medio", "Baixo") var rank: String
+@export_enum("Jade", "Safira", "Dourado", "Rubi", "Quartzo") var type_color: String
 
 static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 @onready var color: ColorRect = $Color
@@ -14,9 +18,18 @@ static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 @onready var drop_point_detector: Area2D = $DropPointDetector
 @onready var targets: Array[Node] = []
 @onready var collision_shape : CollisionShape2D = $DropPointDetector/CollisionShape2D
+@onready var border: TextureRect = $Border
+@onready var power: Label = $Power
+var mana_cost
 
 @export var FaceUpArt: CompressedTexture2D 
 @export var FaceDownArt: CompressedTexture2D
+
+@export var jade_border: Texture  
+@export var rubi_border: Texture 
+@export var dourado_border: Texture 
+@export var safira_border: Texture  
+@export var quartzo_border: Texture  
  
 
 var is_face_up = false
@@ -27,6 +40,34 @@ static func new_card() -> CardUI:
 	var card = scene.instantiate() as CardUI
 	return card
 
+func update_border() -> void:
+	match self.type_color:
+		"Jade":
+			set_border(jade_border)
+		"Safira":
+			set_border(safira_border)
+		"Dourado":
+			set_border(dourado_border)
+		"Rubi":
+			set_border(rubi_border)
+		"Quartzo":
+			set_border(quartzo_border)
+		
+func update_value_color() -> void:
+	match self.type_color:
+		"Jade":
+			self.power.set("theme_override_colors/font_color", Color("#68b968"))
+		"Safira":
+			self.power.set("theme_override_colors/font_color", Color("#82abe7"))
+		"Dourado":
+			self.power.set("theme_override_colors/font_color", Color("#efc16b"))
+		"Rubi":
+			self.power.set("theme_override_colors/font_color", Color("#e64942"))
+		"Quartzo":
+			self.power.set("theme_override_colors/font_color", Color("#dedede"))
+
+func set_border(border_texture: Texture) -> void:
+	border.texture = border_texture
 
 func set_face_card(value: bool):
 	is_face_up = value
@@ -34,10 +75,12 @@ func set_face_card(value: bool):
 		self.get_node("AnimationPlayer").play("card_flip")
 	else:
 		self.get_node("AnimationPlayer").play("card_discard")
-
-
+		
+		
 func _ready() -> void:
 	card_state_machine.init(self)
+	update_border()
+	update_value_color()
 	
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)
