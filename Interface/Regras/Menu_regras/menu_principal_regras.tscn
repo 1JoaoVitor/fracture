@@ -98,5 +98,5 @@ size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "
-[fill]FRACTURE é um jogo de cartas 1vs1 estratégico e competitivo ambientado em um universo onde diversos mundos se interligaram a partir de fraturas que transcendem o espaço-tempo, onde você escolherá uma das raças dominantes de cada mundo para batalhar numa guerra por recursos e pela supremacia. A guerra é dividida em cinco batalhas no tabuleiro, seu objetivo é vencer três ou mais, ou seja, ter o maior valor numérico nelas de que seu oponente, e assim tornar o vencedor da guerra e manter as vidas de seus aliados e nação. [/fill]"
+[fill]FRACTURE é um jogo de cartas 1vs1 estratégico e competitivo ambientado em um universo onde diversos mundos se interligaram a partir de fraturas que transcendem o espaço-tempo, onde você escolherá uma das raças dominantes de cada mundo para batalhar numa guerra por recursos e pela supremacia. A guerra é dividida em cinco batalhas no tabuleiro e seu objetivo é vencer três ou mais.[/fill]"
 tab_size = 24

@@ -34,17 +34,17 @@ func _ready():
 			viridianos_mao.visible = false
 			ophidianos_mao_side_2.visible = false
 	
-	for i in range(6):
-		if i == 0 || i == 3:
-			Estado.set_state_possition(1,6-i)
-		else:
-			Estado.set_state_possition(2,6-i)
-		var mana_instance = mana_scene.instantiate()
-		player_hud.add_child(mana_instance)
-		if i < 3:
-			mana_instance.position = Vector2(520 - (i * 100), 1000)
-		else:
-			mana_instance.position = Vector2(520 - ((i-3) * 100), 75)
+	#for i in range(6):
+		#if i == 0 || i == 3:
+			#Estado.set_state_possition(1,6-i)
+		#else:
+			#Estado.set_state_possition(2,6-i)
+		#var mana_instance = mana_scene.instantiate()
+		#player_hud.add_child(mana_instance)
+		#if i < 3:
+			#mana_instance.position = Vector2(520 - (i * 100), 1000)
+		#else:
+			#mana_instance.position = Vector2(520 - ((i-3) * 100), 75)
 
 
 func _input(event):
