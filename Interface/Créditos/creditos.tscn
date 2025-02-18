@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 120
 alignment = 1
 
 [node name="Título" type="Label" parent="VBoxContainer"]
@@ -40,34 +40,42 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 40
 text = "CRÉDITOS"
 
-[node name="Texto" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(600, 950)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Coluna1" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 800)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 35
+bbcode_enabled = true
+text = "[b]Artes[/b]
+Sofia
+ 
+[b]Menu[/b] 
+João Vitor
+
+[b]Estrutura do jogo[/b] 
+Arthur 
+Guilherme
+João Vitor"
+scroll_active = false
+
+[node name="Coluna2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(400, 800)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 35
 bbcode_enabled = true
-text = "[b]TELAS[/b] 
-
-Arthur 
+text = "[b]Multiplayer[/b] 
 Guilherme
-João Vitor
 
-[b]BACKEND[/b] 
-
-Arthur 
-Guilherme
-João Vitor
-
-[b]MANA[/b] 
-
-Arthur 
-Guilherme
-João Vitor
-
-[b]TABULEIRO[/b] 
-
+[b]Tabuleiro[/b] 
 Arthur 
 Guilherme
 João Vitor"
+scroll_active = false
