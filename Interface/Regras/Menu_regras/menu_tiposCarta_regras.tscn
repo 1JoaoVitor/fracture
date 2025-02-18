@@ -101,12 +101,12 @@ bbcode_enabled = true
 text = "
 [fill]As cartas são divididas em algumas categorias, tanto de poder e habilidades quanto de funções que possuem dentro do jogo. Elas são separadas em:  [/fill]   
 
-• Cartas Âncoras: Soldado principal da coluna.
-• Cartas de Reforço: Soldados adicionais. 
 • Líderes: Representantes de cada raça, cartas especiais com habilidades fortes de uso único.
 • Generais: Cartas com habilidades ativadas imediatamente ao serem jogadas.
-• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas. São divididos em:
-      ▪ Baixos (2-4)
-      ▪ Médios (5-7)
-      ▪ Altos (8-10)"
+• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas. Sendo divididos em:
+      ▪ Baixos  (2, 3, 4)
+      ▪ Médios  (5, 6, 7)
+      ▪ Altos  (8, 9, 10)
+• Cartas Âncoras: Soldado principal da coluna.
+• Cartas de Reforço: Soldados adicionais. "
 tab_size = 24

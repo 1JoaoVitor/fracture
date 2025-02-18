@@ -98,8 +98,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "
-[fill]O tabuleiro possui cinco colunas representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há lugares específicos para os Generais (cartas especiais) que ficam atrás das colunas principais. Dentro do tabuleiro ainda existe a pilha de descarte, a pilha de compras e os cristais que simbolizam as ações disponíveis para o jogador. Aqui temos um exemplo: 
+[fill]O tabuleiro possui cinco colunas representando diferentes cores: Ouro, Jade, Quartzo, Safira e Rubi. Cada coluna possui quatro áreas para as cartas serem jogadas, sendo as duas mais próximas do centro áreas dos Soldados e as duas mais no extremo áreas dos Generais (cartas especiais). Dentro do tabuleiro ainda existe a pilha de descarte, a pilha de compras, temporizador, somadores, que representam as diferenças de pontos, e os cristais, que simbolizam as ações disponíveis para o jogador. Aqui temos um exemplo: 
 
-[center][img]res://Imagens/Tabuleiro_fracture.png[/img][/center][/fill]"
-scroll_active = false
+[center][img=1180x700]res://Imagens/Tabuleiro_fracture.png[/img][/center][/fill]"
 tab_size = 24
