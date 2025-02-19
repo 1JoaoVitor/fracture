@@ -5,9 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://ll5p6y3h6lbu" path="res://Sfx/Somfundo/somventoloop.mp3" id="2_yq5xy"]
 [ext_resource type="FontFile" uid="uid://3bpd2kpm1dyv" path="res://Fonte/VehicleBreaksDown-Regular.ttf" id="3_h2iml"]
 [ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="3_h61sm"]
-[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="4_7d7cd"]
 [ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="4_kvek7"]
 [ext_resource type="Shader" path="res://Interface/Menu/tela_menu.gdshader" id="4_uar5t"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="8_7f58l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmqe5"]
 shader = ExtResource("4_uar5t")
@@ -122,7 +122,7 @@ theme_override_constants/separation = 15
 
 [node name="jogar_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
-theme = ExtResource("4_7d7cd")
+theme = ExtResource("8_7f58l")
 theme_override_colors/font_hover_color = Color(0.439095, 0.913623, 0.932161, 1)
 theme_override_colors/font_pressed_color = Color(0.286691, 0.501014, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
@@ -131,7 +131,7 @@ flat = true
 
 [node name="regras_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
-theme = ExtResource("4_7d7cd")
+theme = ExtResource("8_7f58l")
 theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
 theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
@@ -140,7 +140,7 @@ flat = true
 
 [node name="creditos_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
-theme = ExtResource("4_7d7cd")
+theme = ExtResource("8_7f58l")
 theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
 theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
@@ -149,7 +149,7 @@ flat = true
 
 [node name="sair_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
 layout_mode = 2
-theme = ExtResource("4_7d7cd")
+theme = ExtResource("8_7f58l")
 theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
 theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")

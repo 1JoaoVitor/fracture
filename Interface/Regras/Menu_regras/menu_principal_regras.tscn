@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://banaafwsyugha"]
+[gd_scene load_steps=4 format=3 uid="uid://banaafwsyugha"]
 
 [ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_principal_regras.gd" id="1_5o6xg"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_qsdo8"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="3_0xdgw"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -62,32 +63,32 @@ theme_override_constants/separation = 25
 
 [node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_0xdgw")
 text = "Tabuleiro"
 
 [node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_0xdgw")
 text = "Tipos de carta"
 
 [node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_0xdgw")
 text = "Dinâmica"
 
 [node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_0xdgw")
 text = "Habilidades"
 
 [node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_0xdgw")
 text = "Batalha Final"
 
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_0xdgw")
 text = "Sair"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]

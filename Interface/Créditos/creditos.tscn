@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chcupi57h2k6r"]
+[gd_scene load_steps=4 format=3 uid="uid://chcupi57h2k6r"]
 
 [ext_resource type="Script" path="res://Interface/Créditos/creditos.gd" id="1_exh52"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="2_s6me8"]
+[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="3_bv7u2"]
 
 [node name="Créditos" type="Control"]
 layout_mode = 3
@@ -79,3 +80,20 @@ Arthur
 Guilherme
 João Vitor"
 scroll_active = false
+
+[node name="sair_button" type="Button" parent="." groups=["button_creditos"]]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -930.0
+offset_top = -510.0
+offset_right = -780.0
+offset_bottom = -430.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_bv7u2")
+text = "Sair"
