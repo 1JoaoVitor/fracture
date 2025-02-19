@@ -30,6 +30,7 @@ grow_vertical = 2
 texture = ExtResource("2_6jf6v")
 
 [node name="ArteLider" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 272.0
 offset_top = 200.0
 offset_right = 1512.0

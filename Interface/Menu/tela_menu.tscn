@@ -36,11 +36,13 @@ script = ExtResource("1_ft8my")
 stream = ExtResource("2_yq5xy")
 volume_db = -15.0
 autoplay = true
+bus = &"Menu"
 
 [node name="botaosom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h61sm")
 volume_db = -12.181
 pitch_scale = 1.1
+bus = &"Botoes menu"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_fmqe5")
@@ -92,7 +94,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 220
+theme_override_constants/margin_top = 350
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -105,9 +107,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Fracture"
 label_settings = SubResource("LabelSettings_rucv2")
-
-[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -136,6 +135,15 @@ theme_override_colors/font_hover_color = Color(0.439216, 0.913725, 0.933333, 1)
 theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Regras"
+flat = true
+
+[node name="configuracao_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
+layout_mode = 2
+theme = ExtResource("8_7f58l")
+theme_override_colors/font_hover_color = Color(0.439095, 0.913623, 0.932161, 1)
+theme_override_colors/font_pressed_color = Color(0.286691, 0.501014, 1, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
+text = "Configurações"
 flat = true
 
 [node name="creditos_button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Buttons" groups=["buttons"]]
