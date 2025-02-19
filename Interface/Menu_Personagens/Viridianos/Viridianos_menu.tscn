@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b761mg57n6fnr"]
 
 [ext_resource type="Script" path="res://Interface/Menu_Personagens/Viridianos/viridianos_menu.gd" id="1_nvtun"]
-[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="2_o00ha"]
 [ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="2_xxfgb"]
 [ext_resource type="Texture2D" uid="uid://c8sjouufjkbuq" path="res://Imagens/Tabuleiro/Viridianos/LiderViridiano.png" id="3_0ttqf"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="4_5p83u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rivfx"]
 font_size = 40
@@ -99,22 +99,31 @@ offset_top = -100.0
 offset_right = 1920.0
 offset_bottom = -37.0
 grow_vertical = 0
-theme = ExtResource("2_o00ha")
+theme = ExtResource("4_5p83u")
 theme_override_constants/separation = 650
 alignment = 1
 
 [node name="ant_button" type="Button" parent="HBoxContainer" groups=["buttons_viridianos"]]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_hover_pressed_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_colors/font_hover_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_colors/font_pressed_color = Color(0.482353, 0.996078, 0.462745, 1)
 theme_override_font_sizes/font_size = 40
 text = "Anterior"
 
 [node name="jogar_button" type="Button" parent="HBoxContainer" groups=["buttons_viridianos"]]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_colors/font_hover_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_colors/font_pressed_color = Color(0.482353, 0.996078, 0.462745, 1)
 theme_override_font_sizes/font_size = 40
 text = "Jogar"
 
 [node name="prox_button" type="Button" parent="HBoxContainer" groups=["buttons_viridianos"]]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_colors/font_hover_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_colors/font_pressed_color = Color(0.482353, 0.996078, 0.462745, 1)
 theme_override_font_sizes/font_size = 40
 text = "Próximo"
