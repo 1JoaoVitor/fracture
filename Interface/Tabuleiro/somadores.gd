@@ -8,11 +8,11 @@ signal sum_value_changed
 @export var textura_verde: Texture2D
 @export var textura_vermelha: Texture2D
 
-var pontuacao := 0
+var pontos_finais = 0
 
 func _ready():
-	pontuacao_label.text = str(pontuacao)
-	print("pontuacao_label:", pontuacao_label.text)
+	pontuacao_label.text = str(pontos_finais)
+	
 
 func _input(event: InputEvent): #funções para testar se o a mudança de cor está funcionando, pode tirar depois
 	if Input.is_action_just_pressed("space"):
@@ -22,16 +22,16 @@ func _input(event: InputEvent): #funções para testar se o a mudança de cor es
 
 
 func adicionar_pontos(pontos: int) -> void:
-	pontuacao += pontos
+	self.pontos_finais += pontos
 	atualizar_pontuacao()
 	
 func atualizar_pontuacao() -> void:
-	pontuacao_label.text = str(pontuacao)
+	pontuacao_label.text = str(pontos_finais)
 	sum_value_changed.emit()
 	_atualizar_cor_circulo()
 
 func _atualizar_cor_circulo() -> void:
-	if pontuacao >= 0: # Adicionar uma opção de igual a zero depois
+	if pontos_finais >= 0: # Adicionar uma opção de igual a zero depois
 		_trocar_textura(textura_verde)
 	else: 
 		_trocar_textura(textura_vermelha)

@@ -13,6 +13,7 @@ var time_left : float
 var time_pass : int
 var timer_set : bool = false
 var gm: GameManager
+var discarded_card_this_turn : bool = false
 
 func _init(nickname: String, hand: Node) -> void:
 	self.nickname = nickname
@@ -57,8 +58,8 @@ func set_timer():
 		timer_set = true
 	
 func buy_card(buy_deck):
-	var new_card = buy_deck.card_slot.cards[0] 
-	if new_card:
+	if self.gm.buy_deck.card_slot.cards.size() > 0:
+		var new_card = buy_deck.card_slot.cards[0] 
 		self.hand.card_slot.add_card(new_card)
 		new_card.set_face_card(true)
 		print(self.nickname + " comprou a carta " + new_card.name)
@@ -66,14 +67,26 @@ func buy_card(buy_deck):
 	else:
 		print("Erro: sem cartas no baralho!")
 		return false
+		
+func discard_card(card: CardUI):
+	self.hand.card_slot.remove_card(card)
+	self.gm.discard_deck.card_slot.add_card(card)
+	discarded_card_this_turn = true
+	print(nickname + " descartou a carta " + card.name)
+
 
 func try_buy_card(buy_deck: Node):
-	GameEvents.on_buy_button_pressed.emit(self.buy_card.bind(buy_deck))
+	if discarded_card_this_turn:
+		GameEvents.on_buy_button_pressed.emit(self.buy_card.bind(buy_deck))
+	else:
+		print("Você precisa descartar uma carta antes de comprar outra!")
+	
 
 func try_end_turn():
 	GameEvents.on_end_turn_button_pressed.emit(self.end_turn.bind())
-
+	
 func end_turn():
+	self.discarded_card_this_turn = false
 	gm.end_turn()
 	
 # Called when the node enters the scene tree for the first time.
