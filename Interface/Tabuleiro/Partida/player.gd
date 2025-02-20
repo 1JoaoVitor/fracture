@@ -51,16 +51,20 @@ func set_timer():
 	if timer_set == false:
 		timer_set = true
 	
-func buy_card():
-	var new_card = self.gm.buy_deck.draw_card()
+func buy_card(buy_deck):
+	var new_card = buy_deck.card_slot.cards[0] 
 	if new_card:
-		self.hand.add_child(new_card)
+		self.hand.card_slot.add_card(new_card)
 		new_card.set_face_card(true)
 		print(self.nickname + " comprou a carta " + new_card.name)
 		return true
 	else:
 		print("Erro: sem cartas no baralho!")
 		return false
+
+func try_buy_card(buy_discard: Node):
+	GameEvents.on_buy_button_pressed.emit(self.buy_card(buy_discard))
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

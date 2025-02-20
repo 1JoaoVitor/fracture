@@ -68,7 +68,9 @@ func _create_cards():
 		const CARD_QUANTITY_FOR_EACH_PLAYER = 5
 		var alternate = false
 		for i in CARD_QUANTITY_FOR_EACH_PLAYER * 2:
-			self.players[0 if alternate else 1].hand.card_slot.add_card(self.buy_deck.card_slot.cards[0])
+			var new_card = self.buy_deck.card_slot.cards[0]
+			self.players[0 if alternate else 1].hand.card_slot.add_card(new_card)
+			self.players[0 if alternate else 1].hand.card_face_up(new_card)
 			alternate = not alternate
 			await get_tree().create_timer(0.2).timeout
 	var timer = Timer.new()
@@ -81,7 +83,7 @@ func _create_cards():
 # Alterna turnos
 func alterar_turno():
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
-	self.turn.buy_card() #buy card automatic
+	self.turn.try_buy_card(self.buy_deck) #buy card automatic
 	self.turn.reset_mana()
 	self.turn.set_timer()
 

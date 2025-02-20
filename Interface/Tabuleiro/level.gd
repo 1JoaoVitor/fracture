@@ -24,6 +24,7 @@ class_name LevelMenu
 func _ready():
 	self.add_child(self.game_manager)
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
+	
 	#var personagem_escolhido = GerenciadorPersonagem.get_personagem()  mudar para poder comportar 2 players identicos
 	
 	match personagem_escolhido:
@@ -53,7 +54,9 @@ func _input(event):
 
 
 func _on_compra_pressed() -> void:
-	print('tu comprou uma carta')
+	game_manager.turn.try_buy_card(game_manager.buy_deck)
+
+	
 
 
 func _on_turno_fim_pressed() -> void:

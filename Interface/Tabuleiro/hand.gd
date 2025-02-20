@@ -13,3 +13,6 @@ func get_card_target_position(card: CardUI):
 	var i = self.card_slot.get_card_index(card)
 	position.x += offset * i
 	return position
+
+func card_face_up(card):
+	card.set_face_card(true)

@@ -7,8 +7,9 @@ var gm: GameManager
 
 func _init(game_manager: GameManager) -> void:
 	self.gm = game_manager
-	GameEvents.on_card_placing.connect(place_card)
-
+	
+func _ready() -> void:
+	GameEvents.on_buy_button_pressed.connect(buy_card)
 
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	if card in self.gm.turn.hand.card_slot.cards:
@@ -51,7 +52,7 @@ func replace_card(new_card: CardUI, slot: CardSlotSystem, old_card: CardUI):
 
 func buy_extra_card():
 	if self.gm.turn.try_use_mana(0, 2):
-		if !self.gm.turn.buy_card(): #to do
+		if !self.gm.turn.try_buy_card(gm.buy_deck): #to do
 			print("Error in buy a card") #no card in deck
 			return false
 		else:
@@ -89,6 +90,12 @@ func synthesize_cards(card1: CardUI, card2: CardUI): #3 states
 		else:
 			return true
 
+func buy_card(callback: Callable):
+	if gm.turn == gm.get_local_player():
+		callback.call() 
+
+
+	
 func pass_turn():
 	self.gm.alterar_turno()
 	
