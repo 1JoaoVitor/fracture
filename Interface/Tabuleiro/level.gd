@@ -20,16 +20,8 @@ class_name LevelMenu
 	self.opposite_hand,
 )
 
-	
-
 
 func _ready():
-	GlobalGm.gm = GameManager.new(
-		self.buy_deck,
-		self.discard_deck,
-		self.hand,
-		self.opposite_hand,
-	)
 	self.add_child(self.game_manager)
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
 	

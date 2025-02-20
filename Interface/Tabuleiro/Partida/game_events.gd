@@ -5,5 +5,3 @@ signal on_card_placing(card: CardUI, slot_system: CardSlotSystem, callback: Call
 signal on_buy_button_pressed(callback: Callable)
 
 signal on_end_turn_button_pressed(callback: Callable)
-
-signal on_game_over()

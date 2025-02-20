@@ -8,19 +8,17 @@ var buy_deck : Node
 var discard_deck : Node
 var _game_actions: GameActions
 var _mana_system: ManaSystem
-var deck_ended = false
 
 func _init(buy_deck: Node, discard_deck: Node, hand: Node, opposite_hand: Node) -> void:
 	_init_players(hand, opposite_hand)
 	self.buy_deck = buy_deck
 	self.discard_deck = discard_deck
 	self.turn = players.pick_random()
-	self._game_actions = GameActions.new()
-	self._mana_system = ManaSystem.new()
+	self._game_actions = GameActions.new(self)
+	self._mana_system = ManaSystem.new(self)
 
 func _ready() -> void:
 	_create_cards()
-	GameEvents.on_game_over.connect(end_game)
 
 func _init_players(hand: Node, opposite_hand: Node):
 	self.players = []
@@ -85,8 +83,6 @@ func _create_cards():
 
 # Alterna turnos
 func end_turn():
-	if deck_ended and self.turn == self.players[-1]:
-		end_game()
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
 	print("Turno do jogador: " + turn.nickname)
 	self.turn.reset_mana() 
@@ -100,15 +96,6 @@ func return_card_to_player(card: CardUI):
 func get_local_player():
 	var nickname = MultiplayerManager.client.get_local_player_nickname()
 	return self.players[0] if self.players[0].nickname == nickname else self.players[1]
-
-func _on_deck_empty():
-	print("Baralho acabou!")
-	deck_ended = true
-
-func end_game():
-	print("Fim do jogo!")
-	#GameData.player_scores = game_manager.get_player_scores() #pegar dados dos somadores
-	get_tree().change_scene_to_file("res://Interface/Final/end_scene.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

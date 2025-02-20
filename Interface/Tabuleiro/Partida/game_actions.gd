@@ -1,11 +1,12 @@
 extends Node
 class_name GameActions
 
-var gm = GlobalGm.gm
+var gm: GameManager
 
 # Each function corresponds to an action, each one should call the appropriate methods, use mana, etc...
 
-func _init() -> void:
+func _init(game_manager: GameManager) -> void:
+	self.gm = game_manager
 	GameEvents.on_buy_button_pressed.connect(buy_extra_card)
 	GameEvents.on_end_turn_button_pressed.connect(end_turn)
 	GameEvents.on_card_placing.connect(place_card)
@@ -14,8 +15,10 @@ func _init() -> void:
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	if card in self.gm.turn.hand.card_slot.cards:
 		if self.gm.turn.try_use_mana(0, 1):
-			callback.call()
-
+			var placed = callback.call()
+			if placed == false:
+				print("A carta não pôde ser colocada, retornando para mão")
+				self.gm.turn.hand.card_slot.add_card(card)
 		#if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
 			#callback.call()
 			#var parent = get_parent()
@@ -94,11 +97,6 @@ func synthesize_cards(card1: CardUI, card2: CardUI): #3 states
 			return true
 
 func end_turn(callback: Callable):
-	if gm.buy_deck.card_slot.cards.is_empty():
-		print("Baralho vazio!")
-		#if gm.turn == gm.players[-1]: 
-		print("Último turno encerrado, fim do jogo!")
-		GameEvents.on_game_over.emit()
 	callback.call()
 	#if gm.turn == gm.get_local_player():
 		#callback.call()

@@ -1,7 +1,7 @@
 extends Control
 class_name ManaSystem
 
-var gm = GlobalGm.gm
+var gm : GameManager
 var is_scaling_down = false
 var is_scaling_up = false
 var state_mana: int = 0
@@ -21,6 +21,8 @@ func _ready():
 		player.connect("on_mana_spend", update_mana_display)
 		player.connect("on_mana_reset", reset_mana_display)
 
+func _init(game_manager: GameManager):
+	self.gm = game_manager
 
 func update_mana_display(big_mana, small_mana):
 	if self.gm.turn == self.gm.player(1):#no caso teria de ver se o player que chamou a função é de baixo ou de cima

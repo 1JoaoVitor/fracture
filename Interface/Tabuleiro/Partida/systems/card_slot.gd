@@ -5,7 +5,6 @@ signal on_card_in
 signal on_card_out
 var cards : Array[CardUI]
 var slot_node : Control
-@onready var gm = GlobalGm.gm
 
 
 func _init(slot_node: Control):
@@ -20,6 +19,7 @@ func get_card_target_position(card: CardUI):
 	# param get_position does not receive any params and returns a Vector2D as the card's new position
 	return self.slot_node.get_card_target_position(card)
 
+
 func get_card_count():
 	return self.cards.size()
 
@@ -29,10 +29,6 @@ func get_card_index(card: CardUI):
 
 
 func add_card(card: CardUI):
-	if gm == null:
-		print("Erro")
-		return
-	var player = gm.turn
 	if card.parent_slot != null:
 		card.parent_slot.card_slot.remove_card(card)
 	if self.slot_node.has_method("can_place_card"):
@@ -42,15 +38,7 @@ func add_card(card: CardUI):
 		else: #pode jogar a carta
 			if card.type == "Soldado" and (slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
 				var power = int(card.get_node("Power").text)
-				
-				var is_player1 = player == gm.players[0]
-#
-				## Jogador 1 soma, Jogador 2 subtrai
-				if is_player1:
-					slot_node.somador.adicionar_pontos(power)
-				else:
-					slot_node.somador.adicionar_pontos(-power)
-				
+				slot_node.somador.adicionar_pontos(power)
 	self.cards.append(card)
 	card.parent_slot = self.slot_node
 	self.on_card_in.emit()  # talvez não precise mais, n tenho certeza
@@ -59,12 +47,7 @@ func add_card(card: CardUI):
 	return true
 	
 func try_add_card(card: CardUI):
-	if self.slot_node.name == "DiscardDeck":
-		pass
-		var player = gm.turn 
-		player.discard_card(card)
-	else:
-		GameEvents.on_card_placing.emit(card, self, func(): add_card(card))
+	GameEvents.on_card_placing.emit(card, self, func(): add_card(card))
 
 
 func position_cards():
