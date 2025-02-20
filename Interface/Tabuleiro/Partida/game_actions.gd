@@ -8,21 +8,40 @@ var gm: GameManager
 func _init(game_manager: GameManager) -> void:
 	self.gm = game_manager
 	GameEvents.on_card_placing.connect(place_card)
+	GameEvents.on_card_highlighting.connect(highlight_card)
+	GameEvents.on_card_dragging.connect(drag_card)
 
+func highlight_card(card: CardUI, callback: Callable):
+	if card.parent_slot is Slot or card.parent_slot is Hand:
+		callback.call()
+		
+func drag_card(card: CardUI, callback: Callable):
+	if card.parent_slot is Hand:
+		callback.call()
+	
 
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
-	if card in self.gm.turn.hand.card_slot.cards:
-		if self.gm.turn.try_use_mana(0, 1):
-			callback.call()
-		#if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
-			#callback.call()
-			#var parent = get_parent()
-			#if parent.has_method("get_column_type"):
-				#column_type = parent.get_column_type()
-		else:
-			print("Error: Insufficient mana")
-	else:
-		print("Error: Card not found in hand")
+	# checar tipo da coluna/carta
+	var parent = slot.slot_node.get_parent()
+	var type_slot = slot.slot_node is Slot and slot.slot_node.type_slot
+	var column_type
+	if parent.has_method("get_column_type"):
+		column_type = parent.get_column_type()
+	
+	# menos performance, mas evita o inferno de if-else's
+	var type_rules = [
+		card.type == "Soldado" and type_slot in ["Soldado_Top", "Soldado_Down"],
+		card.type == "General" and type_slot in ["General_Top", "General_Down"],
+		card.type == "Lider" and type_slot == "Lider",
+	]
+	var rules = [
+		(card.type_color == column_type or column_type == "Quartzo"),
+		type_rules.reduce(func(a, b): return a or b),
+		card in self.gm.turn.hand.card_slot.cards,
+		#self.gm.turn.try_use_mana(0, 1),
+	]
+	if rules.reduce(func(a, b): return a and b):
+		callback.call()
 	card.parent_slot.card_slot.position_cards()
 
 
