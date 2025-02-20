@@ -16,19 +16,23 @@ func enter() -> void:
 func on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse_button"):
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
-		transition_requested.emit(self, CardState.State.CLICKED)
+		var callback = func(): transition_requested.emit(self, CardState.State.CLICKED)
+		GameEvents.on_card_dragging.emit(self.card_ui, callback)
+
 
 func on_mouse_entered():
-	if !is_hovering_card:
-		is_hovering_card = true
-		highlight_card(true)
+	var callback = func():
+		if !is_hovering_card:
+			is_hovering_card = true
+			highlight_card(true)
+	GameEvents.on_card_highlighting.emit(self.card_ui, callback)
 	
 
 func on_mouse_exited():
 	is_hovering_card = false 
 	highlight_card(false)
 	
-	
+
 func highlight_card(hovered) -> void:
 	if hovered:
 		card_ui.scale = Vector2(1.05, 1.05) # aumentar de leve a carta
