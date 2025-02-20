@@ -44,7 +44,7 @@ func add_card(card: CardUI):
 	self.on_card_in.emit()  # talvez não precise mais, n tenho certeza
 	
 	position_cards()
-
+	return true
 	
 func try_add_card(card: CardUI):
 	GameEvents.on_card_placing.emit(card, self, func(): add_card(card))

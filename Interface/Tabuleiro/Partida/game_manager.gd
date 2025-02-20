@@ -31,6 +31,7 @@ func _init_players(hand: Node, opposite_hand: Node):
 			p = MatchPlayer.create_from_player(mpp, opposite_hand)
 		print("%s entered the match!" % p.nickname)
 		self.players.append(p)
+		p.set_game_manager(self)
 	
 	if players.size() != 2:
 		push_error("Not enough players")
@@ -81,8 +82,10 @@ func _create_cards():
 	
 
 # Alterna turnos
-func alterar_turno():
+func end_turn():
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
+	print("Turno do jogador: " + turn.nickname)
+	self.turn.reset_mana() 
 	self.turn.try_buy_card(self.buy_deck) #buy card automatic
 	self.turn.reset_mana()
 	self.turn.set_timer()
@@ -92,7 +95,7 @@ func return_card_to_player(card: CardUI):
 
 func get_local_player():
 	var nickname = MultiplayerManager.client.get_local_player_nickname()
-	return self.players[0] if self.players[0].nickname == nickname else self.player[1]
+	return self.players[0] if self.players[0].nickname == nickname else self.players[1]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

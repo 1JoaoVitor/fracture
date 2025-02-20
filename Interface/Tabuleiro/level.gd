@@ -56,11 +56,10 @@ func _input(event):
 func _on_compra_pressed() -> void:
 	game_manager.turn.try_buy_card(game_manager.buy_deck)
 
-	
 
 
 func _on_turno_fim_pressed() -> void:
-	print('turno passado')
+	game_manager.turn.try_end_turn()
 
 
 func _on_menu_pressed() -> void:

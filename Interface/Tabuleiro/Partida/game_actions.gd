@@ -7,14 +7,18 @@ var gm: GameManager
 
 func _init(game_manager: GameManager) -> void:
 	self.gm = game_manager
-	
-func _ready() -> void:
-	GameEvents.on_buy_button_pressed.connect(buy_card)
+	GameEvents.on_buy_button_pressed.connect(buy_extra_card)
+	GameEvents.on_end_turn_button_pressed.connect(end_turn)
+	GameEvents.on_card_placing.connect(place_card)
+		
 
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	if card in self.gm.turn.hand.card_slot.cards:
 		if self.gm.turn.try_use_mana(0, 1):
-			callback.call()
+			var placed = callback.call()
+			if placed == false:
+				print("A carta não pôde ser colocada, retornando para mão")
+				self.gm.turn.hand.card_slot.add_card(card)
 		#if self.gm.turn.try_use_mana(card.big_cost, card.small_cost):
 			#callback.call()
 			#var parent = get_parent()
@@ -49,17 +53,19 @@ func replace_card(new_card: CardUI, slot: CardSlotSystem, old_card: CardUI):
 	else:
 		print("Error: Card not found in hand")
 		return false
-
-func buy_extra_card():
-	if self.gm.turn.try_use_mana(0, 2):
-		if !self.gm.turn.try_buy_card(gm.buy_deck): #to do
-			print("Error in buy a card") #no card in deck
-			return false
+		
+#func buy_card(callback: Callable):
+	#if gm.turn == gm.get_local_player():
+		#callback.call() 
+		
+func buy_extra_card(callback: Callable):
+	#if gm.turn == gm.get_local_player():
+		if !self.gm.turn.try_use_mana(1, 0):
+			print("No mana")
 		else:
-			return true
-	else:
-		print("Error in buy extra card")
-		return false
+			callback.call() 
+	#else:
+		#print("Não é você")
 
 func change_action(): 
 	if !self.gm.turn.change_mana():
@@ -90,12 +96,11 @@ func synthesize_cards(card1: CardUI, card2: CardUI): #3 states
 		else:
 			return true
 
-func buy_card(callback: Callable):
-	if gm.turn == gm.get_local_player():
-		callback.call() 
+func end_turn(callback: Callable):
+	callback.call()
+	#if gm.turn == gm.get_local_player():
+		#callback.call()
+	#else:
+		#print("Não é seu turno!")
 
-
-	
-func pass_turn():
-	self.gm.alterar_turno()
 	
