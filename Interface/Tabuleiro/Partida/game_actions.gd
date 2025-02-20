@@ -25,7 +25,11 @@ func drag_card(card: CardUI, callback: Callable):
 func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	# checar tipo da coluna/carta
 	var parent = slot.slot_node.get_parent()
-	var type_slot = slot.slot_node is Slot and slot.slot_node.type_slot
+	var type_slot
+	if slot.slot_node is Slot:
+		type_slot = slot.slot_node.type_slot
+	else:
+		type_slot = null
 	var column_type
 	if parent.has_method("get_column_type"):
 		column_type = parent.get_column_type()
