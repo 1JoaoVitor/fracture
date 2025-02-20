@@ -1,0 +1,147 @@
+[gd_scene load_steps=4 format=3 uid="uid://du7aawkahqkax"]
+
+[ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_6w336"]
+[ext_resource type="Script" path="res://Interface/Final/end_scene.gd" id="1_wdrxh"]
+[ext_resource type="PackedScene" uid="uid://bt4ym627qqphc" path="res://Interface/Tabuleiro/somadores.tscn" id="2_ga4h3"]
+
+[node name="EndScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wdrxh")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.266575, 0.266575, 0.266575, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6w336")
+
+[node name="Resultado" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.5
+offset_top = -240.0
+offset_right = 202.5
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "RESULTADO"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -20.0
+offset_right = 750.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Somador1" parent="HBoxContainer/VBoxContainer" instance=ExtResource("2_ga4h3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ResultadoSomador1" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "Resultado"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Somador2" parent="HBoxContainer/VBoxContainer2" instance=ExtResource("2_ga4h3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ResultadoSomador2" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "Resultado"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Somador3" parent="HBoxContainer/VBoxContainer3" instance=ExtResource("2_ga4h3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ResultadoSomador3" type="Label" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "Resultado"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Somador4" parent="HBoxContainer/VBoxContainer4" instance=ExtResource("2_ga4h3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ResultadoSomador4" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "Resultado"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Somador5" parent="HBoxContainer/VBoxContainer5" instance=ExtResource("2_ga4h3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ResultadoSomador5" type="Label" parent="HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 35
+text = "Resultado"
+
+[node name="Return" type="Button" parent="." groups=["buttons_endscene"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = 400.0
+offset_right = 4.0
+offset_bottom = 408.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Voltar ao Menu"

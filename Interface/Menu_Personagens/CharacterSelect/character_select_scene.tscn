@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjgx0pae8gm3f"]
+[gd_scene load_steps=7 format=3 uid="uid://cjgx0pae8gm3f"]
 
 [ext_resource type="Script" path="res://Interface/Menu_Personagens/CharacterSelect/character_select_scene.gd" id="1_b0yff"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_yivy1"]
 [ext_resource type="StyleBox" uid="uid://celos72c2lqr5" path="res://Interface/Menu_Personagens/CharacterSelect/style_viridianos_button.tres" id="3_p4cw4"]
-[ext_resource type="StyleBox" uid="uid://co1ba1jpjwgee" path="res://Interface/Menu_Personagens/CharacterSelect/style_ophidianos_button.tres" id="4_efumh"]
 [ext_resource type="Texture2D" uid="uid://7u6r433mmf21" path="res://Imagens/Tabuleiro/Viridianos/Parasita.png" id="4_s5vq1"]
+[ext_resource type="Texture2D" uid="uid://64bppejne62j" path="res://Imagens/Tabuleiro/Ophidianos/LiderOphidiano.png" id="5_fxpm4"]
+[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="6_6t0i8"]
 
 [node name="CharacterSelectScene" type="Control"]
 layout_mode = 3
@@ -96,18 +97,16 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_colors/icon_normal_color = Color(0.00730066, 0.228137, 0.976618, 1)
 theme_override_font_sizes/font_size = 30
-theme_override_styles/focus = ExtResource("4_efumh")
-theme_override_styles/disabled_mirrored = ExtResource("4_efumh")
-theme_override_styles/disabled = ExtResource("4_efumh")
-theme_override_styles/hover_pressed_mirrored = ExtResource("4_efumh")
-theme_override_styles/hover_pressed = ExtResource("4_efumh")
-theme_override_styles/hover_mirrored = ExtResource("4_efumh")
-theme_override_styles/hover = ExtResource("4_efumh")
-theme_override_styles/pressed_mirrored = ExtResource("4_efumh")
-theme_override_styles/pressed = ExtResource("4_efumh")
-theme_override_styles/normal_mirrored = ExtResource("4_efumh")
-theme_override_styles/normal = ExtResource("4_efumh")
-text = "Ophidianos"
+
+[node name="TextureRect" type="TextureRect" parent="Characters/Ophidianos_button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_fxpm4")
+expand_mode = 1
 
 [node name="sair_button" type="Button" parent="." groups=["button_character"]]
 custom_minimum_size = Vector2(150, 80)
@@ -123,5 +122,5 @@ offset_right = -780.0
 offset_bottom = -430.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
+theme = ExtResource("6_6t0i8")
 text = "Sair"

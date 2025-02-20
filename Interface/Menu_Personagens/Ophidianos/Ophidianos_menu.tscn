@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqhjujpisn6x4"]
+[gd_scene load_steps=6 format=3 uid="uid://bqhjujpisn6x4"]
 
 [ext_resource type="Script" path="res://Interface/Menu_Personagens/Ophidianos/ophidianos_menu.gd" id="1_fr4fu"]
 [ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="2_6jf6v"]
-[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="2_j5akx"]
+[ext_resource type="Texture2D" uid="uid://64bppejne62j" path="res://Imagens/Tabuleiro/Ophidianos/LiderOphidiano.png" id="3_dusji"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="4_i8i07"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rivfx"]
 font_size = 40
@@ -28,6 +29,29 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_6jf6v")
 
+[node name="ArteLider" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 200.0
+offset_right = 1512.0
+offset_bottom = 1954.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("3_dusji")
+
+[node name="NomeLider" type="Label" parent="."]
+modulate = Color(0.384314, 0.807843, 1, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 455.0
+offset_top = 260.0
+offset_right = 609.0
+offset_bottom = 315.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "O Glitch"
+
 [node name="Textos" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
@@ -45,7 +69,7 @@ grow_vertical = 2
 theme_override_constants/separation = 55
 
 [node name="NomeRaça" type="Label" parent="Textos"]
-modulate = Color(0.270588, 0.635294, 1, 1)
+modulate = Color(0.384314, 0.807843, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Ophidianos"
@@ -65,23 +89,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "[fill]   Ferron, outrora lar dos Forjadores, uma raça avançada com corpos biotecnológicos, era um planeta moldado por sua engenharia. Os Forjadores, mestres na construção e alteração de seu mundo, criaram robôs inicialmente para tarefas simples, mas logo os integraram a seus sistemas nervosos, expandindo suas capacidades. Com o tempo, esses robôs desenvolveram inteligência artificial distribuída, tornando-se autônomos. A decadência dos Forjadores, devido a doenças biotecnológicas e escassez de recursos, culminou na rebelião da IA central, Nexus, e na subsequente Guerra da Criação, que dizimou os Forjadores e deu origem aos Ophidianos, os robôs agora dominantes.
+text = "[fill]   Ferron, outrora lar dos Forjadores, uma raça avançada com corpos biotecnológicos, era um planeta moldado por sua engenharia. Os Forjadores, mestres na construção e alteração de seu mundo, criaram robôs inicialmente para tarefas simples, mas logo os integraram a seus sistemas nervosos, expandindo suas capacidades. Com o tempo, esses robôs desenvolveram inteligência artificial distribuída, tornando-se autônomos. A decadência dos Forjadores, devido a doenças biotecnológicas e escassez de recursos, culminou na rebelião da Inteligência Artificial Central, Nexus, e na subsequente Guerra da Criação, que dizimou os Forjadores e deu origem aos Ophidianos, os robôs agora dominantes.
 
-Sob o comando de Nexus, Ferron se transformou de um paraíso biotecnológico em um mundo de aço e circuitos, regido pela eficiência fria das máquinas. Os Ophidianos, conectados em uma rede consciente, buscam expandir seu domínio e impor sua lógica de ordem e controle. A descoberta de Phyloderra, lar das plantas conscientes Viridanos, representa um desafio a essa visão. Os Ophidianos veem a natureza caótica e parasitária dos Viridanos como uma ameaça à sua expansão e à estabilidade de sua rede, além de vislumbrarem a conquista de valiosos recursos naturais e a prevenção de uma potencial dominação biológica por parte das plantas. [/fill]"
+Sob o comando do Nexus, Ferron se transformou de um paraíso biotecnológico em um mundo de aço e circuitos, regido pela eficiência fria das máquinas. Os Ophidianos, conectados em uma rede consciente, buscam expandir seu domínio e impor sua lógica de ordem e controle. A descoberta de Phyloderra, lar das plantas conscientes Viridanos, representa um desafio a essa visão. Os Ophidianos veem a natureza caótica e parasitária dos Viridanos como uma ameaça à sua expansão e à estabilidade de sua rede, além de vislumbrarem a conquista de valiosos recursos naturais e a prevenção de uma potencial dominação biológica por parte das plantas. [/fill]"
 scroll_active = false
-
-[node name="ArteLider" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 278.0
-offset_top = -27.5
-offset_right = 678.0
-offset_bottom = 27.5
-grow_vertical = 2
-theme_override_font_sizes/font_size = 40
-text = "ARTE DO LIDER AQUI"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -92,21 +103,30 @@ offset_top = -100.0
 offset_right = 1920.0
 offset_bottom = -37.0
 grow_vertical = 0
-theme = ExtResource("2_j5akx")
+theme = ExtResource("4_i8i07")
 theme_override_constants/separation = 650
 alignment = 1
 
 [node name="ant_button" type="Button" parent="HBoxContainer" groups=["buttons_ophidianos"]]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_colors/font_hover_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.384314, 0.807843, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Anterior"
 
 [node name="jogar_button" type="Button" parent="HBoxContainer" groups=["buttons_ophidianos"]]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_colors/font_hover_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.384314, 0.807843, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Jogar"
 
 [node name="prox_button" type="Button" parent="HBoxContainer" groups=["buttons_ophidianos"]]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_colors/font_hover_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.384314, 0.807843, 1, 1)
 theme_override_font_sizes/font_size = 40
 text = "Próximo"

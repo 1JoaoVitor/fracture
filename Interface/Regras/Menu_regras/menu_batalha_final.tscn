@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvkv5mvuwaku8"]
+[gd_scene load_steps=4 format=3 uid="uid://bvkv5mvuwaku8"]
 
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_8elv6"]
 [ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_batalha_final.gd" id="1_lh0wl"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="3_eklpo"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -62,33 +63,39 @@ theme_override_constants/separation = 25
 
 [node name="Introducao" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_batalhaFinal"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_eklpo")
+theme_override_font_sizes/font_size = 55
 text = "Introdução"
 
 [node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_batalhaFinal"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_eklpo")
+theme_override_font_sizes/font_size = 55
 text = "Tabuleiro
 "
 
 [node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_batalhaFinal"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_eklpo")
+theme_override_font_sizes/font_size = 55
 text = "Tipos de carta"
 
 [node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_batalhaFinal"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Dinâmica"
+theme = ExtResource("3_eklpo")
+theme_override_font_sizes/font_size = 55
+text = "Dinamica"
 
 [node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_batalhaFinal"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_eklpo")
+theme_override_font_sizes/font_size = 55
 text = "Habilidades"
 
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_batalhaFinal"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_eklpo")
+theme_override_font_sizes/font_size = 55
 text = "Sair"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -98,7 +105,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[fill]O tabuleiro possui cinco colunas representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há lugares específicos para os Generais (cartas especiais) que ficam atrás das colunas principais. Dentro do tabuleiro ainda existe a pilha de descarte, a pilha de compras e os cristais que simbolizam as ações disponíveis para o jogador. Aqui temos um exemplo: 
-
-[center][img]res://Imagens/Tabuleiro_fracture.png[/img][/center][/fill]"
+text = "
+[fill]Após o baralho de compras acabar o jogador que comprou a última carta faz seu último turno e passa para o adversário. O turno do adversário será o último turno do jogo. Com ele finalizado as somas das colunas são comparadas e aquele que tiver mais batalhas vencidas será o grande vencedor.[/fill]"
 tab_size = 24

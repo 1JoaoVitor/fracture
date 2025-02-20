@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brh1kqhcpx10g"]
+[gd_scene load_steps=4 format=3 uid="uid://brh1kqhcpx10g"]
 
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_0jmcu"]
 [ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_tipos_carta_regras.gd" id="1_qcn2k"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="3_3ljh7"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -63,32 +64,32 @@ theme_override_constants/separation = 25
 [node name="Introducao" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regra_tipoCarta"]]
 custom_minimum_size = Vector2(346, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_3ljh7")
 text = "Introdução"
 
 [node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regra_tipoCarta"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_3ljh7")
 text = "Tabuleiro"
 
 [node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regra_tipoCarta"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_3ljh7")
 text = "Dinâmica"
 
 [node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regra_tipoCarta"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_3ljh7")
 text = "Habilidades"
 
 [node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regra_tipoCarta"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_3ljh7")
 text = "Batalha Final"
 
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regra_tipoCarta"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_3ljh7")
 text = "Sair"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -101,12 +102,12 @@ bbcode_enabled = true
 text = "
 [fill]As cartas são divididas em algumas categorias, tanto de poder e habilidades quanto de funções que possuem dentro do jogo. Elas são separadas em:  [/fill]   
 
-• Cartas Âncoras: Soldado principal da coluna.
-• Cartas de Reforço: Soldados adicionais. 
 • Líderes: Representantes de cada raça, cartas especiais com habilidades fortes de uso único.
 • Generais: Cartas com habilidades ativadas imediatamente ao serem jogadas.
-• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas. São divididos em:
-      ▪ Baixos (2-4)
-      ▪ Médios (5-7)
-      ▪ Altos (8-10)"
+• Soldados: Cartas numeradas de 2 a 10 que participam das batalhas. Sendo divididos em:
+      ▪ Baixos  (2, 3, 4)
+      ▪ Médios  (5, 6, 7)
+      ▪ Altos  (8, 9, 10)
+• Cartas Âncoras: Soldado principal da coluna.
+• Cartas de Reforço: Soldados adicionais. "
 tab_size = 24

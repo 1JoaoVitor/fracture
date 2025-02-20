@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjuishpqsawbc"]
+[gd_scene load_steps=4 format=3 uid="uid://cjuishpqsawbc"]
 
 [ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_habilidades_cartas.gd" id="1_deisd"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_j05uj"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="3_4k7ss"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -63,32 +64,32 @@ theme_override_constants/separation = 25
 
 [node name="Introducao" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_habilidades"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_4k7ss")
 text = "Introdução"
 
 [node name="Tabuleiro" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_habilidades"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_4k7ss")
 text = "Tabuleiro"
 
 [node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_habilidades"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_4k7ss")
 text = "Tipos de carta"
 
 [node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_habilidades"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_4k7ss")
 text = "Dinâmica"
 
 [node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_habilidades"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_4k7ss")
 text = "Batalha Final"
 
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_habilidades"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_4k7ss")
 text = "Sair"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -100,18 +101,18 @@ theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "
-Algumas cartas possuem habilidades que aumentam a diversidade de jogadas e estratégia.
+[fill]As cartas dos Líderes e dos Generais possuem habilidades especiais. Enquanto os Líderes são escolhidos juntos da raça, existem quatro Generais únicos de cores diferentes, que devem ser comprados diretamente do baralho para serem jogados. As habilidades são: [/fill]
 
 [b]Habilidades dos Líderes[/b]
 [fill]
-• Ophidianos: Você olha a pilha de descartes e escolhe cartas para jogar automaticamente. Você pode escolher entre as ppções: Duas baixas, uma média ou uma alta. Em caso de escolha de uma carta valor 2 pode-se usar \"Sintonizar Tropas\" normalmente como se fosse uma carta da mão.[/fill]
+• O Glitch (Ophidianos): Você olha a pilha de descartes e escolhe cartas para jogar automaticamente. Você pode escolher entre as ppções: Duas baixas, uma média ou uma alta. Em caso de escolha de uma carta valor 2 pode-se usar \"Sintonizar Tropas\" normalmente como se fosse uma carta da mão.[/fill]
 
-•   Viridanos: Durante este turno, todos os seus slots são coringa e todos os seus reforços são adicionais.
+• O Parasita (Viridanos): Durante este turno, todos os seus slots são coringa e todos os seus reforços são adicionais.
 
 [b]Habilidades dos Generais[/b]
 
 • General Dourado: Vale um ponto na Coluna Dourado. Olhe as 3 primeiras cartas do deck e escolha uma.
 • General Jade: Vale um ponto na ColunaJade. Move uma carta baixa sua para outro slot (pode trocar cartas).
 • General Safira: Vale um ponto na Coluna Safira. Troca uma carta de reforço sua com a do adversário.
-• General Carmim: Vale um ponto na Coluna Carmim. Olhe o baralho de descarte e compre uma carta."
+• General Rubi: Vale um ponto na Coluna Carmim. Olhe o baralho de descarte e compre uma carta."
 tab_size = 24

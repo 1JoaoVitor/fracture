@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dftkjw5mnby8e"]
+[gd_scene load_steps=4 format=3 uid="uid://dftkjw5mnby8e"]
 
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_g0fo8"]
 [ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_tabuleiro_regras.gd" id="1_ri81c"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="3_nf0sh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -62,32 +63,32 @@ theme_override_constants/separation = 25
 
 [node name="Introducao" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_nf0sh")
 text = "Introdução"
 
 [node name="Tipo_carta" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_nf0sh")
 text = "Tipos de carta"
 
 [node name="Dinamica_jogo" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_nf0sh")
 text = "Dinâmica"
 
 [node name="Habilidades" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_nf0sh")
 text = "Habilidades"
 
 [node name="batalha_final" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_nf0sh")
 text = "Batalha Final"
 
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" groups=["botoes_menu_regras_tabuleiro"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("3_nf0sh")
 text = "Sair"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -98,8 +99,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "
-[fill]O tabuleiro possui cinco colunas representando diferentes cores: Dourado, Jade, Cinza claro, Safira e Carmim. Além disso, há lugares específicos para os Generais (cartas especiais) que ficam atrás das colunas principais. Dentro do tabuleiro ainda existe a pilha de descarte, a pilha de compras e os cristais que simbolizam as ações disponíveis para o jogador. Aqui temos um exemplo: 
+[fill]O tabuleiro possui cinco colunas representando diferentes cores: Ouro, Jade, Quartzo, Safira e Rubi. Cada coluna possui quatro áreas para as cartas serem jogadas, sendo as duas mais próximas do centro áreas dos Soldados e as duas mais no extremo áreas dos Generais (cartas especiais). Dentro do tabuleiro ainda existe a pilha de descarte, a pilha de compras, temporizador, somadores, que representam as diferenças de pontos, e os cristais, que simbolizam as ações disponíveis para o jogador. Aqui temos um exemplo: 
 
-[center][img]res://Imagens/Tabuleiro_fracture.png[/img][/center][/fill]"
-scroll_active = false
+[center][img=1180x700]res://Imagens/Tabuleiro_fracture.png[/img][/center][/fill]"
 tab_size = 24

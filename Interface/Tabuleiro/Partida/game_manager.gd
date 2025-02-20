@@ -88,7 +88,9 @@ func alterar_turno():
 func return_card_to_player(card: CardUI):
 	self.turn.hand.card_slot.position_cards()
 
-
+func get_local_player():
+	var nickname = MultiplayerManager.client.get_local_player_nickname()
+	return self.players[0] if self.players[0].nickname == nickname else self.player[1]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

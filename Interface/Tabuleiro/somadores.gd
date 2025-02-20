@@ -8,7 +8,7 @@ signal sum_value_changed
 @export var textura_verde: Texture2D
 @export var textura_vermelha: Texture2D
 
-var pontuacao := 2
+var pontuacao := 0
 
 func _ready():
 	pontuacao_label.text = str(pontuacao)

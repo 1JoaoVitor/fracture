@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://crc4yak5ndpg1"]
+
+[ext_resource type="Script" path="res://Interface/Configuracao/menu_configuracao.gd" id="1_40fml"]
+[ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="2_7lujx"]
+[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="3_jlfwe"]
+
+[node name="MenuConfiguracao" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_40fml")
+
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color(0.20871, 0.20871, 0.20871, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7lujx")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Volumes" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(760, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Volume som de fundo"
+fit_content = true
+
+[node name="ControleVolume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(800, 100)
+layout_mode = 2
+min_value = -30.0
+max_value = 20.0
+
+[node name="Volumes2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 70
+text = "Volumes dos botões"
+
+[node name="ControleVolume2" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -30.0
+max_value = 20.0
+
+[node name="sair_button" type="Button" parent="." groups=["button_config"]]
+custom_minimum_size = Vector2(150, 80)
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 185.0
+offset_bottom = 115.0
+theme = ExtResource("3_jlfwe")
+text = "Sair"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume" to="." method="_on_controle_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume2" to="." method="_on_controle_volume_2_value_changed"]
