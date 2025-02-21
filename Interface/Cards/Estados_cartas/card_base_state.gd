@@ -14,7 +14,8 @@ func enter() -> void:
 	card_ui.pivot_offset = Vector2.ZERO 
 	
 func on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left_mouse_button"):
+	var game_manager = get_tree().get_first_node_in_group("game_manager")
+	if event.is_action_pressed("left_mouse_button") and card_ui in game_manager.get_local_player().hand.card_slot.cards:
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
 		var callback = func(): transition_requested.emit(self, CardState.State.CLICKED)
 		GameEvents.on_card_dragging.emit(self.card_ui, callback)
