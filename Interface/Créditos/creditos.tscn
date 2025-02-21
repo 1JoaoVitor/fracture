@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://chcupi57h2k6r"]
+[gd_scene load_steps=8 format=3 uid="uid://chcupi57h2k6r"]
 
 [ext_resource type="Script" path="res://Interface/Créditos/creditos.gd" id="1_exh52"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="2_s6me8"]
 [ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="3_bv7u2"]
+[ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="4_draql"]
+[ext_resource type="AudioStream" uid="uid://xppry7fxumo6" path="res://Sfx/Tabuleiro/vidroquebrando2.mp3" id="5_xttpw"]
+[ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="6_4iww2"]
+[ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="7_25xe7"]
 
 [node name="Créditos" type="Control"]
 layout_mode = 3
@@ -97,3 +101,48 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_bv7u2")
 text = "Sair"
+
+[node name="botaosom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_draql")
+volume_db = -17.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xttpw")
+volume_db = -15.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4iww2")
+volume_db = -17.0
+bus = &"Botoes menu"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(953, 572)
+amount = 300
+lifetime = 500.0
+preprocess = 303.03
+lifetime_randomness = 0.11
+texture = ExtResource("7_25xe7")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.5
+angular_velocity_min = 2.0
+angular_velocity_max = 5.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+radial_accel_min = 0.03
+radial_accel_max = 0.05
+tangential_accel_min = -0.01
+tangential_accel_max = 0.01
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color = Color(0.568627, 0.831373, 1, 0.0784314)

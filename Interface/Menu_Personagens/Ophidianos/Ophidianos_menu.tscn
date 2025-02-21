@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqhjujpisn6x4"]
+[gd_scene load_steps=9 format=3 uid="uid://bqhjujpisn6x4"]
 
 [ext_resource type="Script" path="res://Interface/Menu_Personagens/Ophidianos/ophidianos_menu.gd" id="1_fr4fu"]
 [ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="2_6jf6v"]
+[ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="2_vy6ha"]
 [ext_resource type="Texture2D" uid="uid://64bppejne62j" path="res://Imagens/Tabuleiro/Ophidianos/LiderOphidiano.png" id="3_dusji"]
+[ext_resource type="AudioStream" uid="uid://xppry7fxumo6" path="res://Sfx/Tabuleiro/vidroquebrando2.mp3" id="3_ss8lo"]
+[ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="4_gfiu1"]
 [ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="4_i8i07"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rivfx"]
@@ -18,6 +21,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fr4fu")
+
+[node name="botaosom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vy6ha")
+volume_db = -17.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ss8lo")
+volume_db = -15.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gfiu1")
+volume_db = -17.0
+bus = &"Botoes menu"
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.601222, 0.601224, 0.601222, 1)

@@ -10,11 +10,14 @@ func _ready() -> void:
 		_button.pressed.connect(_on_button_pressed.bind(_button))
 		
 func _on_button_pressed(_button : Button) -> void:
+	var sound_player = [$botaosom, $botaosom2, $botaosom3].pick_random()  # Escolhe aleatoriamente um dos sons
+	sound_player.play()
+	await sound_player.finished
 	match _button.name:
+		
 		"jogar_button":
 			GerenciadorPersonagem.set_personagem("ophidiano") 
 			get_tree().change_scene_to_file("res://Interface/Tabuleiro/level.tscn")
-			
 		"ant_button": 
 			get_tree().change_scene_to_file("res://Interface/Menu_Personagens/Viridianos/Viridianos_menu.tscn")
 		"prox_button": 
