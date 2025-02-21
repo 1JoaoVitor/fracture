@@ -101,13 +101,7 @@ theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "
-[fill]As cartas dos Líderes e dos Generais possuem habilidades especiais. Enquanto os Líderes são escolhidos juntos da raça, existem quatro Generais únicos de cores diferentes, que devem ser comprados diretamente do baralho para serem jogados. As habilidades são: [/fill]
-
-[b]Habilidades dos Líderes[/b]
-[fill]
-• O Glitch (Ophidianos): Você olha a pilha de descartes e escolhe cartas para jogar automaticamente. Você pode escolher entre as ppções: Duas baixas, uma média ou uma alta. Em caso de escolha de uma carta valor 2 pode-se usar \"Sintonizar Tropas\" normalmente como se fosse uma carta da mão.[/fill]
-
-• O Parasita (Viridanos): Durante este turno, todos os seus slots são coringa e todos os seus reforços são adicionais.
+[fill]As cartas dos Generais possuem habilidades especiais, além de somarem um ponto a respectiva coluna. Existem quatro Generais únicos de cores diferentes, que devem ser comprados diretamente do baralho para serem jogados. As habilidades são: [/fill]
 
 [b]Habilidades dos Generais[/b]
 
