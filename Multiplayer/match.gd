@@ -43,6 +43,12 @@ func request_players():
 		self.players[0].to_dict(),
 		self.players[1].to_dict(),
 	])
+	
+@rpc("any_peer")
+func request_end_turn():
+	var spid = multiplayer.get_remote_sender_id()
+	var tpid = players[1].id if players[0].id == spid else players[0].id
+	MultiplayerManager.client.call_gm.rpc_id(tpid, "end_turn", [false])
 
 @rpc("authority")
 func receive_players(players_dict):

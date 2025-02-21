@@ -86,7 +86,7 @@ func create_cards(card_types_and_powers):
 	
 
 # Alterna turnos
-func end_turn():
+func end_turn(emit_event=true):
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
 	print("Turno do jogador: " + turn.nickname)
 	self.turn.reset_mana() 
@@ -94,6 +94,8 @@ func end_turn():
 	self.turn.reset_mana()
 	GameEvents.on_mana_reset.emit()
 	self.turn.set_timer()
+	if emit_event:
+		MultiplayerManager.client.current_match.request_end_turn.rpc_id(1)
 
 func return_card_to_player(card: CardUI):
 	self.turn.hand.card_slot.position_cards()
