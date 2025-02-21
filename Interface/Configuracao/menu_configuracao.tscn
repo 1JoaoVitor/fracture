@@ -183,7 +183,7 @@ offset_bottom = 115.0
 theme = ExtResource("3_jlfwe")
 text = "Sair"
 
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume" to="." method="_on_controle_volume_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume" to="." method="_on_controle_volume_value_changed_start"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume" to="." method="_on_controle_volume_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume2" to="." method="_on_controle_volume_2_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume3" to="." method="_on_controle_volume_3_value_changed"]
