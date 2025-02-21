@@ -37,8 +37,9 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		
 	# Garantir que o jogador só pode jogar nos seus próprios slots
 	var current_player = self.gm.turn  
-	var allowed_slots = []
-	if current_player == self.gm.get_local_player():  # Player 1
+	var allowed_slots
+	if current_player.id == self.gm.get_local_player().id:  # Player 1
+		print("VOCE COME")
 		allowed_slots = ["Soldado_Down", "General_Down"]
 	else:  # Player 2
 		allowed_slots = ["Soldado_Top", "General_Top"]

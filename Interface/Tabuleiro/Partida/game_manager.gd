@@ -99,7 +99,6 @@ func return_card_to_player(card: CardUI):
 	self.turn.hand.card_slot.position_cards()
 
 func get_local_player():
-	var nickname = MultiplayerManager.client.get_local_player_nickname()
 	return self.players[0] if self.players[0].id == multiplayer.get_unique_id() else self.players[1]
 
 

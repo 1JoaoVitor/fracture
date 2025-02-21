@@ -14,8 +14,9 @@ var time_pass : int
 var timer_set : bool = false
 var gm: GameManager
 
-func _init(nickname: String, hand: Node) -> void:
+func _init(nickname: String, id:int, hand: Node) -> void:
 	self.nickname = nickname
+	self.id = id
 	self.hand = hand
 	self.big_mana_player = 1
 	self.small_mana_player = 2
@@ -23,7 +24,7 @@ func _init(nickname: String, hand: Node) -> void:
 	self.time_left = 0
 
 static func create_from_player(player: Player, hand: Node):
-	return MatchPlayer.new(player.nickname, hand)
+	return MatchPlayer.new(player.nickname, player.id, hand)
 
 func try_use_mana(big_mana: int, small_mana: int):
 	if self.big_mana_player >= big_mana and self.small_mana_player >= small_mana:
