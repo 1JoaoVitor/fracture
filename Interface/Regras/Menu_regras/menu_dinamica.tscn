@@ -101,13 +101,10 @@ bbcode_enabled = true
 text = "
 [fill]O jogo começa com cada jogador recebendo cinco cartas do baralho e a cada turno comprando uma carta adicional. Ambos os jogadores dividirão o mesmo baralho e portanto as cartas são limitadas e conhecidas pelos dois. Após a compra inicial a partida se dará por troca de turnos com cada turno tendo um tempo limite de dois minutos que será simbolizado na direita do tabuleiro. Durante o seu turno você poderá usar Mana, a qual é dividida em dois tipos de cristais, o primeiro um cristal maior representando a ação principal, e o segundo tipo dois cristais menores que representam as ações adicionais. Com isso a cada turno você terá uma ação principal e duas adicionais, podendo realizar ações como:  [/fill]
 
-  ▪ Ativar habilidades de Líderes (ação adicional): Ativar a habilidade de um Líder em jogo (uma vez por partida).
   ▪ Usar Generais (ação adicional): Usar um General da sua mão.
   ▪ Posicionamento (ação principal): Posicionar a primeira carta (Carta Âncora) em uma região.
-  ▪ Substituição (ação principal/adicional): Trocar uma carta na região por outra da mão.  Essa ação depende de qual carta será usada para determinar qual será seu custo (entre principal ou adicional), a carta originalmente na região é descartada.
   ▪ Compra Adicional (duas ações adicionais): Descartar uma carta para comprar outra.
   ▪ Mudança de ação (Mecânica): Trocar uma ação principal por uma adicional. Essa ação não custa Mana.
-  ▪ Sintonizar Tropas (Mecânica): Combinar duas cartas de valor 2 de cores diferentes para formar uma carta com a soma dos valores. Essa ação não custa Mana.
   ▪ Passar a vez: Passar o turno para o oponente ou finalizar seu turno.
 
 [fill]Ação de Reforço: Você pode aprimorar o poder de uma coluna com uma Carta Âncora podendo fazer diversas e fortes combinações como: Alta+Baixa, Média+Média, Média+Baixa+Baixa, Baixa+Baixa+Baixa. Essa ação depende de qual carta será usada para determinar qual será seu custo (entre principal ou adicional).[/fill]
