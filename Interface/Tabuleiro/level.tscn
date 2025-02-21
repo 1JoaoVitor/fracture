@@ -34,7 +34,6 @@ cena_inicial = "res://Interface/Menu/tela_menu.tscn"
 stream = ExtResource("15_n5gx7")
 volume_db = -5.0
 autoplay = true
-bus = &"somjogo"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -251,5 +250,5 @@ offset_bottom = -590.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
-[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]

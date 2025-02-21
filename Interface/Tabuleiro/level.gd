@@ -23,6 +23,7 @@ class_name LevelMenu
 func _ready():
 	self.add_child(self.game_manager)
 	game_manager.add_to_group("game_manager")
+	game_manager._notify_gm_is_ready()
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
 	
 	#var personagem_escolhido = GerenciadorPersonagem.get_personagem()  mudar para poder comportar 2 players identicos

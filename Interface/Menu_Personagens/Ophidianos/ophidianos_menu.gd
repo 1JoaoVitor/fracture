@@ -16,7 +16,8 @@ func _on_button_pressed(_button : Button) -> void:
 	match _button.name:
 		
 		"jogar_button":
-			GerenciadorPersonagem.set_personagem("ophidiano") 
+			GerenciadorPersonagem.set_personagem("ophidiano")
+			await MultiplayerManager.client.wait_for_match()
 			get_tree().change_scene_to_file("res://Interface/Tabuleiro/level.tscn")
 		"ant_button": 
 			get_tree().change_scene_to_file("res://Interface/Menu_Personagens/Viridianos/Viridianos_menu.tscn")
