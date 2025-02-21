@@ -37,12 +37,10 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		
 	# Garantir que o jogador só pode jogar nos seus próprios slots
 	var current_player = self.gm.turn  
-	var allowed_slots
+	var allowed_slots = []
 	if current_player.id == self.gm.get_local_player().id:  # Player 1
 		print("VOCE COME")
 		allowed_slots = ["Soldado_Down", "General_Down"]
-	else:  # Player 2
-		allowed_slots = ["Soldado_Top", "General_Top"]
 	
 	var is_valid_combination = false
 	var custo_big_mana = 0
@@ -170,15 +168,14 @@ func replace_card(new_card: CardUI, slot: CardSlotSystem, old_card: CardUI):
 		#callback.call() 
 		
 func buy_extra_card(callback: Callable):
-	#if gm.turn == gm.get_local_player():
+	if gm.turn == gm.get_local_player():
 		if !self.gm.turn.try_use_mana(0, 2):
 			print("No mana")
 		else:			
 			GameEvents.on_mana_spend.emit(self.gm.turn, self.gm.turn.small_mana_player, self.gm.turn.big_mana_player > 0)
 			callback.call() 
-
-	#else:
-		#print("Não é você")
+	else:
+		print("Não é você")
 
 func change_action(): 
 	if !self.gm.turn.change_mana():
@@ -216,8 +213,7 @@ func end_turn(callback: Callable):
 		print("Último turno encerrado, fim do jogo!")
 		GameEvents.on_game_over.emit()
 	else:
-		callback.call()
-	#if gm.turn == gm.get_local_player():
-		#callback.call()
-	#else:
-		#print("Não é seu turno!")
+		if gm.turn == gm.get_local_player():
+			callback.call()
+		else:
+			print("Não é seu turno!")
