@@ -1,10 +1,10 @@
 extends Player
 class_name MatchPlayer
 
-signal on_mana_spend(big_mana, small_mana)
-signal on_mana_reset()
+
 signal set_time()
 signal use_time()
+
 
 var big_mana_player : int
 var small_mana_player : int
@@ -29,11 +29,17 @@ func try_use_mana(big_mana: int, small_mana: int):
 	if self.big_mana_player >= big_mana and self.small_mana_player >= small_mana:
 		self.big_mana_player -= big_mana
 		self.small_mana_player -= small_mana
-		on_mana_spend.emit(self.big_mana_player, self.small_mana_player)
-		on_mana_spend.emit(self.big_mana_player, self.small_mana_player)
 		return true
 	else: #aprimorar essa parte
-		return false
+		if big_mana == 0 and self.big_mana_player and self.small_mana_player < small_mana:
+			if self.small_mana_player + 1 >= small_mana:
+				self.big_mana_player = 0
+				self.small_mana_player -= small_mana
+				return true
+			else:
+				return false
+		else:
+			return false
 
 func set_game_manager(game_manager: GameManager):
 	self.gm = game_manager
@@ -42,7 +48,7 @@ func set_game_manager(game_manager: GameManager):
 func reset_mana():
 	self.big_mana_player = 1
 	self.small_mana_player  = 2
-	on_mana_reset.emit()
+	
 	
 func change_mana():
 	if self.try_use_mana(1, 0):
@@ -67,7 +73,10 @@ func buy_card(buy_deck):
 		print("Erro: sem cartas no baralho!")
 		return false
 
-func try_buy_card(buy_deck: Node):
+func try_buy_card(buy_deck: Node, condicao: bool = false):
+	if condicao:
+		buy_card(buy_deck)
+		return 
 	GameEvents.on_buy_button_pressed.emit(self.buy_card.bind(buy_deck))
 
 func try_end_turn():

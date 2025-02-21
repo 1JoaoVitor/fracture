@@ -12,6 +12,8 @@ class_name LevelMenu
 @onready var discard_deck = $BattleUI/DiscardDeck
 @onready var hand = $BattleUI/Hand
 @onready var opposite_hand = $BattleUI/OppositeHand
+@onready var mana_player_1: VBoxContainer = $BattleUI/ManaPlayer1
+@onready var mana_player_2: VBoxContainer = $BattleUI/ManaPlayer2
 
 @onready var game_manager: GameManager = GameManager.new(
 	self.buy_deck,
@@ -24,6 +26,9 @@ func _ready():
 	self.add_child(self.game_manager)
 	game_manager.add_to_group("game_manager")
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
+	GameEvents.on_mana_spend.connect(update_mana_visual)
+	GameEvents.on_mana_reset.connect(reset_mana_visual)
+	
 	
 	#var personagem_escolhido = GerenciadorPersonagem.get_personagem()  mudar para poder comportar 2 players identicos
 	
@@ -64,3 +69,26 @@ func _on_turno_fim_pressed() -> void:
 
 func _on_menu_pressed() -> void:
 	print('menu')
+	
+	
+func update_mana_visual(player, small_mana_count, big_mana_available):
+	var mana_container
+	if player == game_manager.get_local_player():
+		mana_container = mana_player_1
+	else:
+		mana_container = mana_player_2
+	# Atualiza as manas pequenas (2 manas no VBox)
+	
+	for i in range(2):  
+		var mana_small = mana_container.get_child(i)
+		print("Atualizando mana pequena", i, "Visível?", i < small_mana_count)
+		mana_small.visible = i < small_mana_count  
+		
+	# Atualiza a mana grande (última mana do VBox)
+	var mana_big = mana_container.get_child(mana_container.get_child_count() - 1)
+	print("Atualizando mana grande. Visível?", big_mana_available)
+	mana_big.visible = big_mana_available
+
+func reset_mana_visual():
+	update_mana_visual(game_manager.players[0], 2, true)
+	update_mana_visual(game_manager.players[1], 2, true)
