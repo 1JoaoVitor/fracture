@@ -44,6 +44,8 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		allowed_slots = ["Soldado_Top", "General_Top"]
 	
 	var is_valid_combination = false
+	var custo_big_mana = 0
+	var custo_small_mana = 0
 	
 	if card.type == "Soldado": 
 		var existing_cards = slot.cards  # Pega as cartas já no slot
@@ -61,7 +63,8 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 				is_valid_combination = true
 			elif current_ranks == ["Alto", "Baixo"]:
 				is_valid_combination = true
-		
+			custo_big_mana = 1
+			
 		elif card.rank == "Medio":
 			if current_ranks == ["Medio"]:
 				is_valid_combination = true
@@ -69,8 +72,8 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 				is_valid_combination = true
 			elif current_ranks == ["Baixo", "Medio"]:
 				is_valid_combination = true
+			custo_big_mana = 1
 			
-		
 		elif card.rank == "Baixo":
 			if current_ranks == ["Baixo"]:
 				is_valid_combination = true
@@ -78,6 +81,7 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 				is_valid_combination = true
 			elif current_ranks == ["Baixo", "Medio"]:
 				is_valid_combination = true
+			custo_small_mana = 0
 	else:
 		is_valid_combination = true
 		
@@ -94,28 +98,22 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		card in self.gm.turn.hand.card_slot.cards,
 		type_slot in allowed_slots,
 		is_valid_combination,
-		#self.gm.turn.try_use_mana(0, 1),
+		self.gm.turn.try_use_mana(custo_big_mana, custo_small_mana),
 	]
 	# Imprimir as regras
 	
 	if rules.reduce(func(a, b): return a and b):
 		if card.type == "Soldado" and (slot.slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
 			var power = int(card.get_node("Power").text)
-			var i
-			if card.type_color == "Dourado":
-				i = 0
-			elif card.type_color == "Safira":
-				i = 1
-			elif card.type_color == "Quartzo":
-				i = 2
-			elif card.type_color == "Jade":
-				i = 3
-			elif card.type_color == "Rubi":
-				i = 4
 			if current_player == self.gm.get_local_player():
 				slot.slot_node.somador.adicionar_pontos(power)
 			else:
 				slot.slot_node.somador.adicionar_pontos(-power)
+		if card.type == "General" and (slot.slot_node.type_slot in ["General_Top", "General_Down"]):
+				if current_player == self.gm.get_local_player():
+					slot.slot_node.somador.adicionar_pontos(1)
+				else:
+					slot.slot_node.somador.adicionar_pontos(-1)
 		callback.call()
 	card.parent_slot.card_slot.position_cards()
 
