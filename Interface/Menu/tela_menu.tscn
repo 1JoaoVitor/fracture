@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://q26prbnehvdf"]
+[gd_scene load_steps=14 format=3 uid="uid://q26prbnehvdf"]
 
 [ext_resource type="Script" path="res://Interface/Menu/tela_menu.gd" id="1_ft8my"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="2_w605n"]
 [ext_resource type="AudioStream" uid="uid://ll5p6y3h6lbu" path="res://Sfx/Somfundo/somventoloop.mp3" id="2_yq5xy"]
 [ext_resource type="FontFile" uid="uid://3bpd2kpm1dyv" path="res://Fonte/VehicleBreaksDown-Regular.ttf" id="3_h2iml"]
 [ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="3_h61sm"]
+[ext_resource type="AudioStream" uid="uid://xppry7fxumo6" path="res://Sfx/Tabuleiro/vidroquebrando2.mp3" id="4_ebsqv"]
 [ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="4_kvek7"]
 [ext_resource type="Shader" path="res://Interface/Menu/tela_menu.gdshader" id="4_uar5t"]
+[ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="5_8d48o"]
 [ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="8_7f58l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmqe5"]
@@ -34,14 +36,25 @@ script = ExtResource("1_ft8my")
 
 [node name="somfundo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_yq5xy")
-volume_db = -15.0
+volume_db = -25.0
 autoplay = true
 bus = &"Menu"
 
 [node name="botaosom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_h61sm")
-volume_db = -12.181
-pitch_scale = 1.1
+volume_db = -17.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ebsqv")
+volume_db = -15.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8d48o")
+volume_db = -17.0
 bus = &"Botoes menu"
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -163,5 +176,3 @@ theme_override_colors/font_pressed_color = Color(0.286275, 0.501961, 1, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tmxqu")
 text = "Sair"
 flat = true
-
-[connection signal="ready" from="botaosom" to="." method="_on_botaosom_ready"]

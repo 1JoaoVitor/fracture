@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvkv5mvuwaku8"]
+[gd_scene load_steps=7 format=3 uid="uid://bvkv5mvuwaku8"]
 
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_8elv6"]
 [ext_resource type="Script" path="res://Interface/Regras/Menu_regras/menu_batalha_final.gd" id="1_lh0wl"]
 [ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="3_eklpo"]
+[ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="4_v7p5h"]
+[ext_resource type="AudioStream" uid="uid://xppry7fxumo6" path="res://Sfx/Tabuleiro/vidroquebrando2.mp3" id="5_ldv5a"]
+[ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="6_ql4sj"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -108,3 +111,20 @@ bbcode_enabled = true
 text = "
 [fill]Após o baralho de compras acabar o jogador que comprou a última carta faz seu último turno e passa para o adversário. O turno do adversário será o último turno do jogo. Com ele finalizado as somas das colunas são comparadas e aquele que tiver mais batalhas vencidas será o grande vencedor.[/fill]"
 tab_size = 24
+
+[node name="botaosom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_v7p5h")
+volume_db = -15.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ldv5a")
+volume_db = -13.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ql4sj")
+volume_db = -15.0
+bus = &"Botoes menu"
