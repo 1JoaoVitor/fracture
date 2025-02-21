@@ -31,14 +31,6 @@ func get_card_index(card: CardUI):
 func add_card(card: CardUI):
 	if card.parent_slot != null:
 		card.parent_slot.card_slot.remove_card(card)
-	if self.slot_node.has_method("can_place_card"):
-		if not slot_node.can_place_card(card):
-			print("Error: This card cannot be played in this slot")
-			return false
-		else: #pode jogar a carta
-			if card.type == "Soldado" and (slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
-				var power = int(card.get_node("Power").text)
-				slot_node.somador.adicionar_pontos(power)
 	self.cards.append(card)
 	card.parent_slot = self.slot_node
 	self.on_card_in.emit()  # talvez não precise mais, n tenho certeza

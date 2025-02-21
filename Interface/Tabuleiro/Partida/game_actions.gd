@@ -47,6 +47,9 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		#self.gm.turn.try_use_mana(0, 1),
 	]
 	if rules.reduce(func(a, b): return a and b):
+		if card.type == "Soldado" and (slot.slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
+			var power = int(card.get_node("Power").text)
+			slot.slot_node.somador.adicionar_pontos(power)
 		callback.call()
 	card.parent_slot.card_slot.position_cards()
 
