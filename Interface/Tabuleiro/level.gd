@@ -25,6 +25,7 @@ class_name LevelMenu
 func _ready():
 	self.add_child(self.game_manager)
 	game_manager.add_to_group("game_manager")
+	game_manager._notify_gm_is_ready()
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
 	GameEvents.on_mana_spend.connect(update_mana_visual)
 	GameEvents.on_mana_reset.connect(reset_mana_visual)

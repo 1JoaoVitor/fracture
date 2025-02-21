@@ -9,46 +9,48 @@ var discard_deck : Node
 var _game_actions: GameActions
 var _mana_system: ManaSystem
 var somadores_por_coluna = [0, 0, 0, 0, 0]
+var _hand
+var _opposite_hand
 
 func _init(buy_deck: Node, discard_deck: Node, hand: Node, opposite_hand: Node) -> void:
-	_init_players(hand, opposite_hand)
 	self.buy_deck = buy_deck
 	self.discard_deck = discard_deck
-	self.turn = players.pick_random()
 	self._game_actions = GameActions.new(self)
 	self._mana_system = ManaSystem.new(self)
+	self._hand = hand
+	self._opposite_hand = opposite_hand
+
 
 func _ready() -> void:
-	_create_cards()
+	await _init_players(self._hand, self._opposite_hand)
+	self.turn = players[0]
 	GameEvents.on_game_over.connect(end_game)
+
+func _notify_gm_is_ready():
+	while self.players == []:
+		await get_tree().create_timer(0.25).timeout
+	if not self.is_node_ready():
+		await self.ready
+	GameEvents.on_player_ready.emit()
 
 func _init_players(hand: Node, opposite_hand: Node):
 	self.players = []
-	var mp_players = MultiplayerManager.client.get_players()
+	var mp_players = await MultiplayerManager.client.get_players()
 	for mpp in mp_players:
 		var p: MatchPlayer
-		if mpp.nickname == MultiplayerManager.client.get_local_player_nickname():
+		if mpp.id == multiplayer.get_unique_id():
 			p = MatchPlayer.create_from_player(mpp, hand)
+			print("You (%s) entered the match!" % mpp.id)
 		else:
 			p = MatchPlayer.create_from_player(mpp, opposite_hand)
-		print("%s entered the match!" % p.nickname)
+			print("%s entered the match!" % mpp.id)
 		self.players.append(p)
 		p.set_game_manager(self)
 	
 	if players.size() != 2:
 		push_error("Not enough players")
 
-func _create_cards():
-	var card_types_and_powers = []
-	
-	var types = ["Jade", "Safira", "Rubi", "Dourado"]
-	for type in types:
-		for power in range(2, 11): 
-			card_types_and_powers.append([type, power])
-		card_types_and_powers.append([type, "G"])
-			
-	card_types_and_powers.shuffle()
-	
+func create_cards(card_types_and_powers):
 	for i in card_types_and_powers.size():
 		var card = CardUI.new_card()
 		card.type_color = card_types_and_powers[i][0]
@@ -98,7 +100,7 @@ func return_card_to_player(card: CardUI):
 
 func get_local_player():
 	var nickname = MultiplayerManager.client.get_local_player_nickname()
-	return self.players[0] if self.players[0].nickname == nickname else self.players[1]
+	return self.players[0] if self.players[0].id == multiplayer.get_unique_id() else self.players[1]
 
 
 func end_game():

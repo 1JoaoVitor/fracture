@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crc4yak5ndpg1"]
+[gd_scene load_steps=9 format=3 uid="uid://crc4yak5ndpg1"]
 
 [ext_resource type="Script" path="res://Interface/Configuracao/menu_configuracao.gd" id="1_40fml"]
 [ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="2_2os72"]
@@ -7,6 +7,23 @@
 [ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="3_jlfwe"]
 [ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="4_hopgu"]
 [ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="6_0jkyj"]
+
+[sub_resource type="GDScript" id="GDScript_bn6y7"]
+script/source = "extends LineEdit
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.text = MultiplayerManager.client.player.nickname
+	text_changed.connect(change_nickname)
+
+func change_nickname(text):
+	MultiplayerManager.client.player.set_nickname(text)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="MenuConfiguracao" type="Control"]
 layout_mode = 3
@@ -85,6 +102,23 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 alignment = 1
+
+[node name="Nickname" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_jlfwe")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Nickname"
+fit_content = true
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+max_length = 20
+script = SubResource("GDScript_bn6y7")
 
 [node name="Volumes" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(700, 0)
