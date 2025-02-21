@@ -67,7 +67,8 @@ func buy_card(buy_deck):
 	var new_card = buy_deck.card_slot.cards[0] 
 	if new_card:
 		self.hand.card_slot.add_card(new_card)
-		new_card.set_face_card(true)
+		if self == gm.get_local_player():
+			self.hand.card_face_up(new_card)
 		print(self.nickname + " comprou a carta " + new_card.name)
 		return true
 	else:
