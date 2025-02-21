@@ -8,6 +8,7 @@ var buy_deck : Node
 var discard_deck : Node
 var _game_actions: GameActions
 var _mana_system: ManaSystem
+var somadores_por_coluna = [0, 0, 0, 0, 0]
 
 func _init(buy_deck: Node, discard_deck: Node, hand: Node, opposite_hand: Node) -> void:
 	_init_players(hand, opposite_hand)
@@ -100,10 +101,21 @@ func get_local_player():
 
 
 func end_game():
+	self.guardar_valores_somadores()
 	print("Fim do jogo!")
 	#GameData.player_scores = game_manager.get_player_scores() #pegar dados dos somadores
 	get_tree().change_scene_to_file("res://Interface/Final/end_scene.tscn")
 
+func guardar_valores_somadores():
+	var valores = []
+	for coluna in get_tree().get_nodes_in_group("colunas"):
+		var somador = coluna.get_node("Somador")
+		if somador:
+			valores.append(int(somador.pontuacao_label.text))
+		else:
+			valores.append(0)
+			
+	Valores.guardar_valores_somadores(valores)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

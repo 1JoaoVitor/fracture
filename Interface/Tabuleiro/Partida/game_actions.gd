@@ -46,19 +46,15 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	var is_valid_combination = false
 	
 	if card.type == "Soldado": 
-		# Verificar as cartas já no slot
 		var existing_cards = slot.cards  # Pega as cartas já no slot
-		var current_ranks = []  # Criamos um array para armazenar os ranks
-		print(existing_cards)
+		var current_ranks = [] 
+		
 		for c in existing_cards:
 			current_ranks.append(c.rank)  
-
+			
 		current_ranks.append(card.rank)  
-
 		
 		current_ranks.sort()
-
-		
 		
 		if card.rank == "Alto":
 			if current_ranks == ["Alto"]:
@@ -82,25 +78,15 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 				is_valid_combination = true
 			elif current_ranks == ["Baixo", "Medio"]:
 				is_valid_combination = true
-			
-
-		
-		print(is_valid_combination)
-		print(current_ranks)
-		
 	else:
 		is_valid_combination = true
+		
 	# menos performance, mas evita o inferno de if-else's
-	
 	var type_rules = [
 		card.type == "Soldado" and type_slot in ["Soldado_Top", "Soldado_Down"],
 		card.type == "General" and type_slot in ["General_Top", "General_Down"],
 		card.type == "Lider" and type_slot == "Lider",
 	]
-	print(card.type)
-	print(type_slot)
-	for rule in type_rules:
-		print("Type Rule: ", rule)
 		
 	var rules = [
 		(card.type_color == column_type or column_type == "Quartzo"),
@@ -111,13 +97,22 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		#self.gm.turn.try_use_mana(0, 1),
 	]
 	# Imprimir as regras
-	for i in range(rules.size()):
-		print("Rule ", i, ": ", rules[i])
 	
 	if rules.reduce(func(a, b): return a and b):
 		if card.type == "Soldado" and (slot.slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
 			var power = int(card.get_node("Power").text)
-			if current_player == self.gm.players[0]:
+			var i
+			if card.type_color == "Dourado":
+				i = 0
+			elif card.type_color == "Safira":
+				i = 1
+			elif card.type_color == "Quartzo":
+				i = 2
+			elif card.type_color == "Jade":
+				i = 3
+			elif card.type_color == "Rubi":
+				i = 4
+			if current_player == self.gm.get_local_player():
 				slot.slot_node.somador.adicionar_pontos(power)
 			else:
 				slot.slot_node.somador.adicionar_pontos(-power)

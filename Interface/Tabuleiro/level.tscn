@@ -144,26 +144,26 @@ offset_top = 23.56
 offset_right = 0.680054
 offset_bottom = 23.0
 
-[node name="Coluna1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna1" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(363, 543)
 card_texture = ExtResource("8_bmuun")
 type_column = "Dourado"
 
-[node name="Coluna2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna2" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(650, 543)
 card_texture = ExtResource("11_e3o6i")
 type_column = "Safira"
 
-[node name="Coluna3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna3" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(923, 543)
 card_texture = ExtResource("12_av4i3")
 
-[node name="Coluna4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna4" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(1196, 543)
 card_texture = ExtResource("10_13hwn")
 type_column = "Jade"
 
-[node name="Coluna5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna5" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(1469, 543)
 card_texture = ExtResource("10_cbsax")
 type_column = "Rubi"
@@ -251,5 +251,5 @@ offset_bottom = -590.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]
-[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_turno_fim_pressed"]
+[connection signal="pressed" from="botoes/MarginContainer3/VBoxContainer/Menu" to="." method="_on_menu_pressed"]

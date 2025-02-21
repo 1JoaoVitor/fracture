@@ -28,10 +28,10 @@ func adicionar_pontos(pontos: int) -> void:
 func atualizar_pontuacao() -> void:
 	pontuacao_label.text = str(pontuacao)
 	sum_value_changed.emit()
-	_atualizar_cor_circulo()
+	_atualizar_cor_circulo(self.pontuacao)
 
-func _atualizar_cor_circulo() -> void:
-	if pontuacao >= 0: # Adicionar uma opção de igual a zero depois
+func _atualizar_cor_circulo(pontos) -> void:
+	if pontos >= 0: # Adicionar uma opção de igual a zero depois
 		_trocar_textura(textura_verde)
 	else: 
 		_trocar_textura(textura_vermelha)
