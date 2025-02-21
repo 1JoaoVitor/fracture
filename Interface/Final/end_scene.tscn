@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_6w336")
 
-[node name="Resultado" type="Label" parent="."]
+[node name="Resultado" type="Label" parent="." groups=["resultado"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
