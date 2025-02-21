@@ -16,3 +16,6 @@ func get_card_target_position(card: CardUI):
 
 func card_face_up(card):
 	card.set_face_card(true)
+
+func card_face_down(card):
+	card.set_face_card(false)
