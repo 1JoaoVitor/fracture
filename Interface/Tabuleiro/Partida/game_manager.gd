@@ -19,6 +19,7 @@ func _init(buy_deck: Node, discard_deck: Node, hand: Node, opposite_hand: Node) 
 
 func _ready() -> void:
 	_create_cards()
+	GameEvents.on_game_over.connect(end_game)
 
 func _init_players(hand: Node, opposite_hand: Node):
 	self.players = []
@@ -96,6 +97,13 @@ func return_card_to_player(card: CardUI):
 func get_local_player():
 	var nickname = MultiplayerManager.client.get_local_player_nickname()
 	return self.players[0] if self.players[0].nickname == nickname else self.players[1]
+
+
+func end_game():
+	print("Fim do jogo!")
+	#GameData.player_scores = game_manager.get_player_scores() #pegar dados dos somadores
+	get_tree().change_scene_to_file("res://Interface/Final/end_scene.tscn")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

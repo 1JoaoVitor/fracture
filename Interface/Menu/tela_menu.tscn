@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="3_h61sm"]
 [ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="4_kvek7"]
 [ext_resource type="Shader" path="res://Interface/Menu/tela_menu.gdshader" id="4_uar5t"]
-[ext_resource type="Theme" path="res://tema_botao_regras.tres" id="8_7f58l"]
+[ext_resource type="Theme" uid="uid://diciublvqerpy" path="res://tema_botao_regras.tres" id="8_7f58l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fmqe5"]
 shader = ExtResource("4_uar5t")
