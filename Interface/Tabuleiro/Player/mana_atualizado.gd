@@ -1,6 +1,8 @@
 extends Control
 class_name ManaSystem
 
+signal mana_updated(player, small_mana, big_mana)
+
 var gm : GameManager
 var is_scaling_down = false
 var is_scaling_up = false

@@ -90,8 +90,9 @@ func end_turn():
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
 	print("Turno do jogador: " + turn.nickname)
 	self.turn.reset_mana() 
-	self.turn.try_buy_card(self.buy_deck) #buy card automatic
+	self.turn.try_buy_card(self.buy_deck, true) #buy card automatic
 	self.turn.reset_mana()
+	GameEvents.on_mana_reset.emit()
 	self.turn.set_timer()
 
 func return_card_to_player(card: CardUI):
