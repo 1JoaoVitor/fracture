@@ -72,18 +72,32 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 				is_valid_combination = true
 			elif current_ranks == ["Baixo", "Medio"]:
 				is_valid_combination = true
+			elif current_ranks == ["Baixo", "Baixo","Medio"]:
+				is_valid_combination = true
 			custo_big_mana = 1
 			
 		elif card.rank == "Baixo":
 			if current_ranks == ["Baixo"]:
 				is_valid_combination = true
+				custo_small_mana = 1
 			elif current_ranks == ["Alto", "Baixo"]:
 				is_valid_combination = true
+				custo_big_mana = 1
 			elif current_ranks == ["Baixo", "Medio"]:
 				is_valid_combination = true
-			custo_small_mana = 0
+				custo_small_mana = 1
+			elif current_ranks == ["Baixo", "Baixo"]:
+				is_valid_combination = true
+				custo_small_mana = 1
+			elif current_ranks == ["Baixo", "Baixo","Medio"]:
+				is_valid_combination = true
+				custo_small_mana = 1
+			
 	else:
+		custo_small_mana = 1
 		is_valid_combination = true
+	print("Custo big mana: ", custo_big_mana)
+	print("Custo small mana: ", custo_small_mana)
 		
 	# menos performance, mas evita o inferno de if-else's
 	var type_rules = [
@@ -91,18 +105,27 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 		card.type == "General" and type_slot in ["General_Top", "General_Down"],
 		card.type == "Lider" and type_slot == "Lider",
 	]
-		
+
+	
 	var rules = [
 		(card.type_color == column_type or column_type == "Quartzo"),
 		type_rules.reduce(func(a, b): return a or b),
 		card in self.gm.turn.hand.card_slot.cards,
 		type_slot in allowed_slots,
 		is_valid_combination,
-		self.gm.turn.try_use_mana(custo_big_mana, custo_small_mana),
 	]
 	# Imprimir as regras
-	
+	print("Player small mana: ", self.gm.turn.small_mana_player)
+	print("Player big mana: ", self.gm.turn.big_mana_player)
+	var can_use_mana = false
 	if rules.reduce(func(a, b): return a and b):
+		can_use_mana = self.gm.turn.try_use_mana(custo_big_mana, custo_small_mana)
+	
+	print("Depois Player small mana: ", self.gm.turn.small_mana_player)
+	print("Depois Player big	 mana: ", self.gm.turn.big_mana_player)
+	
+	if can_use_mana:
+		GameEvents.on_mana_spend.emit(self.gm.turn, self.gm.turn.small_mana_player, self.gm.turn.big_mana_player > 0)
 		if card.type == "Soldado" and (slot.slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
 			var power = int(card.get_node("Power").text)
 			if current_player == self.gm.get_local_player():
@@ -147,10 +170,12 @@ func replace_card(new_card: CardUI, slot: CardSlotSystem, old_card: CardUI):
 		
 func buy_extra_card(callback: Callable):
 	#if gm.turn == gm.get_local_player():
-		if !self.gm.turn.try_use_mana(1, 0):
+		if !self.gm.turn.try_use_mana(0, 2):
 			print("No mana")
-		else:
+		else:			
+			GameEvents.on_mana_spend.emit(self.gm.turn, self.gm.turn.small_mana_player, self.gm.turn.big_mana_player > 0)
 			callback.call() 
+
 	#else:
 		#print("Não é você")
 
