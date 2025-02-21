@@ -5,7 +5,7 @@ signal on_card_in
 signal on_card_out
 var cards : Array[CardUI]
 var slot_node : Control
-
+var gm: GameManager
 
 func _init(slot_node: Control):
 	if not slot_node.has_method("get_card_target_position"):

@@ -52,6 +52,7 @@ offset_top = -130.0
 offset_right = 0.0
 offset_bottom = -130.0
 type_slot = "Soldado_Top"
+slot_owner = 1
 
 [node name="Slot4" parent="." instance=ExtResource("1_vhj62")]
 offset_left = 0.0
@@ -59,6 +60,7 @@ offset_top = -305.0
 offset_right = 0.0
 offset_bottom = -305.0
 type_slot = "General_Top"
+slot_owner = 1
 
 [node name="Somador" parent="." instance=ExtResource("2_li8h3")]
 offset_left = -37.0

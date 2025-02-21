@@ -37,7 +37,7 @@ func try_use_mana(big_mana: int, small_mana: int):
 
 func set_game_manager(game_manager: GameManager):
 	self.gm = game_manager
-	return
+
 
 func reset_mana():
 	self.big_mana_player = 1

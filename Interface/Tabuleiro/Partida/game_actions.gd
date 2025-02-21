@@ -12,6 +12,7 @@ func _init(game_manager: GameManager) -> void:
 	GameEvents.on_card_placing.connect(place_card)
 	GameEvents.on_card_highlighting.connect(highlight_card)
 	GameEvents.on_card_dragging.connect(drag_card)
+	
 
 func highlight_card(card: CardUI, callback: Callable):
 	if card.parent_slot is Slot or card.parent_slot is Hand:
@@ -33,23 +34,93 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	var column_type
 	if parent.has_method("get_column_type"):
 		column_type = parent.get_column_type()
+		
+	# Garantir que o jogador só pode jogar nos seus próprios slots
+	var current_player = self.gm.turn  
+	var allowed_slots = []
+	if current_player == self.gm.get_local_player():  # Player 1
+		allowed_slots = ["Soldado_Down", "General_Down"]
+	else:  # Player 2
+		allowed_slots = ["Soldado_Top", "General_Top"]
 	
+	var is_valid_combination = false
+	
+	if card.type == "Soldado": 
+		# Verificar as cartas já no slot
+		var existing_cards = slot.cards  # Pega as cartas já no slot
+		var current_ranks = []  # Criamos um array para armazenar os ranks
+		print(existing_cards)
+		for c in existing_cards:
+			current_ranks.append(c.rank)  
+
+		current_ranks.append(card.rank)  
+
+		
+		current_ranks.sort()
+
+		
+		
+		if card.rank == "Alto":
+			if current_ranks == ["Alto"]:
+				is_valid_combination = true
+			elif current_ranks == ["Alto", "Baixo"]:
+				is_valid_combination = true
+		
+		elif card.rank == "Medio":
+			if current_ranks == ["Medio"]:
+				is_valid_combination = true
+			elif current_ranks == ["Medio", "Medio"]:
+				is_valid_combination = true
+			elif current_ranks == ["Baixo", "Medio"]:
+				is_valid_combination = true
+			
+		
+		elif card.rank == "Baixo":
+			if current_ranks == ["Baixo"]:
+				is_valid_combination = true
+			elif current_ranks == ["Alto", "Baixo"]:
+				is_valid_combination = true
+			elif current_ranks == ["Baixo", "Medio"]:
+				is_valid_combination = true
+			
+
+		
+		print(is_valid_combination)
+		print(current_ranks)
+		
+	else:
+		is_valid_combination = true
 	# menos performance, mas evita o inferno de if-else's
+	
 	var type_rules = [
 		card.type == "Soldado" and type_slot in ["Soldado_Top", "Soldado_Down"],
 		card.type == "General" and type_slot in ["General_Top", "General_Down"],
 		card.type == "Lider" and type_slot == "Lider",
 	]
+	print(card.type)
+	print(type_slot)
+	for rule in type_rules:
+		print("Type Rule: ", rule)
+		
 	var rules = [
 		(card.type_color == column_type or column_type == "Quartzo"),
 		type_rules.reduce(func(a, b): return a or b),
 		card in self.gm.turn.hand.card_slot.cards,
+		type_slot in allowed_slots,
+		is_valid_combination,
 		#self.gm.turn.try_use_mana(0, 1),
 	]
+	# Imprimir as regras
+	for i in range(rules.size()):
+		print("Rule ", i, ": ", rules[i])
+	
 	if rules.reduce(func(a, b): return a and b):
 		if card.type == "Soldado" and (slot.slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
 			var power = int(card.get_node("Power").text)
-			slot.slot_node.somador.adicionar_pontos(power)
+			if current_player == self.gm.players[0]:
+				slot.slot_node.somador.adicionar_pontos(power)
+			else:
+				slot.slot_node.somador.adicionar_pontos(-power)
 		callback.call()
 	card.parent_slot.card_slot.position_cards()
 
@@ -131,5 +202,3 @@ func end_turn(callback: Callable):
 		#callback.call()
 	#else:
 		#print("Não é seu turno!")
-
-	
