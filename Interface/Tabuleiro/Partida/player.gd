@@ -68,7 +68,7 @@ func buy_card(buy_deck, sync = true):
 	if new_card:
 		self.hand.card_slot.add_card(new_card, sync)
 		if self == gm.get_local_player():
-			self.hand.card_face_up(new_card)
+			new_card.set_face_card(true)
 		print(self.nickname + " comprou a carta " + new_card.name)
 		return true
 	else:

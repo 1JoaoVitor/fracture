@@ -70,6 +70,8 @@ func set_border(border_texture: Texture) -> void:
 	border.texture = border_texture
 
 func set_face_card(value: bool):
+	if is_face_up == value:
+		return
 	is_face_up = value
 	if is_face_up:
 		self.get_node("AnimationPlayer").play("card_flip")

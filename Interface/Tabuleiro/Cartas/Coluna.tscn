@@ -26,6 +26,16 @@ func _ready():
 				
 func get_column_type():
 	return type_column
+
+func get_inverse():
+	var inverse_map = {
+		'Coluna1': 'Coluna5',
+		'Coluna2': 'Coluna4',
+		'Coluna3': 'Coluna3',
+		'Coluna4': 'Coluna2',
+		'Coluna5': 'Coluna1',
+	}
+	return self.get_parent().get_node(inverse_map[self.name])
 "
 
 [node name="Coluna" type="Node2D"]

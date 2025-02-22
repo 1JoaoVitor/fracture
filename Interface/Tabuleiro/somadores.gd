@@ -23,11 +23,11 @@ func _input(event: InputEvent): #funções para testar se o a mudança de cor es
 
 func adicionar_pontos(pontos: int) -> void:
 	pontuacao += pontos
+	GameEvents.on_points_updated.emit(self, self.pontuacao)
 	atualizar_pontuacao()
 	
 func atualizar_pontuacao() -> void:
 	pontuacao_label.text = str(pontuacao)
-	sum_value_changed.emit()
 	_atualizar_cor_circulo(self.pontuacao)
 
 func _atualizar_cor_circulo(pontos) -> void:
