@@ -28,15 +28,18 @@ func get_card_index(card: CardUI):
 	return self.cards.find(card)
 
 
-func add_card(card: CardUI):
+func add_card(card: CardUI, sync=true):
+	var card_index = -1
+	var card_parent_slot = card.parent_slot
 	if card.parent_slot != null:
+		card_index = card_parent_slot.card_slot.cards.find(card)
 		card.parent_slot.card_slot.remove_card(card)
+	if sync:
+		GameEvents.on_card_added.emit(card_index, card_parent_slot, self.slot_node)
 	self.cards.append(card)
 	card.parent_slot = self.slot_node
-	self.on_card_in.emit()  # talvez não precise mais, n tenho certeza
 	
 	position_cards()
-	GameEvents.on_card_added.emit(card, self)
 	
 func try_add_card(card: CardUI):
 	GameEvents.on_card_placing.emit(card, self, func(): add_card(card))

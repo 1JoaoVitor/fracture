@@ -10,6 +10,7 @@ func _init(p1: Player, p2: Player) -> void:
 	self.players.append(p1)
 	self.players.append(p2)
 	self.players.shuffle()
+	GameEvents.on_card_added.connect(_notify_card_added)
 
 
 @rpc("any_peer")
@@ -36,6 +37,28 @@ func _generate_initial_deck():
 		MultiplayerManager.client.call_gm.rpc_id(p.id, 'create_cards', [card_types_and_powers])
 
 
+func _notify_card_added(card_index: int, origin: Node, target: Node):	
+	if origin.has_method('get_inverse'):
+		origin = origin.get_inverse()
+	if target.has_method('get_inverse'):
+		target = target.get_inverse()
+	_sync_card_added.rpc_id(1, card_index, origin.get_path(), target.get_path())
+
+@rpc("any_peer")
+func _sync_card_added(card_index, origin_path, target_path):
+	var spid = multiplayer.get_remote_sender_id()
+	var tpid = players[1].id if players[0].id == spid else players[0].id
+	_do_sync_card_added.rpc_id(tpid, card_index, origin_path, target_path)
+
+
+@rpc("authority")
+func _do_sync_card_added(card_index, origin_path, target_path):
+	var origin = get_tree().root.get_node(origin_path)
+	var target = get_tree().root.get_node(target_path)
+	var card = origin.card_slot.cards[card_index]
+	target.card_slot.add_card(card, false)
+
+
 @rpc("any_peer")
 func request_players():
 	var pid = multiplayer.get_remote_sender_id()
@@ -57,7 +80,3 @@ func receive_players(players_dict):
 		Player.from_dict(players_dict[1])
 	] as Array[Player]
 	GameEvents.on_players_receive.emit(players)
-
-func sync_add_card(card):
-	
-	pass
