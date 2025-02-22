@@ -11,6 +11,15 @@ enum SlotOwner {PLAYER_1, PLAYER_2}
 @onready var somador = get_parent().get_node("Somador")
 
 
+func get_inverse():
+	var inverse_map = {
+		'Slot': 'Slot2',
+		'Slot2': 'Slot',
+		'Slot3': 'Slot4',
+		'Slot4': 'Slot3',
+	}
+	return self.get_parent().get_node(inverse_map[self.name])
+
 func get_card_target_position(card: CardUI):
 	var card_index = self.card_slot.get_card_index(card)
 	print(card_index)

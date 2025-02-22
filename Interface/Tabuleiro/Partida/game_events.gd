@@ -12,4 +12,4 @@ signal on_mana_reset()
 # a principio esses eventos estão relacionados ao servidor
 signal on_player_ready()
 signal on_players_receive(players: Array[Player])
-signal on_card_added(card: CardUI, slot_system: CardSlotSystem)
+signal on_card_added(card_index: int, origin: Node, target: Node)

@@ -3,8 +3,14 @@ class_name Hand
 
 var card_slot = CardSlotSystem.new(self)
 
-func _ready() -> void:
-	pass
+
+func get_inverse():
+	var inverse_map = {
+		'Hand': 'OppositeHand',
+		'OppositeHand': 'Hand',
+	}
+	return self.get_parent().get_node(inverse_map[self.name])
+
 
 func get_card_target_position(card: CardUI):
 	var position = self.global_position

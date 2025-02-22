@@ -67,7 +67,7 @@ func create_cards(card_types_and_powers):
 			card.type = "Soldado"
 			card.rank = "Alto"
 		self.buy_deck.get_parent().add_child(card)
-		self.buy_deck.card_slot.add_card(card)
+		self.buy_deck.card_slot.add_card(card, false)
 	
 	var deal_cards = func():
 		const CARD_QUANTITY_FOR_EACH_PLAYER = 5
@@ -75,7 +75,7 @@ func create_cards(card_types_and_powers):
 		for i in CARD_QUANTITY_FOR_EACH_PLAYER * 2:
 			var new_card = self.buy_deck.card_slot.cards[0]
 			var receiving_player = self.players[0 if alternate else 1] 
-			receiving_player.hand.card_slot.add_card(new_card)
+			receiving_player.hand.card_slot.add_card(new_card, false)
 			if receiving_player == self.get_local_player():
 				receiving_player.hand.card_face_up(new_card)
 			
@@ -93,7 +93,7 @@ func end_turn(emit_event=true):
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
 	print("Turno do jogador: " + turn.nickname)
 	self.turn.reset_mana() 
-	self.turn.try_buy_card(self.buy_deck, true) #buy card automatic
+	self.turn.try_buy_card(self.buy_deck, true, false) #buy card automatic
 	self.turn.reset_mana()
 	GameEvents.on_mana_reset.emit()
 	self.turn.set_timer()

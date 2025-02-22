@@ -63,10 +63,10 @@ func set_timer():
 	if timer_set == false:
 		timer_set = true
 	
-func buy_card(buy_deck):
+func buy_card(buy_deck, sync = true):
 	var new_card = buy_deck.card_slot.cards[0] 
 	if new_card:
-		self.hand.card_slot.add_card(new_card)
+		self.hand.card_slot.add_card(new_card, sync)
 		if self == gm.get_local_player():
 			self.hand.card_face_up(new_card)
 		print(self.nickname + " comprou a carta " + new_card.name)
@@ -75,9 +75,9 @@ func buy_card(buy_deck):
 		print("Erro: sem cartas no baralho!")
 		return false
 
-func try_buy_card(buy_deck: Node, condicao: bool = false):
+func try_buy_card(buy_deck: Node, condicao: bool = false, sync = true):
 	if condicao:
-		buy_card(buy_deck)
+		buy_card(buy_deck, sync)
 		return 
 	GameEvents.on_buy_button_pressed.emit(self.buy_card.bind(buy_deck))
 
