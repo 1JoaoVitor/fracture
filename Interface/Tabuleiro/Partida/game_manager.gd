@@ -77,7 +77,8 @@ func create_cards(card_types_and_powers):
 			var receiving_player = self.players[0 if alternate else 1] 
 			receiving_player.hand.card_slot.add_card(new_card, false)
 			if receiving_player == self.get_local_player():
-				receiving_player.hand.card_face_up(new_card)
+				new_card.set_face_up(true)
+				#receiving_player.hand.card_face_up(new_card)
 			
 			alternate = not alternate
 			await get_tree().create_timer(0.2).timeout

@@ -11,6 +11,9 @@ func _init(p1: Player, p2: Player) -> void:
 	self.players.append(p2)
 	self.players.shuffle()
 	GameEvents.on_card_added.connect(_notify_card_added)
+	GameEvents.on_points_updated.connect(_notify_points_updated)
+
+
 
 
 @rpc("any_peer")
@@ -49,14 +52,36 @@ func _sync_card_added(card_index, origin_path, target_path):
 	var spid = multiplayer.get_remote_sender_id()
 	var tpid = players[1].id if players[0].id == spid else players[0].id
 	_do_sync_card_added.rpc_id(tpid, card_index, origin_path, target_path)
-
-
+	
 @rpc("authority")
 func _do_sync_card_added(card_index, origin_path, target_path):
 	var origin = get_tree().root.get_node(origin_path)
 	var target = get_tree().root.get_node(target_path)
 	var card = origin.card_slot.cards[card_index]
 	target.card_slot.add_card(card, false)
+	card.set_face_card(true)
+	
+	
+func _notify_points_updated(somador: Node, new_points: int):
+	#if somador.get_parent().has_method('get_inverse'):
+		#somador = somador.get_parent().get_inverse().get_node("Somador")
+	_sync_points_updated.rpc_id(1, somador.get_path(), new_points)
+
+@rpc("any_peer")
+func _sync_points_updated(somador_path, new_points):
+	var spid = multiplayer.get_remote_sender_id()
+	var tpid = players[1].id if players[0].id == spid else players[0].id
+	_do_sync_points_updated.rpc_id(tpid, somador_path, new_points)
+
+
+@rpc("authority")
+func _do_sync_points_updated(somador_path, new_points):
+	var somador = get_tree().root.get_node(somador_path)
+	somador.pontuacao = new_points
+	somador.atualizar_pontuacao()
+	somador._atualizar_cor_circulo(new_points)
+	#column.update_visual()  # Atualiza a interface
+
 
 
 @rpc("any_peer")
@@ -80,3 +105,5 @@ func receive_players(players_dict):
 		Player.from_dict(players_dict[1])
 	] as Array[Player]
 	GameEvents.on_players_receive.emit(players)
+	
+	

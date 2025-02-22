@@ -7,7 +7,6 @@ const PORT = 50000
 
 signal on_match_start
 
-
 var player: Player
 var current_match: Match
 

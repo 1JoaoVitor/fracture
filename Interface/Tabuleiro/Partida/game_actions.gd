@@ -137,6 +137,7 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 				else:
 					slot.slot_node.somador.adicionar_pontos(-1)
 		callback.call()
+		card.set_face_card(true)
 	card.parent_slot.card_slot.position_cards()
 
 
