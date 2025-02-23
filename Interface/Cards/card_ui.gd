@@ -21,6 +21,7 @@ static var scene: PackedScene = preload("res://Interface/Cards/card_ui.tscn")
 @onready var border: TextureRect = $Border
 @onready var power: Label = $Power
 var mana_cost
+@onready var face_front: TextureRect = $FaceFront
 
 @export var FaceUpArt: CompressedTexture2D 
 @export var FaceDownArt: CompressedTexture2D
@@ -31,9 +32,13 @@ var mana_cost
 @export var safira_border: Texture  
 @export var quartzo_border: Texture  
  
+#imagens
+var DRONEZINHO = preload("res://Imagens/Cards/Dronezinho.png")
+var URSO_VIRIDIANO = preload("res://Imagens/Cards/urso_viridiano.jpg")
+var ROBO_OPHIDIANO = preload("res://Imagens/Cards/robo_ophidiano.png")
+var RATO_PARASITADO = preload("res://Imagens/Cards/RatoParasitado.png")
 
 var is_face_up = false
-var card_type
 var parent_slot: Node = null
 
 static func new_card() -> CardUI:
@@ -78,11 +83,27 @@ func set_face_card(value: bool):
 	else:
 		self.get_node("AnimationPlayer").play("card_discard")
 		
+func update_art():
+	var new_texture
+	match self.type:
+		"Soldado":
+			match self.rank:
+				"Alto":
+					new_texture = ROBO_OPHIDIANO
+				"Medio":
+					new_texture = DRONEZINHO
+				"Baixo":
+					new_texture = RATO_PARASITADO
+		"General":
+			new_texture = URSO_VIRIDIANO
 		
+	if new_texture != null:
+		self.face_front.texture = new_texture
 func _ready() -> void:
 	card_state_machine.init(self)
 	update_border()
 	update_value_color()
+	update_art()
 	
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)
@@ -102,6 +123,7 @@ func _on_drop_point_detector_area_entered(area: Area2D) -> void:
 	
 func _on_drop_point_detector_area_exited(area: Area2D) -> void:
 	targets.erase(area)
+
 
 func move_to_position(pos: Vector2):
 	var size = self.get_size()
