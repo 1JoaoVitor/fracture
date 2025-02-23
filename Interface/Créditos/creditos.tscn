@@ -60,12 +60,15 @@ text = "[b]Artes[/b]
 Sofia
  
 [b]Menu[/b] 
-João Vitor
+João Vitor Evangelista 
 
 [b]Estrutura do jogo[/b] 
 Arthur 
 Guilherme
-João Vitor"
+João Vitor Evangelista 
+
+[b]Regras do jogo[/b]
+João Vitor Evangelista"
 scroll_active = false
 
 [node name="Coluna2" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
@@ -76,8 +79,11 @@ size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 35
 bbcode_enabled = true
-text = "[b]Multiplayer[/b] 
+text = "[b]Estrutura do Multiplayer[/b] 
 Guilherme
+
+[b]Sincronização do Multiplayer[/b]
+João Vitor Evangelista
 
 [b]Tabuleiro[/b] 
 Arthur 
