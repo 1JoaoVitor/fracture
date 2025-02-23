@@ -210,7 +210,6 @@ func synthesize_cards(card1: CardUI, card2: CardUI): #3 states
 func end_turn(callback: Callable):
 	if gm.buy_deck.card_slot.cards.is_empty():
 		print("Baralho vazio!")
-		#if gm.turn == gm.players[-1]: 
 		print("Último turno encerrado, fim do jogo!")
 		GameEvents.on_game_over.emit()
 	else:

@@ -11,7 +11,7 @@ signal on_mana_reset()
 signal on_points_updated(somador: Node, new_points: int)
 signal new_turn()
 signal match_started()
-
+signal timer_reset()
 
 # a principio esses eventos estão relacionados ao servidor
 signal on_player_ready()
