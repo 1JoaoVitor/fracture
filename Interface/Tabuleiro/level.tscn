@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=23 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="3_q20lv"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bnk0m0xeychc4" path="res://Imagens/Tabuleiro/Mana/Mana Grande.png" id="15_6v0ae"]
 [ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
 [ext_resource type="AudioStream" uid="uid://chpxcj3no2hf6" path="res://Sfx/Tabuleiro/tabuleirosomloop.mp3" id="15_n5gx7"]
+[ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="17_l8psb"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
 [ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/deck.tscn" id="19_hlenu"]
 
@@ -307,6 +308,24 @@ icon = ExtResource("18_vok56")
 flat = true
 
 [node name="Visual_elements" type="CanvasLayer" parent="."]
+
+[node name="TurnLabel" type="Label" parent="Visual_elements"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -63.0
+offset_right = 282.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("17_l8psb")
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 140
+text = "Seu turno!"
 
 [node name="Timer" parent="Visual_elements" instance=ExtResource("7_uu8fu")]
 offset_left = 1800.0

@@ -77,11 +77,13 @@ func create_cards(card_types_and_powers):
 			var receiving_player = self.players[0 if alternate else 1] 
 			receiving_player.hand.card_slot.add_card(new_card, false)
 			if receiving_player == self.get_local_player():
-				new_card.set_face_up(true)
+				new_card.set_face_card(true)
 				#receiving_player.hand.card_face_up(new_card)
 			
 			alternate = not alternate
 			await get_tree().create_timer(0.2).timeout
+	if self.turn == self.get_local_player():
+		GameEvents.match_started.emit()
 	var timer = Timer.new()
 	(timer.timeout as Signal).connect(deal_cards)
 	timer.one_shot = true
@@ -93,6 +95,8 @@ func create_cards(card_types_and_powers):
 func end_turn(emit_event=true):
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
 	print("Turno do jogador: " + turn.nickname)
+	if self.turn == self.get_local_player():
+		GameEvents.new_turn.emit()
 	self.turn.reset_mana() 
 	self.turn.try_buy_card(self.buy_deck, true, false) #buy card automatic
 	self.turn.reset_mana()

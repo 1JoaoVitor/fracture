@@ -26,6 +26,7 @@ func set_player_as_ready():
 func start_match():
 	print("All players are ready, starting match...")
 	_generate_initial_deck()
+	
 
 
 func _generate_initial_deck():
@@ -77,9 +78,9 @@ func _sync_points_updated(somador_path, new_points):
 @rpc("authority")
 func _do_sync_points_updated(somador_path, new_points):
 	var somador = get_tree().root.get_node(somador_path)
-	somador.pontuacao = new_points
+	somador.pontuacao = -new_points
 	somador.atualizar_pontuacao()
-	somador._atualizar_cor_circulo(new_points)
+	somador._atualizar_cor_circulo(somador.pontuacao)
 	#column.update_visual()  # Atualiza a interface
 
 
