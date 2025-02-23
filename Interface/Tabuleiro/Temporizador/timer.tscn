@@ -19,17 +19,19 @@ stream = ExtResource("2_d31yr")
 volume_db = 5.0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-modulate = Color(0, 1, 0, 1)
+modulate = Color(0.30391, 0.739232, 0.853347, 1)
 layout_mode = 0
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
-max_value = 10000.0
-value = 10000.0
+value = 100.0
 fill_mode = 4
 texture_under = ExtResource("1_njaae")
 texture_over = ExtResource("2_hdxfy")
 texture_progress = ExtResource("1_njaae")
 tint_under = Color(0, 0, 0, 0.458824)
 tint_over = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 120.0
