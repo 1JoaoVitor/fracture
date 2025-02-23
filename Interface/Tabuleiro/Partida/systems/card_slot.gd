@@ -5,7 +5,7 @@ signal on_card_in
 signal on_card_out
 var cards : Array[CardUI]
 var slot_node : Control
-
+var gm: GameManager
 
 func _init(slot_node: Control):
 	if not slot_node.has_method("get_card_target_position"):
@@ -28,23 +28,18 @@ func get_card_index(card: CardUI):
 	return self.cards.find(card)
 
 
-func add_card(card: CardUI):
+func add_card(card: CardUI, sync=true):
+	var card_index = -1
+	var card_parent_slot = card.parent_slot
 	if card.parent_slot != null:
+		card_index = card_parent_slot.card_slot.cards.find(card)
 		card.parent_slot.card_slot.remove_card(card)
-	if self.slot_node.has_method("can_place_card"):
-		if not slot_node.can_place_card(card):
-			print("Error: This card cannot be played in this slot")
-			return false
-		else: #pode jogar a carta
-			if card.type == "Soldado" and (slot_node.type_slot in ["Soldado_Top", "Soldado_Down"]):
-				var power = int(card.get_node("Power").text)
-				slot_node.somador.adicionar_pontos(power)
+	if sync:
+		GameEvents.on_card_added.emit(card_index, card_parent_slot, self.slot_node)
 	self.cards.append(card)
 	card.parent_slot = self.slot_node
-	self.on_card_in.emit()  # talvez não precise mais, n tenho certeza
 	
 	position_cards()
-	return true
 	
 func try_add_card(card: CardUI):
 	GameEvents.on_card_placing.emit(card, self, func(): add_card(card))

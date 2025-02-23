@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bay58o83da5vq"]
+[gd_scene load_steps=22 format=3 uid="uid://bay58o83da5vq"]
 
 [ext_resource type="Script" path="res://Interface/Tabuleiro/level.gd" id="1_nj2sr"]
 [ext_resource type="Texture2D" uid="uid://dba5e30318jtp" path="res://Imagens/Tabuleiro/Viridianos/Viridianos.png" id="3_q20lv"]
 [ext_resource type="Texture2D" uid="uid://cdwfk4b2ipn7a" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianos.png" id="5_bmi56"]
-[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/Cartas/hand.tscn" id="5_uytgn"]
+[ext_resource type="PackedScene" uid="uid://c0ywulidwlwus" path="res://Interface/Tabuleiro/Cartas/hand.tscn" id="5_uytgn"]
 [ext_resource type="Texture2D" uid="uid://ccwuigx8bnpsp" path="res://Imagens/Tabuleiro/Fratura_central.jpg" id="6_gkgke"]
 [ext_resource type="PackedScene" uid="uid://bnxxe66ltq05p" path="res://Interface/Tabuleiro/Temporizador/timer.tscn" id="7_uu8fu"]
 [ext_resource type="Texture2D" uid="uid://do5kurcks4c14" path="res://Imagens/Cards/Slot/DouradoFundo.png" id="8_bmuun"]
@@ -11,9 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://du8c8haebfmvu" path="res://Imagens/Cards/Slot/RubiFundo.png" id="10_cbsax"]
 [ext_resource type="Texture2D" uid="uid://ts7q37hsiryr" path="res://Imagens/Cards/Slot/SafiraFundo.png" id="11_e3o6i"]
 [ext_resource type="Texture2D" uid="uid://c4yd0upklsxmj" path="res://Imagens/Cards/Slot/QuartzoFundo.png" id="12_av4i3"]
+[ext_resource type="Texture2D" uid="uid://brsnj1c5rwdei" path="res://Imagens/Tabuleiro/Mana/Mana Pequena.png" id="14_ksdc1"]
+[ext_resource type="Texture2D" uid="uid://bnk0m0xeychc4" path="res://Imagens/Tabuleiro/Mana/Mana Grande.png" id="15_6v0ae"]
 [ext_resource type="PackedScene" uid="uid://clrdg5l4wqtst" path="res://Interface/Tabuleiro/Cartas/Coluna.tscn" id="15_6x1fj"]
+[ext_resource type="AudioStream" uid="uid://chpxcj3no2hf6" path="res://Sfx/Tabuleiro/tabuleirosomloop.mp3" id="15_n5gx7"]
 [ext_resource type="Texture2D" uid="uid://cxhwclvr6suvd" path="res://Interface/Tabuleiro/Botões/Menu.png" id="18_vok56"]
-[ext_resource type="PackedScene" path="res://Interface/Tabuleiro/Cartas/deck.tscn" id="19_hlenu"]
+[ext_resource type="PackedScene" uid="uid://ng1hugbeh1fb" path="res://Interface/Tabuleiro/Cartas/deck.tscn" id="19_hlenu"]
 
 [sub_resource type="Gradient" id="Gradient_vco24"]
 colors = PackedColorArray(0.332881, 0.332881, 0.332881, 1, 0.333333, 0.333333, 0.333333, 1)
@@ -28,6 +31,11 @@ gradient = SubResource("Gradient_vco24")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nj2sr")
 cena_inicial = "res://Interface/Menu/tela_menu.tscn"
+
+[node name="somjogo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_n5gx7")
+volume_db = -5.0
+autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -137,26 +145,26 @@ offset_top = 23.56
 offset_right = 0.680054
 offset_bottom = 23.0
 
-[node name="Coluna1" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna1" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(363, 543)
 card_texture = ExtResource("8_bmuun")
 type_column = "Dourado"
 
-[node name="Coluna2" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna2" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(650, 543)
 card_texture = ExtResource("11_e3o6i")
 type_column = "Safira"
 
-[node name="Coluna3" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna3" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(923, 543)
 card_texture = ExtResource("12_av4i3")
 
-[node name="Coluna4" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna4" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(1196, 543)
 card_texture = ExtResource("10_13hwn")
 type_column = "Jade"
 
-[node name="Coluna5" parent="BattleUI" instance=ExtResource("15_6x1fj")]
+[node name="Coluna5" parent="BattleUI" groups=["colunas"] instance=ExtResource("15_6x1fj")]
 position = Vector2(1469, 543)
 card_texture = ExtResource("10_cbsax")
 type_column = "Rubi"
@@ -183,6 +191,70 @@ offset_top = -0.28009
 offset_right = 0.839996
 offset_bottom = -0.28009
 
+[node name="ManaPlayer1" type="VBoxContainer" parent="BattleUI"]
+anchors_preset = -1
+anchor_left = 0.672
+anchor_top = 0.519
+anchor_right = 0.672
+anchor_bottom = 0.519
+offset_left = 376.76
+offset_top = 79.4799
+offset_right = 529.76
+offset_bottom = 499.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -60
+
+[node name="ManaPequena1" type="TextureRect" parent="BattleUI/ManaPlayer1"]
+custom_minimum_size = Vector2(130, 180)
+layout_mode = 2
+texture = ExtResource("14_ksdc1")
+expand_mode = 1
+
+[node name="ManaPequena2" type="TextureRect" parent="BattleUI/ManaPlayer1"]
+custom_minimum_size = Vector2(130, 180)
+layout_mode = 2
+texture = ExtResource("14_ksdc1")
+expand_mode = 1
+
+[node name="ManaGrande" type="TextureRect" parent="BattleUI/ManaPlayer1"]
+custom_minimum_size = Vector2(130, 180)
+layout_mode = 2
+texture = ExtResource("15_6v0ae")
+expand_mode = 1
+
+[node name="ManaPlayer2" type="VBoxContainer" parent="BattleUI"]
+anchors_preset = -1
+anchor_left = 0.672
+anchor_top = 0.519
+anchor_right = 0.672
+anchor_bottom = 0.519
+offset_left = 376.76
+offset_top = -550.52
+offset_right = 529.76
+offset_bottom = -130.52
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = -60
+
+[node name="ManaPequena1" type="TextureRect" parent="BattleUI/ManaPlayer2"]
+custom_minimum_size = Vector2(130, 180)
+layout_mode = 2
+texture = ExtResource("14_ksdc1")
+expand_mode = 1
+
+[node name="ManaPequena2" type="TextureRect" parent="BattleUI/ManaPlayer2"]
+custom_minimum_size = Vector2(130, 180)
+layout_mode = 2
+texture = ExtResource("14_ksdc1")
+expand_mode = 1
+
+[node name="ManaGrande" type="TextureRect" parent="BattleUI/ManaPlayer2"]
+custom_minimum_size = Vector2(130, 180)
+layout_mode = 2
+texture = ExtResource("15_6v0ae")
+expand_mode = 1
+
 [node name="botoes" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="botoes"]
@@ -201,9 +273,9 @@ text = "Compra"
 
 [node name="MarginContainer2" type="MarginContainer" parent="botoes"]
 offset_left = 1710.0
-offset_top = 572.0
+offset_top = 610.0
 offset_right = 1890.0
-offset_bottom = 603.0
+offset_bottom = 641.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="botoes/MarginContainer2"]
 layout_mode = 2
@@ -238,9 +310,9 @@ flat = true
 
 [node name="Timer" parent="Visual_elements" instance=ExtResource("7_uu8fu")]
 offset_left = 1800.0
-offset_top = 490.0
+offset_top = 540.0
 offset_right = -120.0
-offset_bottom = -590.0
+offset_bottom = -540.0
 
 [connection signal="pressed" from="botoes/MarginContainer/VBoxContainer/compra" to="." method="_on_compra_pressed"]
 [connection signal="pressed" from="botoes/MarginContainer2/VBoxContainer/turno_fim" to="." method="_on_turno_fim_pressed"]

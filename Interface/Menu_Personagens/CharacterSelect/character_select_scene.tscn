@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjgx0pae8gm3f"]
+[gd_scene load_steps=10 format=3 uid="uid://cjgx0pae8gm3f"]
 
 [ext_resource type="Script" path="res://Interface/Menu_Personagens/CharacterSelect/character_select_scene.gd" id="1_b0yff"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="1_yivy1"]
-[ext_resource type="StyleBox" uid="uid://celos72c2lqr5" path="res://Interface/Menu_Personagens/CharacterSelect/style_viridianos_button.tres" id="3_p4cw4"]
+[ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="2_vgyah"]
+[ext_resource type="AudioStream" uid="uid://xppry7fxumo6" path="res://Sfx/Tabuleiro/vidroquebrando2.mp3" id="3_7t2c3"]
+[ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="4_q87tj"]
 [ext_resource type="Texture2D" uid="uid://7u6r433mmf21" path="res://Imagens/Tabuleiro/Viridianos/Parasita.png" id="4_s5vq1"]
-[ext_resource type="Texture2D" uid="uid://64bppejne62j" path="res://Imagens/Tabuleiro/Ophidianos/LiderOphidiano.png" id="5_fxpm4"]
 [ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="6_6t0i8"]
+[ext_resource type="Texture2D" uid="uid://cbbpg1g7ujrxt" path="res://Imagens/Tabuleiro/Ophidianos/Ophidianosescolha.png" id="8_nm43w"]
+[ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="10_ixy3i"]
 
 [node name="CharacterSelectScene" type="Control"]
 layout_mode = 3
@@ -16,25 +19,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b0yff")
 
-[node name="Title" type="Label" parent="."]
-z_index = 1
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -177.0
-offset_top = -150.0
-offset_right = 177.0
-offset_bottom = -50.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
-text = "Escolha a raça "
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="botaosom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vgyah")
+volume_db = -17.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7t2c3")
+volume_db = -15.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q87tj")
+volume_db = -17.0
+bus = &"Botoes menu"
 
 [node name="Background" type="TextureRect" parent="."]
 modulate = Color(0.165656, 0.165656, 0.165656, 1)
@@ -47,39 +47,52 @@ grow_vertical = 2
 texture = ExtResource("1_yivy1")
 expand_mode = 1
 
-[node name="Characters" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 200)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 14
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 10.0
-offset_bottom = 210.0
+offset_left = -320.0
+offset_top = -187.0
+offset_right = 320.0
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("6_6t0i8")
+theme_override_font_sizes/font_size = 50
+text = "Escolha a raça "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainerPersonagens" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Characters" type="HBoxContainer" parent="VBoxContainer/HBoxContainerPersonagens"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Viridianos_button" type="Button" parent="Characters" groups=["button_character"]]
+[node name="VBoxContainerViri" type="VBoxContainer" parent="VBoxContainer/HBoxContainerPersonagens/Characters"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Viridianos_button" type="Button" parent="VBoxContainer/HBoxContainerPersonagens/Characters/VBoxContainerViri" groups=["button_character"]]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
-theme_override_styles/disabled_mirrored = ExtResource("3_p4cw4")
-theme_override_styles/disabled = ExtResource("3_p4cw4")
-theme_override_styles/hover_pressed_mirrored = ExtResource("3_p4cw4")
-theme_override_styles/hover_pressed = ExtResource("3_p4cw4")
-theme_override_styles/hover_mirrored = ExtResource("3_p4cw4")
-theme_override_styles/hover = ExtResource("3_p4cw4")
-theme_override_styles/pressed_mirrored = ExtResource("3_p4cw4")
-theme_override_styles/pressed = ExtResource("3_p4cw4")
-theme_override_styles/normal_mirrored = ExtResource("3_p4cw4")
-theme_override_styles/normal = ExtResource("3_p4cw4")
-flat = true
 
-[node name="TextureRect" type="TextureRect" parent="Characters/Viridianos_button"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainerPersonagens/Characters/VBoxContainerViri/Viridianos_button"]
 modulate = Color(0.929391, 0.700143, 0.982734, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -90,7 +103,20 @@ grow_vertical = 2
 texture = ExtResource("4_s5vq1")
 expand_mode = 1
 
-[node name="Ophidianos_button" type="Button" parent="Characters" groups=["button_character"]]
+[node name="Viridianos" type="Label" parent="VBoxContainer/HBoxContainerPersonagens/Characters/VBoxContainerViri"]
+layout_mode = 2
+theme = ExtResource("6_6t0i8")
+theme_override_colors/font_color = Color(0.482353, 0.996078, 0.462745, 1)
+theme_override_font_sizes/font_size = 35
+text = "Viridianos
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainerOphi" type="VBoxContainer" parent="VBoxContainer/HBoxContainerPersonagens/Characters"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Ophidianos_button" type="Button" parent="VBoxContainer/HBoxContainerPersonagens/Characters/VBoxContainerOphi" groups=["button_character"]]
 custom_minimum_size = Vector2(270, 270)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -98,15 +124,23 @@ size_flags_vertical = 4
 theme_override_colors/icon_normal_color = Color(0.00730066, 0.228137, 0.976618, 1)
 theme_override_font_sizes/font_size = 30
 
-[node name="TextureRect" type="TextureRect" parent="Characters/Ophidianos_button"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainerPersonagens/Characters/VBoxContainerOphi/Ophidianos_button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_fxpm4")
+texture = ExtResource("8_nm43w")
 expand_mode = 1
+
+[node name="Ophidianos" type="Label" parent="VBoxContainer/HBoxContainerPersonagens/Characters/VBoxContainerOphi"]
+layout_mode = 2
+theme = ExtResource("6_6t0i8")
+theme_override_colors/font_color = Color(0.384314, 0.807843, 1, 1)
+theme_override_font_sizes/font_size = 35
+text = "Ophidianos"
+horizontal_alignment = 1
 
 [node name="sair_button" type="Button" parent="." groups=["button_character"]]
 custom_minimum_size = Vector2(150, 80)
@@ -124,3 +158,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_6t0i8")
 text = "Sair"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(953, 572)
+amount = 300
+lifetime = 500.0
+preprocess = 303.03
+lifetime_randomness = 0.11
+texture = ExtResource("10_ixy3i")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.5
+angular_velocity_min = 2.0
+angular_velocity_max = 5.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+radial_accel_min = 0.03
+radial_accel_max = 0.05
+tangential_accel_min = -0.01
+tangential_accel_max = 0.01
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color = Color(0.568627, 0.831373, 1, 0.0784314)

@@ -6,8 +6,19 @@ var card_slot = CardSlotSystem.new(self)
 @export var allowed_types: Array[String]  #Editable list in the editor for each slot
 @onready var collision_shape = $Area2D/CollisionShape2D
 @export_enum("Soldado_Top", "General_Top", "Soldado_Down", "General_Down", "Lider") var type_slot: String
+enum SlotOwner {PLAYER_1, PLAYER_2}
+@export var slot_owner: SlotOwner
 @onready var somador = get_parent().get_node("Somador")
 
+
+func get_inverse():
+	var inverse_map = {
+		'Slot': 'Slot2',
+		'Slot2': 'Slot',
+		'Slot3': 'Slot4',
+		'Slot4': 'Slot3',
+	}
+	return self.get_parent().get_node(inverse_map[self.name])
 
 func get_card_target_position(card: CardUI):
 	var card_index = self.card_slot.get_card_index(card)

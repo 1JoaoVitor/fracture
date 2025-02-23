@@ -26,6 +26,16 @@ func _ready():
 				
 func get_column_type():
 	return type_column
+
+func get_inverse():
+	var inverse_map = {
+		'Coluna1': 'Coluna5',
+		'Coluna2': 'Coluna4',
+		'Coluna3': 'Coluna3',
+		'Coluna4': 'Coluna2',
+		'Coluna5': 'Coluna1',
+	}
+	return self.get_parent().get_node(inverse_map[self.name])
 "
 
 [node name="Coluna" type="Node2D"]
@@ -52,6 +62,7 @@ offset_top = -130.0
 offset_right = 0.0
 offset_bottom = -130.0
 type_slot = "Soldado_Top"
+slot_owner = 1
 
 [node name="Slot4" parent="." instance=ExtResource("1_vhj62")]
 offset_left = 0.0
@@ -59,6 +70,7 @@ offset_top = -305.0
 offset_right = 0.0
 offset_bottom = -305.0
 type_slot = "General_Top"
+slot_owner = 1
 
 [node name="Somador" parent="." instance=ExtResource("2_li8h3")]
 offset_left = -37.0

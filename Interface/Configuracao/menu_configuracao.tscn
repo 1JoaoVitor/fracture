@@ -1,8 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://crc4yak5ndpg1"]
+[gd_scene load_steps=9 format=3 uid="uid://crc4yak5ndpg1"]
 
 [ext_resource type="Script" path="res://Interface/Configuracao/menu_configuracao.gd" id="1_40fml"]
+[ext_resource type="AudioStream" uid="uid://dtyrdnnd64uql" path="res://Sfx/Tabuleiro/vidroquebrando.wav" id="2_2os72"]
 [ext_resource type="Texture2D" uid="uid://d2sj4pbnasco2" path="res://Imagens/bg_fracture_menu.jpg" id="2_7lujx"]
+[ext_resource type="AudioStream" uid="uid://xppry7fxumo6" path="res://Sfx/Tabuleiro/vidroquebrando2.mp3" id="3_cheva"]
 [ext_resource type="Theme" uid="uid://cryqffpugghp3" path="res://tema_botao.tres" id="3_jlfwe"]
+[ext_resource type="AudioStream" uid="uid://clmfp6oa1opsf" path="res://Sfx/Tabuleiro/vidroquebrando3.mp3" id="4_hopgu"]
+[ext_resource type="Texture2D" uid="uid://3y1k7t3bgnq2" path="res://Imagens/Elementos visuais/ponto_branco.png" id="6_0jkyj"]
+
+[sub_resource type="GDScript" id="GDScript_bn6y7"]
+script/source = "extends LineEdit
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	self.text = MultiplayerManager.client.player.nickname
+	text_changed.connect(change_nickname)
+
+func change_nickname(text):
+	MultiplayerManager.client.player.set_nickname(text)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="MenuConfiguracao" type="Control"]
 layout_mode = 3
@@ -13,6 +34,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_40fml")
 
+[node name="botaosom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2os72")
+volume_db = -17.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cheva")
+volume_db = -15.0
+pitch_scale = 1.05
+bus = &"Botoes menu"
+
+[node name="botaosom3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hopgu")
+volume_db = -17.0
+bus = &"Botoes menu"
+
 [node name="bg" type="TextureRect" parent="."]
 modulate = Color(0.20871, 0.20871, 0.20871, 1)
 layout_mode = 1
@@ -22,6 +60,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_7lujx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(953, 572)
+amount = 300
+lifetime = 500.0
+preprocess = 303.03
+lifetime_randomness = 0.11
+texture = ExtResource("6_0jkyj")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 600)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.5
+angular_velocity_min = 2.0
+angular_velocity_max = 5.0
+orbit_velocity_min = -0.01
+orbit_velocity_max = 0.01
+radial_accel_min = 0.03
+radial_accel_max = 0.05
+tangential_accel_min = -0.01
+tangential_accel_max = 0.01
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color = Color(0.568627, 0.831373, 1, 0.0784314)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -34,40 +100,82 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Volumes" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(760, 100)
+[node name="Nickname" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_jlfwe")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "Volume som de fundo"
+text = "Nickname"
+fit_content = true
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+max_length = 20
+script = SubResource("GDScript_bn6y7")
+
+[node name="Volumes" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_jlfwe")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Volume do menu"
 fit_content = true
 
 [node name="ControleVolume" type="HSlider" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(800, 100)
 layout_mode = 2
-min_value = -30.0
+min_value = -20.0
 max_value = 20.0
+step = 0.0
 
 [node name="Volumes2" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(700, 100)
+custom_minimum_size = Vector2(705.71, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_jlfwe")
 theme_override_font_sizes/normal_font_size = 70
-text = "Volumes dos botões"
+text = "Volume dos botões"
+fit_content = true
 
 [node name="ControleVolume2" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-min_value = -30.0
+min_value = -20.0
 max_value = 20.0
+step = 0.0
+allow_greater = true
+allow_lesser = true
+
+[node name="Volumes3" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_jlfwe")
+theme_override_font_sizes/normal_font_size = 70
+text = "Volume do tabuleiro"
+fit_content = true
+
+[node name="ControleVolume3" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+step = 0.0
+allow_greater = true
+allow_lesser = true
 
 [node name="sair_button" type="Button" parent="." groups=["button_config"]]
 custom_minimum_size = Vector2(150, 80)
+layout_mode = 0
 offset_left = 35.0
 offset_top = 35.0
 offset_right = 185.0
@@ -76,4 +184,6 @@ theme = ExtResource("3_jlfwe")
 text = "Sair"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume" to="." method="_on_controle_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume" to="." method="_on_controle_volume_value_changed_start"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume2" to="." method="_on_controle_volume_2_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ControleVolume3" to="." method="_on_controle_volume_3_value_changed"]
