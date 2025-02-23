@@ -24,19 +24,19 @@ func _ready() -> void:
 		if int(somador.pontuacao_label.text) == 0:
 			resultado.text = "Empate"
 		elif int(somador.pontuacao_label.text) > 0:
-			resultado.text = "Jogador 1"
+			resultado.text = "Vitoria"
 			count += 1
 		elif int(somador.pontuacao_label.text) < 0:
-			resultado.text = "Jogador 2"
+			resultado.text = "Derrota"
 			count -= 1
 			
 	var resultado_geral = get_tree().get_first_node_in_group("resultado")
 	if count == 0:
 		resultado_geral.text = "Empate"
 	elif count > 0:
-		resultado_geral.text = "Vitória do jogador 1"
+		resultado_geral.text = "Vitória" 
 	elif count < 0:
-		resultado_geral.text = "Vitória do jogador 2"
+		resultado_geral.text = "Derrota"
 		
 func _on_button_pressed(_button : Button) -> void:
 	match _button.name:

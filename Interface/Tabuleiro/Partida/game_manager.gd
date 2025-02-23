@@ -95,15 +95,14 @@ func create_cards(card_types_and_powers):
 func end_turn(emit_event=true):
 	self.turn = self.players[(self.players.find(self.turn) + 1) % 2]
 	print("Turno do jogador: " + turn.nickname)
-	if self.turn == self.get_local_player():
-		GameEvents.new_turn.emit()
 	self.turn.reset_mana() 
 	self.turn.try_buy_card(self.buy_deck, true, false) #buy card automatic
 	self.turn.reset_mana()
 	GameEvents.on_mana_reset.emit()
-	self.turn.set_timer()
 	if emit_event:
 		MultiplayerManager.client.current_match.request_end_turn.rpc_id(1)
+	if self.turn == self.get_local_player():
+		GameEvents.new_turn.emit()
 
 func return_card_to_player(card: CardUI):
 	self.turn.hand.card_slot.position_cards()

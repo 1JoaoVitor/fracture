@@ -12,6 +12,7 @@ func _init(p1: Player, p2: Player) -> void:
 	self.players.shuffle()
 	GameEvents.on_card_added.connect(_notify_card_added)
 	GameEvents.on_points_updated.connect(_notify_points_updated)
+	GameEvents.on_game_over.connect(_notify_game_over)
 
 
 
@@ -33,7 +34,7 @@ func _generate_initial_deck():
 	var card_types_and_powers = []	
 	var types = ["Jade", "Safira", "Rubi", "Dourado"]
 	for type in types:
-		for power in range(2, 11): 
+		for power in range(2, 4): 
 			card_types_and_powers.append([type, power])
 		card_types_and_powers.append([type, "G"])
 	card_types_and_powers.shuffle()
@@ -83,8 +84,22 @@ func _do_sync_points_updated(somador_path, new_points):
 	somador._atualizar_cor_circulo(somador.pontuacao)
 	#column.update_visual()  # Atualiza a interface
 
+	
+func _notify_game_over():
+	_sync_game_over.rpc_id(1)
+	
+@rpc("any_peer")
+func _sync_game_over():
+	var spid = multiplayer.get_remote_sender_id()
+	var tpid = players[1].id if players[0].id == spid else players[0].id
+	MultiplayerManager.client.call_gm.rpc_id(tpid, "guardar_valores_somadores", [])
+	_do_sync_game_over.rpc_id(tpid)
+	
+@rpc("authority")
+func _do_sync_game_over():
+	get_tree().change_scene_to_file("res://Interface/Final/end_scene.tscn")
 
-
+	
 @rpc("any_peer")
 func request_players():
 	var pid = multiplayer.get_remote_sender_id()

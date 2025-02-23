@@ -15,6 +15,8 @@ class_name LevelMenu
 @onready var mana_player_1: VBoxContainer = $BattleUI/ManaPlayer1
 @onready var mana_player_2: VBoxContainer = $BattleUI/ManaPlayer2
 @onready var turn_label: Label = $Visual_elements/TurnLabel
+@onready var timer: Control = $Visual_elements/Timer
+
 
 @onready var game_manager: GameManager = GameManager.new(
 	self.buy_deck,
@@ -33,6 +35,8 @@ func _ready():
 	GameEvents.on_mana_reset.connect(reset_mana_visual)
 	GameEvents.new_turn.connect(show_turn_notification)
 	GameEvents.match_started.connect(show_turn_notification)
+	GameEvents.new_turn.connect(start_timer)
+	GameEvents.match_started.connect(start_timer)
 
 	
 	#var personagem_escolhido = GerenciadorPersonagem.get_personagem()  mudar para poder comportar 2 players identicos
@@ -69,6 +73,7 @@ func _on_compra_pressed() -> void:
 
 
 func _on_turno_fim_pressed() -> void:
+	GameEvents.timer_reset.emit()
 	game_manager.turn.try_end_turn()
 
 
@@ -103,3 +108,9 @@ func show_turn_notification():
 	turn_label.visible = true
 	await get_tree().create_timer(2.5).timeout 
 	turn_label.visible = false
+	
+func start_timer():
+	pass
+#	# ta travando muito, tirei por enquanto
+	#if game_manager.turn == game_manager.get_local_player():
+		#timer.set_timer(120)
