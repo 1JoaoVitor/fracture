@@ -34,7 +34,7 @@ func _generate_initial_deck():
 	var card_types_and_powers = []	
 	var types = ["Jade", "Safira", "Rubi", "Dourado"]
 	for type in types:
-		for power in range(2, 4): 
+		for power in range(2, 11): 
 			card_types_and_powers.append([type, power])
 		card_types_and_powers.append([type, "G"])
 	card_types_and_powers.shuffle()

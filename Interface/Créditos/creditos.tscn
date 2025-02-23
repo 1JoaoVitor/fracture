@@ -88,7 +88,7 @@ João Vitor Evangelista
 [b]Tabuleiro[/b] 
 Arthur 
 Guilherme
-João Vitor"
+João Vitor Evangelista"
 scroll_active = false
 
 [node name="sair_button" type="Button" parent="." groups=["button_creditos"]]
