@@ -14,6 +14,7 @@ class_name LevelMenu
 @onready var opposite_hand = $BattleUI/OppositeHand
 @onready var mana_player_1: VBoxContainer = $BattleUI/ManaPlayer1
 @onready var mana_player_2: VBoxContainer = $BattleUI/ManaPlayer2
+@onready var turn_label: Label = $Visual_elements/TurnLabel
 
 @onready var game_manager: GameManager = GameManager.new(
 	self.buy_deck,
@@ -23,13 +24,16 @@ class_name LevelMenu
 )
 
 func _ready():
+	turn_label.visible = false
 	self.add_child(self.game_manager)
 	game_manager.add_to_group("game_manager")
 	game_manager._notify_gm_is_ready()
 	var personagem_escolhido = GerenciadorPersonagem.get_personagem()
 	GameEvents.on_mana_spend.connect(update_mana_visual)
 	GameEvents.on_mana_reset.connect(reset_mana_visual)
-	
+	GameEvents.new_turn.connect(show_turn_notification)
+	GameEvents.match_started.connect(show_turn_notification)
+
 	
 	#var personagem_escolhido = GerenciadorPersonagem.get_personagem()  mudar para poder comportar 2 players identicos
 	
@@ -93,3 +97,9 @@ func update_mana_visual(player, small_mana_count, big_mana_available):
 func reset_mana_visual():
 	update_mana_visual(game_manager.players[0], 2, true)
 	update_mana_visual(game_manager.players[1], 2, true)
+
+func show_turn_notification():
+	turn_label.text = "Seu turno!"
+	turn_label.visible = true
+	await get_tree().create_timer(2.5).timeout 
+	turn_label.visible = false
