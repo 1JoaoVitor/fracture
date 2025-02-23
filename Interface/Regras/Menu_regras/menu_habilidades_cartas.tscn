@@ -100,13 +100,5 @@ size_flags_vertical = 4
 theme_override_font_sizes/normal_font_size = 30
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
-text = "
-[fill]As cartas dos Generais possuem habilidades especiais, além de somarem um ponto a respectiva coluna. Existem quatro Generais únicos de cores diferentes, que devem ser comprados diretamente do baralho para serem jogados. As habilidades são: [/fill]
-
-[b]Habilidades dos Generais[/b]
-
-• General Dourado: Vale um ponto na Coluna Dourado. Olhe as 3 primeiras cartas do deck e escolha uma.
-• General Jade: Vale um ponto na ColunaJade. Move uma carta baixa sua para outro slot (pode trocar cartas).
-• General Safira: Vale um ponto na Coluna Safira. Troca uma carta de reforço sua com a do adversário.
-• General Rubi: Vale um ponto na Coluna Carmim. Olhe o baralho de descarte e compre uma carta."
+text = "[fill]As cartas dos Generais são cartas adicionais que mudam a perspectiva da coluna. Todas as cartas Generais somam um ponto na coluna da sua cor, sendo muitas vezes o diferencial entre a vitória e a derrota. [/fill]"
 tab_size = 24
