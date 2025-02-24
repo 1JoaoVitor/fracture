@@ -61,7 +61,8 @@ func _do_sync_card_added(card_index, origin_path, target_path):
 	var target = get_tree().root.get_node(target_path)
 	var card = origin.card_slot.cards[card_index]
 	target.card_slot.add_card(card, false)
-	card.set_face_card(true)
+	if target.name != "OppositeHand":
+		card.set_face_card(true)
 	
 	
 func _notify_points_updated(somador: Node, new_points: int):

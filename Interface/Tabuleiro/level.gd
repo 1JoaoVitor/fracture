@@ -110,7 +110,7 @@ func show_turn_notification():
 	turn_label.visible = false
 	
 func start_timer():
-	pass
+	#pass
 #	# ta travando muito, tirei por enquanto
-	#if game_manager.turn == game_manager.get_local_player():
-		#timer.set_timer(120)
+	if game_manager.turn == game_manager.get_local_player():
+		timer.set_timer(120)
