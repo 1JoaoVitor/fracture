@@ -10,7 +10,7 @@ var countdown_accumulator: float = 0.0
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
-	#GameEvents.timer_reset.connect(reset_timer)
+	GameEvents.timer_reset.connect(reset_timer)
 	timer.timeout.connect(_on_timer_timeout)
 
 
@@ -25,13 +25,13 @@ func set_timer(tempo: int = 30):
 	texture_progress_bar.max_value = time_last
 	texture_progress_bar.value = time_last #seta a barra para 100%
 
-#func _process(delta: float) -> void:
-	#if is_counting:
-		#time_last = timer.time_left
-		#texture_progress_bar.value = time_last
-		#if time_last <= 0:
-			#is_counting = false
-			#time_last = 0
+func _process(delta: float) -> void:
+	if is_counting:
+		time_last = timer.time_left
+		texture_progress_bar.value = time_last
+		if time_last <= 0:
+			is_counting = false
+			time_last = 0
 			
 			#erro_sfx.play()
 			
