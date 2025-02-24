@@ -15,10 +15,15 @@ func enter() -> void:
 	
 func on_gui_input(event: InputEvent) -> void:
 	var game_manager = get_tree().get_first_node_in_group("game_manager")
-	if event.is_action_pressed("left_mouse_button") and card_ui in game_manager.get_local_player().hand.card_slot.cards:
+	var discard = event.is_action_pressed("right_mouse_button")
+	var confirm = event.is_action_pressed("left_mouse_button")
+	if confirm and card_ui in game_manager.get_local_player().hand.card_slot.cards:
 		card_ui.pivot_offset = card_ui.get_global_mouse_position() - card_ui.global_position
 		var callback = func(): transition_requested.emit(self, CardState.State.CLICKED)
 		GameEvents.on_card_dragging.emit(self.card_ui, callback)
+	if discard and card_ui in game_manager.get_local_player().hand.card_slot.cards:
+		GameEvents.discard_card.emit(card_ui)
+		
 
 
 func on_mouse_entered():

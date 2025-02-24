@@ -20,14 +20,13 @@ func enter() -> void:
 	
 func on_input(event: InputEvent) -> void:
 	var mouse_motion := event is InputEventMouseMotion #flag pra mouse motion
-	var cancel = event.is_action_pressed("right_mouse_button") #flag para cancelar o arraste da carta
 	var confirm = event.is_action_pressed("left_mouse_button") or event.is_action_released("left_mouse_button") #flag para confirmar 
 	
 	if mouse_motion:
 		card_ui.global_position = card_ui.get_global_mouse_position() - card_ui.pivot_offset
-	if cancel: 
-		card_ui.scale = Vector2(1.05, 1.05)
-		transition_requested.emit(self, CardState.State.BASE)
+	#if cancel: 
+		#card_ui.scale = Vector2(1.05, 1.05)
+		#transition_requested.emit(self, CardState.State.BASE)
 	elif minimum_drag_time_elapsed and confirm:
 		card_ui.scale = Vector2(1.05, 1.05)
 		get_viewport().set_input_as_handled() #input tratado/manipulada, evitar pegar outra carta

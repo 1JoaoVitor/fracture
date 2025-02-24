@@ -99,6 +99,7 @@ func update_art():
 		
 	if new_texture != null:
 		self.face_front.texture = new_texture
+		
 func _ready() -> void:
 	card_state_machine.init(self)
 	update_border()

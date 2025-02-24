@@ -12,6 +12,7 @@ func _init(game_manager: GameManager) -> void:
 	GameEvents.on_card_placing.connect(place_card)
 	GameEvents.on_card_highlighting.connect(highlight_card)
 	GameEvents.on_card_dragging.connect(drag_card)
+	GameEvents.discard_card.connect(discard_card)
 	
 
 func highlight_card(card: CardUI, callback: Callable):
@@ -39,7 +40,6 @@ func place_card(card: CardUI, slot: CardSlotSystem, callback: Callable):
 	var current_player = self.gm.turn  
 	var allowed_slots = []
 	if current_player.id == self.gm.get_local_player().id:  # Player 1
-		print("VOCE COME")
 		allowed_slots = ["Soldado_Down", "General_Down"]
 	
 	var is_valid_combination = false
@@ -217,3 +217,6 @@ func end_turn(callback: Callable):
 			callback.call()
 		else:
 			print("Não é seu turno!")
+			
+func discard_card(card: CardUI):
+	pass 
